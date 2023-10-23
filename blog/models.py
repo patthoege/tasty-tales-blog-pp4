@@ -11,19 +11,23 @@ class Post(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
-    )
+        )
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=200, default='vegan')
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True
-    )
+        )
     description = models.TextField()
     ingredients = models.TextField()
     instructions = models.TextField()
-    preparation_time = models.DurationField(help_text='Enter preparation time in HH:MM format')
-    cooking_time = models.DurationField(help_text='Enter cooking time in HH:MM format')
+    preparation_time = models.DurationField(
+        help_text='Enter preparation time in HH:MM format'
+        )
+    cooking_time = models.DurationField(
+        help_text='Enter cooking time in HH:MM format'
+        )
     portions = models.PositiveIntegerField(default=1)
     approved = models.BooleanField(default=False)
 
@@ -39,12 +43,12 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name="comments")
+                             related_name="comments"
+                             )
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["created_on"]
