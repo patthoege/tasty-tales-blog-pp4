@@ -32,6 +32,7 @@ body {
     background-color: #F9FAFC;
 }
 /* ---------------------------------- Navigation/Logo */
+
 .logo-image {
     width: 290px; 
     height: 235px; 
@@ -39,6 +40,7 @@ body {
 }
 
 /* ---------------------------------- Recipe Cards */
+
 .card {
     border: none;
     background-color: transparent;
@@ -73,6 +75,7 @@ body {
 }
 
 /* ---------------------------------- Post detail */
+
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -147,7 +150,29 @@ body {
     margin-top: 5%;
 }
 /* ---------------------------------- Sign Up */
-.btn-signup {
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+  }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+  
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .btn-signup {
     background-color: #23BBBB;
     color: #fff;
 }
@@ -157,6 +182,7 @@ body {
     background-color: #fff;
     color: #23BBBB;
 }
+/* ---------------------------------- Link/Button */
 
 .link {
     color: #23BBBB;
@@ -181,3 +207,4 @@ body {
     background: transparent;
     border: none;
 }
+/* ---------------------------------- Footer */
