@@ -7,34 +7,28 @@
 
 {% block content %}
 
-<main class="form-signin w-100 m-auto">
-  <form method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    <!-- <img class="mb-4 d-block mx-auto" src="" alt="" width="72" height="57"> -->
-    <p>{% blocktrans %} Welcome to TastyTales blog. To leave a comment or like a post, please log in.
+ <!-- <img class="mb-4 d-block mx-auto" src="" alt="" width="72" height="57"> -->
+ 
+ <div class="container">
+  <p class="text-center">{% blocktrans %} Welcome to TastyTales blog. To leave a comment or like a post, please log in.
       If you have not created an account yet, then 
-      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p><br/>
-    <h3 class="text-center">{% trans "Sign In" %}</h3>
+      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+  </p><br/>
+</div>
 
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-      <label for="floatingInput">{% trans "Email address" %}</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-      <label for="floatingPassword">{% trans "Password" %}</label>
-    </div>
+<h3 class="text-center">{% trans "Sign In" %}</h3>
 
-    <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        {% trans "Remember me" %}
-      </label>
-    </div>
-
-    <button class="btn btn-signup w-100 py-2" type="submit">{% trans "Sign In" %}</button>
-  </form>
-</main>
-
+<div class="row">
+  <div class="form-signin w-100 m-auto">
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
+    </form>
+  </div>
+</div>
 
 {% endblock content %}
