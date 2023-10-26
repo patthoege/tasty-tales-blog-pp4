@@ -149,6 +149,10 @@ body {
     margin-left: 5%;
     margin-top: 5%;
 }
+/* ---------------------------------- Comment */
+.comment-text-field {
+    margin-bottom: 20px;
+}
 /* ---------------------------------- Sign Up */
 
 .form-signin {
@@ -157,7 +161,7 @@ body {
   }
 
 
-  .btn-signup {
+.btn-signup {
     background-color: #23BBBB;
     color: #fff;
 }
