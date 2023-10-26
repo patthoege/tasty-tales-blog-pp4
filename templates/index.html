@@ -16,6 +16,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-4">
                                     <div class="image-container">
+                                        <!-- The featured image URL goes in the src attribute -->
                                         {% if "placeholder" in post.featured_image.url %}
                                         <img class="card-img-top"
                                             src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
@@ -27,15 +28,20 @@
                                 <div class="col-12 col-md-6">
                                     <div class="content-container">
                                         <p class="author">Written by 
+                                        <!-- Post author goes before in the anchor tag -->
                                             <a href="" class="author-name fw-medium">{{ post.author }}</a>
                                         </p>
+                                        <!-- Post's created date goes inside the card-text | date filter inside the template tags -->
                                         <p class="card-text text-muted h6"> {{ post.created_on|date:"F j, Y"|upper }} </p>
-                                        <a href="#" class="post-link">
+                                        <a href="{% url 'post_detail' post.slug  %}" class="post-link">
+                                        <!-- Post title goes in these h2 tags -->
                                             <h2 class="card-title"> {{ post.title }} </h2>
                                         </a>
+                                        <!-- The post excerpt goes before the p closing tag -->
                                         <p class="card-text"> {{ post.excerpt }} </p>
+                                        <!-- The number of likes goes before the closing i tag -->
                                         <i class="far fa-heart"> {{ post.number_of_likes }} </i>
-                                        <a href="#" class="post-link fw-bold"> 
+                                        <a href="{% url 'post_detail' post.slug  %}" class="post-link fw-bold"> 
                                             <p> Continue reading </p>
                                         </a>
                                     </div>
@@ -53,8 +59,6 @@
             </div>
         </div>
     </div>
-    
-
     <!-- Standard pagination -->
     {% if is_paginated %}
     <nav aria-label="Page navigation">

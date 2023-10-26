@@ -6,8 +6,8 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    title = models.CharField(max_length=70, unique=True)
+    slug = models.SlugField(max_length=70, unique=True)
     featured_image = CloudinaryField('image', default='placeholder')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
@@ -15,7 +15,7 @@ class Post(models.Model):
     excerpt = models.TextField(max_length=200, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(max_length=200, default='vegan')
+    category = models.CharField(max_length=20)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True
