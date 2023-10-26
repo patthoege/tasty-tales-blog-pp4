@@ -12,6 +12,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
         )
+    excerpt = models.TextField(max_length=200, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=200, default='vegan')
@@ -19,7 +20,6 @@ class Post(models.Model):
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True
         )
-    description = models.TextField()
     ingredients = models.TextField()
     instructions = models.TextField()
     preparation_time = models.DurationField(

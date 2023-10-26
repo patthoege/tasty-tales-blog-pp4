@@ -34,8 +34,14 @@ body {
     background-color: transparent;
 }
 
+.post-list-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
 .image-container {
     position: relative;
+    text-align: left;
 }
 
 .image-flash {
@@ -47,10 +53,15 @@ body {
 }
 
 .author {
-    color: white;
+    color: #5a5a5fe0;
     margin: 4px;
-    text-transform: uppercase;
 }
+
+.author-name {
+    text-decoration: none;
+    color: rgb(115 115 115/var(--tw-text-opacity));
+}
+
 
 .masthead {
     margin-top: 10px;
