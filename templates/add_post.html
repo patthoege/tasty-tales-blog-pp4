@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Column 1: Editing Your Post -->
+        <div class="col-lg-4 mb-4">
+            <div class="bg-light p-4 rounded shadow">
+                <h1 class="h4 font-weight-bold mb-3">Editing your post</h1>
+                <p class="text-muted mb-3">The body of your content can be edited using the Rich Text Editor. Your post remains private until you “publish” the article.</p>
+                <button class="btn btn-primary">View Preview</button>
+            </div>
+        </div>
+        <!-- Column 2: Post Form -->
+        <div class="col-lg-4 mb-4">
+            <div class="bg-light p-4 rounded shadow">
+                <h2 class="h4 font-weight-bold mb-3">Create a New Post</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary mt-3">Publish</button>
+                </form>
+            </div>
+        </div>
+        <!-- Column 3: How it Works -->
+        <div class="col-lg-4 mb-4">
+            <div class="bg-light p-4 rounded shadow">
+                <h2 class="h4 font-weight-bold mb-3">How to use the editor</h2>
+                <p class="text-muted mb-3">You can edit and format the main content of your article using Rich Text Editor. </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

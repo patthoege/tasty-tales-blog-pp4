@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.views import generic, View
+from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm
@@ -77,3 +78,9 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class AddPost(CreateView):
+    model = Post
+    template_name = 'add_post.html'
+    fields = ['title', 'featured_image', 'excerpt', 'category', 'ingredients', 'instructions', 'preparation_time', 'cooking_time', 'portions']
