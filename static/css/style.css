@@ -1,6 +1,9 @@
+/* ---------------------------------- Global */
+
 body {
     background-color: #F9FAFC;
 }
+
 
 .brand {
     font-family: Lato, sans-serif;
@@ -28,7 +31,14 @@ body {
 .main-bg {
     background-color: #F9FAFC;
 }
+/* ---------------------------------- Navigation/Logo */
+.logo-image {
+    width: 290px; 
+    height: 235px; 
+    margin-left: 5%;
+}
 
+/* ---------------------------------- Recipe Cards */
 .card {
     border: none;
     background-color: transparent;
@@ -62,7 +72,7 @@ body {
     color: rgb(115 115 115/var(--tw-text-opacity));
 }
 
-
+/* ---------------------------------- Post detail */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -99,12 +109,12 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #c5cf07;
+    color: #121211;
 }
 
 .post-link:hover,
 .page-link {
-    color: #c5b51d;
+    color: #242422;
 }
 
 .post-title {
@@ -136,7 +146,7 @@ body {
     margin-left: 5%;
     margin-top: 5%;
 }
-
+/* ---------------------------------- Sign Up */
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
