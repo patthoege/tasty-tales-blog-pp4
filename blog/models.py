@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -22,12 +24,8 @@ class Post(models.Model):
         )
     ingredients = models.TextField()
     instructions = models.TextField()
-    preparation_time = models.DurationField(
-        help_text='Enter preparation time in HH:MM format'
-        )
-    cooking_time = models.DurationField(
-        help_text='Enter cooking time in HH:MM format'
-        )
+    preparation_time = models.DurationField()
+    cooking_time = models.DurationField()
     portions = models.PositiveIntegerField(default=1)
     approved = models.BooleanField(default=False)
 
@@ -40,11 +38,19 @@ class Post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'slug': self.slug})
+
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name="comments"
-                             )
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE,
+        related_name="comments"
+    )
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
