@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
+{% block title %}
+{{ post.title }}
+{% endblock %}
 
 <div class="masthead">
     <div class="container">
