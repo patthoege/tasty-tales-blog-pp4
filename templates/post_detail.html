@@ -28,6 +28,9 @@
                     <a href="/edit/{{ post.slug }}">
                         <button class="btn btn-outline-success">Edit</button>
                     </a> 
+                    <a href="/delete/{{ post.slug }}">
+                        <button class="btn btn-outline-danger">Delete</button>
+                    </a>
                 </div>
             </div>
 
@@ -171,4 +174,5 @@
 {% block extras %}
 {% load static %}
 <script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/postdeletion.js' %}"></script>
 {% endblock extras %}

@@ -92,6 +92,23 @@ class EditPost(View):
         }
         return render(request, 'edit_post.html', context)
 
+class DeletePost(View):
+    """
+    Handles deleting existing blog posts.
+    When a user accesses the delete post page for a specific slug,
+    it retrieves the corresponding post. If the user confirms the deletion,
+    the post is deleted from the database, and the user is redirected to the home page.
+    """
+    def get(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        return render(request, 'delete_post.html', {'post': post})
+
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        post.delete()
+        return redirect('home')
+
+
 
 class PostDetail(View):
     """
