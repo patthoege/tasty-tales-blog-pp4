@@ -33,7 +33,7 @@ class AddPost(LoginRequiredMixin, View):
     it creates a new instance of the NewPost and re-renders the add_post.html.
     """
     def get(self, request, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
+        # queryset = Post.objects.filter(status=1)
         return render(
             request,
             'add_post.html',
@@ -68,6 +68,29 @@ class AddPost(LoginRequiredMixin, View):
                     "form": form
                 }
             )
+
+
+class EditPost(View):
+    """
+    Handles editing existing blog posts.
+    When a user accesses the edit post page for a specific slug,
+    it retrieves the corresponding post. If the user submits the edit form,
+    it validates the data. Upon validation, the post is updated,
+    and the user is redirected to the home page.
+    """
+    def edit_post(request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        if request.method == 'POST':
+            form = NewPost(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+
+        form =  NewPost(instance=post)
+        context = {
+            'form': form
+        }
+        return render(request, 'edit_post.html', context)
 
 
 class PostDetail(View):

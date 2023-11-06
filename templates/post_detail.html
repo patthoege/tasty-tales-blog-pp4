@@ -24,6 +24,11 @@
                     Comments {{ total_comments }}
                 </p>
                 {% endwith %}
+                <div>
+                    <a href="/edit/{{ post.slug }}">
+                        <button class="btn btn-outline-success">Edit</button>
+                    </a> 
+                </div>
             </div>
 
             <div class="d-none d-md-block col-md-6 masthead-image">
