@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
-{% block title %}
+<!-- {% block title %}
 {{ post.title }}
-{% endblock %}
+{% endblock %} -->
 
 <div class="masthead">
     <div class="container">
@@ -103,10 +103,17 @@
                     <p class="font-weight-bold">
                         {{ comment.name}}
                         <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on | date:"j F Y" }}
+                            {{ comment.created_on | date:"d/m/y" }}
                         </span> wrote:
                     </p>
-                    {{ comment.body | linebreaks }}
+                     <!-- The body of the comment goes before the | -->
+                     <div id="comment{{ comment.id }}">
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    {% if user.is_authenticated and comment.name == user.username %}
+                     <button class="btn btn-delete bg-danger" comment_id="{{ comment.id }}">Delete</button>
+                     <button class="btn btn-edit bg-primary" comment_id="{{ comment.id }}">Edit</button>
+                     {% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -120,12 +127,14 @@
                     {% if user.is_authenticated %}
                     <h3>Leave a comment</h3>
                     <p>Posting as <strong>{{ user.username }}</strong> </p>
-                    <form method="post" class="comment-text-field" style="margin-top: 1.3em;">
+                    <form id="commentForm" method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-text-field" style="margin-top: 1.3em;">
                         {{ comment_form | crispy }}
                         {{ comment_form.body.errors }} <!-- Renders form errors, keep this line if needed -->
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-signup">Submit</button>
+                        <button id="submitButton" type="submit" class="btn btn-signup">Send</button>
                     </form>
+                    {% else %}
+                    <h3>Log in to leave a comment</h3>
                     {% endif %}
                 </div>
             </div>
@@ -133,4 +142,28 @@
     </div>
 </div>
 
+<!-- Delete comment modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
+
+{% block extras %}
+{% load static %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock extras %}
