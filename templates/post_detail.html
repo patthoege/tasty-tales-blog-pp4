@@ -25,12 +25,14 @@
                 </p>
                 {% endwith %}
                 <div>
+                    {% if user.is_authenticated and user.username == post.author.username %}
                     <a href="/edit/{{ post.slug }}">
                         <button class="btn btn-outline-success">Edit</button>
                     </a> 
                     <a href="/delete/{{ post.slug }}">
                         <button class="btn btn-outline-danger">Delete</button>
                     </a>
+                    {% endif %}
                 </div>
             </div>
 

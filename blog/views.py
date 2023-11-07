@@ -69,35 +69,40 @@ class AddPost(LoginRequiredMixin, View):
             )
 
 
-class EditPost(View):
+class EditPost(LoginRequiredMixin, View):
     """
-    Handles editing existing blog posts.
+    If user is authenticated can edit their blog posts.
     When a user accesses the edit post page for a specific slug,
     it retrieves the corresponding post. If the user submits the edit form,
     it validates the data. Upon validation, the post is updated,
-    and the user is redirected to the home page.
+    and the user is redirected to the home page and gets notified.
     """
-    def edit_post(request, slug):
+    def get(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
-        if request.method == 'POST':
-            form = NewPost(request.POST, request.FILES, instance=post)
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'Post Updated!')
-                return redirect('home')
-
         form =  NewPost(instance=post)
         context = {
             'form': form
         }
         return render(request, 'edit_post.html', context)
 
-class DeletePost(View):
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        form = NewPost(request.POST, request.FILES, instance=post)
+        if form.is_valid() and post.author == request.user:
+            form.save()
+            messages.success(request, 'Post Updated!')
+        else:
+            messages.error(request, 'You are not authorized to edit this post.')
+        return redirect('home')
+
+
+class DeletePost(LoginRequiredMixin, View):
     """
-    Handles deleting existing blog posts.
+    If user is authenticated can delete their blog posts.
     When a user accesses the delete post page for a specific slug,
     it retrieves the corresponding post. If the user confirms the deletion,
-    the post is deleted from the database, and the user is redirected to the home page.
+    the post is deleted from the database, and the user is 
+    redirected to the home page and gets notified.
     """
     def get(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
@@ -105,8 +110,11 @@ class DeletePost(View):
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
-        post.delete()
-        messages.success(request, 'Post deleted successfully!')
+        if post.author == request.user:
+            post.delete()
+            messages.success(request, 'Post deleted successfully!')
+        else:
+            messages.error(request, 'You are not authorized to delete this post.')
         return redirect('home')
 
 
