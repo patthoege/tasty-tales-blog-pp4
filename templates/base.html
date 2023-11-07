@@ -62,6 +62,24 @@
         </div>
     </nav>
 
+    <!-- Message alert when user logs in and leaves a comment -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="alert {{ message.tags }} alert-dismissible fade show" {% endif %}>
+                        {{ message | safe  }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
     <main class="flex-shrink-0 main-bg">
         {% block content %}
         <!-- Content Goes here -->
@@ -80,6 +98,17 @@
     {% endblock extras %}
 
     <script src="https://kit.fontawesome.com/629a0a9fe6.js" crossorigin="anonymous"></script>
+     <!-- Script time out for messages -->
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            let messages = document.querySelectorAll('.messages li');
+            messages.forEach(function(message) {
+                message.remove();
+            });
+        }, 4000);
+    });
+    </script>
 </body>
 
 </html>

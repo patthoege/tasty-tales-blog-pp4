@@ -21,11 +21,6 @@
             </div>
         </div>
         <!-- Column 2: Post Form -->
-        {% if posted %}
-        <div class="col-lg-6 mb-4 alert alert-success" role="alert">
-            Your Post is awaiting approval
-        </div>
-        {% else %}
         <div class="col-lg-6 mb-4">
             <div class="bg-light p-4 rounded shadow">
                 <h2 class="h4 font-weight-bold mb-3">Create a New Post</h2>
@@ -34,7 +29,6 @@
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Publish</button>
                 </form>
-        {% endif %}
             </div>            
         </div>
     </div>

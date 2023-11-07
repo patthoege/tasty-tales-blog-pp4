@@ -49,14 +49,13 @@ class AddPost(LoginRequiredMixin, View):
         if new_post.is_valid():
             new_post.instance.author = request.user
             new_post.save()
-
+            messages.success(request, 'Your post is awaiting approval')
             slug = new_post.instance.slug
 
-            # Construct the URL using reverse
+            # Construct the URL using reverse and redirect to the post detail page
             post_detail_url = reverse('post_detail', kwargs={"slug": slug})
-
-            # Redirect to the post detail page
             return HttpResponseRedirect(post_detail_url)
+            
         else:
             form = new_post
 
@@ -84,6 +83,7 @@ class EditPost(View):
             form = NewPost(request.POST, request.FILES, instance=post)
             if form.is_valid():
                 form.save()
+                messages.success(request, 'Post Updated!')
                 return redirect('home')
 
         form =  NewPost(instance=post)
@@ -106,6 +106,7 @@ class DeletePost(View):
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
         post.delete()
+        messages.success(request, 'Post deleted successfully!')
         return redirect('home')
 
 
