@@ -8,10 +8,17 @@ class NewPost(forms.ModelForm):
         model = Post
         template_name = 'add_post.html'
         fields = [
-            'title', 'featured_image', 'excerpt',
+            'title', 'excerpt', 'featured_image', 
             'category', 'ingredients', 'instructions',
             'preparation_time', 'cooking_time', 'portions'
         ]
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
+            'featured_image': forms.FileInput(attrs={'class': 'form-control'}),
+            'category': forms.TextInput(attrs={'class': 'form-control'}),
+            'portions': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 
 class CommentForm(forms.ModelForm):

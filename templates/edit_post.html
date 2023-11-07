@@ -31,7 +31,7 @@
                 <h2 class="h4 font-weight-bold mb-3">Edit your Post</h2>
                 <form method="post" action="{% url 'add_post' %}">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ form | crispy }}
                     <button type="submit" class="btn btn-outline-success">Update Recipe</button>
                 </form>
         {% endif %}
