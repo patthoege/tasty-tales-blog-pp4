@@ -168,7 +168,7 @@ body {
     margin-top: 20px;
     color: #fff;
 }
-.form-signin {
+.form-sign {
     display: flex;
     flex-direction: column;
     max-width: 330px;
@@ -185,49 +185,62 @@ body {
     border-bottom-color: rgba(225, 225, 225, 0.5);
 }
 
-.form-signin form {
+.form-sign form {
     color: #fff;
 }
 
-.form-signin input[type="text"] {
+.form-sign input[type="text"] {
     background-color: #fff;
     color: #333;
     padding: 5px;
+    font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     transition: all 0.3s ease; 
 }
 
-.form-signin input[type="password"] {
+.form-sign input[type="password"] {
     background-color: #fff;
     color: #333;
     padding: 5px;
+    font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     transition: all 0.3s ease;
 }
 
-.form-signin input[type="text"]:hover,
-.form-signin input[type="password"]:hover {
+.form-sign input[type="email"] {
+    background-color: #fff;
+    color: #333;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease; 
+}
+
+.form-sign input[type="text"]:hover,
+.form-sign input[type="password"]:hover,
+.form-sign input[type="email"]:hover {
     border-color: #bb9223; 
     box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
 }
 
-
-.form-signin form .btn-signup {
+.form-sign form .btn-sign {
     align-self: flex-end;
     margin-top: 10px; 
 }
 
-.btn-signup {
+.btn-sign {
     background-color: #000;
     color: #fff;
 }
 
-.btn-signup:hover,
-.btn-signup:active {
+.btn-sign:hover,
+.btn-sign:active {
     background-color: #bb9223;
     color: #fff;
 }
