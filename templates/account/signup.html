@@ -9,10 +9,10 @@
 
 <div class="bg-img-container">
   <div class="welcome-container">
-    <p class="text-center">{% blocktrans %}Already have an account? </br>Then please <a  href="{{ login_url }}">Sign In</a>.{% endblocktrans %}</p>
+    <p class="text-center">{% blocktrans %}Already have an account? </br>Then please <a class="link" href="{{ login_url }}">Sign In</a>.{% endblocktrans %}</p>
     <div class="row">
       <div class="col-lg-6 mx-auto">
-        <div class="form-sign w-100 m-auto">
+        <div class="form-sign form-signup w-100 m-auto">
           <form id="signup_form" method="post" action="{% url 'account_signup' %}">
             <h1 class="text-center">{% trans "Sign Up" %}</h1>
             {% csrf_token %}
