@@ -155,6 +155,7 @@ body {
 /* ---------------------------------- Sign In */
 .bg-img-container {
     background-image: url('../images/bg-img.jpg');
+    height: 100vh;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
