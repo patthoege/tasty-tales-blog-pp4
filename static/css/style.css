@@ -116,7 +116,7 @@ body {
 
 .post-link:hover,
 .page-link {
-    color: #242422;
+    color: #bb9223;
 }
 
 .post-title {
@@ -153,22 +153,83 @@ body {
     margin-bottom: 20px;
 }
 /* ---------------------------------- Sign In */
+.bg-img-container {
+    background-image: url('../images/bg-img.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 
+.welcome-container {
+    padding-top: 50px; 
+} 
+
+.welcome-container p {
+    margin-top: 20px;
+    color: #fff;
+}
 .form-signin {
+    display: flex;
+    flex-direction: column;
     max-width: 330px;
-    padding: 1rem;
-  }
+    padding: 1.5rem;
+    margin-bottom: 40px !important; 
+    border: 1px solid transparent;
+    border-radius: 5px; 
+    backdrop-filter: blur(4px);
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top-color: rgba(225, 225, 225, 0.5);
+    border-left-color: rgba(225, 225, 225, 0.5);
+    border-right-color: rgba(225, 225, 225, 0.5);
+    border-bottom-color: rgba(225, 225, 225, 0.5);
+}
 
+.form-signin form {
+    color: #fff;
+}
+
+.form-signin input[type="text"] {
+    background-color: #fff;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease; 
+}
+
+.form-signin input[type="password"] {
+    background-color: #fff;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-signin input[type="text"]:hover,
+.form-signin input[type="password"]:hover {
+    border-color: #bb9223; 
+    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+}
+
+
+.form-signin form .btn-signup {
+    align-self: flex-end;
+    margin-top: 10px; 
+}
 
 .btn-signup {
-    background-color: #23BBBB;
+    background-color: #000;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #bb9223;
+    color: #fff;
 }
 
 /* ---------------------------------- Link/Button */
@@ -177,19 +238,23 @@ body {
     color: #000000;
 }
 
+.nav-link:hover {
+    color: #bb9223;
+}
+
 button.nav-link.btn.me-2, button.nav-link.btn-signup {
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
 .link {
-    color: #23BBBB;
+    color: #bb9223;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: #bb9223;
     text-decoration: underline;
 }
 
