@@ -34,11 +34,10 @@ body {
 /* ---------------------------------- Navigation/Logo */
 
 .logo-image {
-    width: 290px; 
-    height: 240px; 
+    width: 250px;
+    height: 230px;
     margin-left: 5%;
 }
-
 /* ---------------------------------- Recipe Cards */
 
 .card {
@@ -153,7 +152,7 @@ body {
 .comment-text-field {
     margin-bottom: 20px;
 }
-/* ---------------------------------- Sign Up */
+/* ---------------------------------- Sign In */
 
 .form-signin {
     max-width: 330px;
@@ -171,7 +170,17 @@ body {
     background-color: #fff;
     color: #23BBBB;
 }
+
 /* ---------------------------------- Link/Button */
+.nav-link {
+    display: inline;
+    color: #000000;
+}
+
+button.nav-link.btn.me-2, button.nav-link.btn-signup {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
 .link {
     color: #23BBBB;
@@ -197,3 +206,19 @@ body {
     border: none;
 }
 /* ---------------------------------- Footer */
+
+
+/* ----------------------------------  Media Queries */
+@media (max-width: 768px) {
+    .logo-image {
+        width: 50%;
+        height: 20%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        width: 30%; 
+        height: 25%;
+    }
+}
