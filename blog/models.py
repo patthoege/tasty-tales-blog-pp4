@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -22,8 +23,8 @@ class Post(models.Model):
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True
         )
-    ingredients = models.TextField()
-    instructions = models.TextField()
+    ingredients = RichTextField(blank=True, null=True)
+    instructions = RichTextField(blank=True, null=True)
     preparation_time = models.DurationField()
     cooking_time = models.DurationField()
     portions = models.PositiveIntegerField(default=1)

@@ -163,18 +163,50 @@ nav.navbar-nav a.nav-link.active {
 .comment-text-field {
     margin-bottom: 20px;
 }
+
+/* ---------------------------------- Add post page */
+.bg-img-container-post {
+    background-image: url('../images/add-post-bckgnd-img.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat; 
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    margin-bottom: 40px !important; 
+    border: 1px solid transparent;
+    border-radius: 10px; 
+    backdrop-filter: blur(2px);
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-color: rgba(225, 225, 225, 0.5);
+    border-left-color: rgba(225, 225, 225, 0.5);
+    border-right-color: rgba(225, 225, 225, 0.5);
+    border-bottom-color: rgba(225, 225, 225, 0.5);
+}
+
+.custom-form .form-control:hover {
+    border-color: #bb9223; 
+    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+}
+
+
 /* ---------------------------------- Sign In */
 .bg-img-container {
     background-image: url('../images/bg-img.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    min-height: 100vh; /* Set a minimum height to cover the entire viewport */
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .welcome-container {
     padding-top: 50px; 
-    background-color: rgba(0, 0, 0, 0.1);
 } 
 
 .welcome-container p {

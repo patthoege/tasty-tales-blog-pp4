@@ -15,7 +15,6 @@ class NewPost(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
-            'featured_image': forms.FileInput(attrs={'class': 'form-control'}),
             'category': forms.TextInput(attrs={'class': 'form-control'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),
         }
