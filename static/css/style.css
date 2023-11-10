@@ -194,7 +194,6 @@ nav.navbar-nav a.nav-link.active {
     box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
 }
 
-
 /* ---------------------------------- Sign In */
 .bg-img-container {
     background-image: url('../images/bg-img.jpg');
@@ -287,6 +286,7 @@ nav.navbar-nav a.nav-link.active {
     margin-top: 10px; 
 }
 
+/* ---------------------------------- Link - Button */
 .btn-sign {
     background-color: #000;
     color: #fff;
@@ -298,14 +298,24 @@ nav.navbar-nav a.nav-link.active {
     color: #fff;
 }
 
+.btn-delete {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-delete:hover,
+.btn-delete:active {
+    background-color: #fd0000;
+    color: #fff;
+}
+
 .login button.btn-sign,
-.btn-sign {
+.btn-sign, .btn-delete {
     display: block;
     margin: 0 auto;
     margin-top: 20px; 
 }
 
-/* ---------------------------------- Link/Button */
 .nav-link {
     display: inline;
     color: #000000;
@@ -409,8 +419,6 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 .copy-text {
     font-size: 14px;
 }
-
-
 /* ----------------------------------  Media Queries */
 @media (max-width: 768px) {
     .logo-image {
