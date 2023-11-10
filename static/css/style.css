@@ -2,8 +2,8 @@
 
 body {
     background-color: #F9FAFC;
+    padding-top: 8.5rem;
 }
-
 
 .brand {
     font-family: Lato, sans-serif;
@@ -31,12 +31,23 @@ body {
 .main-bg {
     background-color: #F9FAFC;
 }
+
 /* ---------------------------------- Navigation/Logo */
 .logo-img {
     max-width: 180px;
     max-height: 150px;
-    margin-left: 5%;
+    margin-left: 30%;
 }
+/* Add shadow effect to the navbar */
+header.navbar {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Add underline to the active link in the navbar */
+nav.navbar-nav a.nav-link.active {
+    border-bottom: 2px solid #bb9223;
+}
+
 /* ---------------------------------- Recipe Cards */
 
 .card {
@@ -266,6 +277,14 @@ body {
 .nav-link {
     display: inline;
     color: #000000;
+}
+
+.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: #000000 !important;
+}
+
+.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+    color: #bb9223 !important;
 }
 
 .nav-link:hover {

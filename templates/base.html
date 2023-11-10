@@ -22,11 +22,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
+<body class="d-flex flex-column h-100 main-bg navbar-padding">
 
      <!-- Navigation -->
       <div class="container">
-        <header class="navbar navbar-expand-md navbar-light d-flex justify-content-between fixed-top">
+        <header class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a class="navbar-brand logo" href="{% url 'home' %}">
                     <img class="logo-img" role="img" src="{% static 'images/logo-brand.png' %}" alt="Logo">
@@ -50,7 +50,7 @@
                         <a class="nav-link" href="{% url 'add_post' %}">New Post</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Categories</a>
+                        <a class="nav-link" href="#" >Categories</a>
                     </li>
                     <li class="nav-item dm-none">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
@@ -58,17 +58,17 @@
                     {% else %}
                 </ul>
             </div>    
-            <!-- Login and Sign Up Links (visible on small screens) -->
-            <div class="text-end d-md-none">
-                <a href="{% url 'account_login' %}" class="btn nav-link me-2">Login</a>
-                <a href="{% url 'account_signup' %}" class="btn btn-signup">Sign Up</a>
-            </div>
-            <!-- Login and Sign Up Links (visible on medium and larger screens) -->
-            <div class="text-end d-none d-md-block">
-                <a href="{% url 'account_login' %}" class="btn nav-link me-2">Login</a>
-                <a href="{% url 'account_signup' %}" class="btn btn-signup">Sign Up</a>
-            </div>
-            {% endif %}
+                    <!-- Login and Sign Up Links (visible on small screens) -->
+                    <div class="text-end d-sm-none">
+                        <a href="{% url 'account_login' %}" class="btn nav-link me-2">Login</a>
+                        <a href="{% url 'account_signup' %}" class="btn btn-signup">Sign Up</a>
+                    </div>
+                    <!-- Login and Sign Up Links (visible on medium and larger screens) -->
+                    <div class="text-end d-none d-md-block">
+                        <a href="{% url 'account_login' %}" class="btn nav-link me-2">Login</a>
+                        <a href="{% url 'account_signup' %}" class="btn btn-signup">Sign Up</a>
+                    </div>
+                    {% endif %}
         </header>
     </div>
     
