@@ -29,4 +29,4 @@ class CommentForm(forms.ModelForm):
         super(CommentForm, self).__init__(*args, **kwargs)
         self.fields['body'].label = ''  # Set an empty label for the body field
         self.fields['body'].widget = forms.Textarea(
-            attrs={'placeholder': 'Leave a comment...'})
+            attrs={'placeholder': 'What do you think?', 'rows': 2})

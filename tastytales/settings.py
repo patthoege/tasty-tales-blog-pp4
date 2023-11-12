@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', '8000-patthoege-tastytalesblo-qtantqqa9k2.ws-eu106.gitpod.io']
+ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', '8000-patthoege-tastytalesblo-ytkicm5hagp.ws-eu106.gitpod.io']
 
 
 # Application definition

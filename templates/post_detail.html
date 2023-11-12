@@ -11,29 +11,25 @@
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">{{ post.author }} | {{ post.created_on|date:"Y.m.d"   }}</p>
-                <div class="post-recipe-meta">
-                    <div><i class="fa-solid fa-clock"></i> prep: {{ post.preparation_time }}</div>
-                    <div><i class="fa-solid fa-clock"></i> cook: {{ post.cooking_time }}</div>
-                    <div><i class="fa-solid fa-utensils"></i> yield: {{ post.portions }}</div>
-                </div>
-                <p class="post-review"><i class="far fa-star"></i> {{ post.number_of_likes }} </p>
-                {% with comments.count as total_comments %}
-                <p class="post-review"><i class="far fa-comment"></i>
-                    <!-- Our total_comments variable goes before the closing strong tag -->
-                    Comments {{ total_comments }}
-                </p>
-                {% endwith %}
-                <div>
-                    {% if user.is_authenticated and user.username == post.author.username %}
-                    <a href="/edit/{{ post.slug }}">
-                        <button class="btn btn-outline-success">Edit</button>
-                    </a> 
-                    <a href="/delete/{{ post.slug }}">
-                        <button class="btn btn-outline-danger">Delete</button>
-                    </a>
-                    {% endif %}
-                </div>
+                <p class="post-subtitle">{{ post.author }} | {{ post.created_on|date:"Y.m.d" }}</p>
+                    <div class="post-recipe-meta">
+                        <div><i class="fa-solid fa-clock"></i> prep: {{ post.preparation_time }}</div>
+                        <div><i class="fa-solid fa-clock"></i> cook: {{ post.cooking_time }}</div>
+                        <div><i class="fa-solid fa-utensils"></i> yield: {{ post.portions }}</div>
+                    </div>
+                    <p class="post-review"><i class="far fa-star"></i> {{ post.number_of_likes }} </p>
+                    {% with comments.count as total_comments %}
+                    <p class="post-review"><i class="far fa-comment"></i>
+                        <!-- Our total_comments variable goes before the closing strong tag -->
+                        Comments {{ total_comments }}
+                    </p>
+                    {% endwith %}
+                    <div class="post-buttons">
+                        {% if user.is_authenticated and user.username == post.author.username %}
+                        <a href="/edit/{{ post.slug }}" class="btn btn-sm btn-edit btn-outline-warning">Edit</a>
+                        <a href="/delete/{{ post.slug }}" class="btn btn-sm btn-delete btn-outline-danger">Delete</a>
+                        {% endif %}
+                    </div>
             </div>
 
             <div class="d-none d-md-block col-md-6 masthead-image">
@@ -41,7 +37,7 @@
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width="100%">
                 {% else %}
-                <img src="{{ post.featured_image.url }}" width="100%">
+                <img src="{{ post.featured_image.url }}" width="100%" class="img-fluid" alt="Featured Image">
                 {% endif %}
             </div>
         </div>
@@ -99,30 +95,30 @@
     <!-- Comments section -->
     <div class="row">
         <div class="col-12 col-md-6">
-            <h3>Comments</h3>
-            <div class="col-1">
+            <h3 class="border-bottom border-dark pb-2"> Comments
                 {% with comments.count as total_comments %}
-                <strong class="text-secondary"><i class="far fa-comments"></i>
-                    {{ total_comments }}
+                <strong class="text-secondary">
+                   ( {{ total_comments }})
                 </strong>
                 {% endwith %}
-            </div>
+            </h3>
             <div class="card-body">
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         {{ comment.name}}
-                        <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on | date:"d/m/y" }}
-                        </span> wrote:
+                        <span class=" text-muted font-weight-normal small">
+                            • {{ comment.created_on |  date:"D d M Y" }} •
+                        </span>
                     </p>
                      <!-- The body of the comment goes before the | -->
                      <div id="comment{{ comment.id }}">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if user.is_authenticated and comment.name == user.username %}
-                     <button class="btn btn-delete bg-danger" comment_id="{{ comment.id }}">Delete</button>
-                     <button class="btn btn-edit bg-primary" comment_id="{{ comment.id }}">Edit</button>
+                    
+                     <button class="btn btn-delete btn-sm btn-comment" comment_id="{{ comment.id }}">Delete</button>
+                     <button class="btn btn-edit btn-sm btn-comment" comment_id="{{ comment.id }}">Edit</button>
                      {% endif %}
                 </div>
                 {% endfor %}
@@ -135,13 +131,13 @@
             <div class="col-12 col-md-6">
                 <div class="card-body">
                     {% if user.is_authenticated %}
-                    <h3>Leave a comment</h3>
+                    <h3 class="border-bottom border-dark pb-2">Leave a comment</h3>
                     <p>Posting as <strong>{{ user.username }}</strong> </p>
-                    <form id="commentForm" method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-text-field" style="margin-top: 1.3em;">
+                    <form id="commentForm" method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-text-field">
                         {{ comment_form | crispy }}
                         {{ comment_form.body.errors }} <!-- Renders form errors, keep this line if needed -->
                         {% csrf_token %}
-                        <button id="submitButton" type="submit" class="btn btn-signup">Send</button>
+                        <button id="submitButton" type="submit" class="btn btn-comment btn-send">Send</button>
                     </form>
                     {% else %}
                     <h3>Log in to leave a comment</h3>                                   
