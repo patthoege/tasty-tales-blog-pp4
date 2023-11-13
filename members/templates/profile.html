@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Profile" %}{% endblock head_title %}
+
+{% block content %}
+<div class="bg-img-container">
+    <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-6 mb-4 mt-5">
+              <div class="bg-light p-4 custom-form">
+                  <h3 class="text-center">{% trans "Profile" %}</h3>
+                  <form class="profile" method="POST" action="{% url 'profile' profile=request.user.username %}">
+                    <!-- Profile Info -->
+                    <div class="col-md-7 d-flex flex-column pt-3">
+                      <div class="profile-img">
+                        {% if "placeholder" in profile.profile_image.url %}
+                        <img class="rounded-circle" src="https://www.pngitem.com/pimgs/m/0-9712_moustache-chef-hat-chef-hat-png-black-transparent.png" width="200" height="200">
+                        {% else %}
+                        <img src="{{ profile.profile_image.url }}"class="rounded-circle" width="200" height="200" alt="Featured Image">
+                        {% endif %}
+                      </div>
+                      <h3>{{ profile }}</h3>
+                      <p>
+                        <strong>Bio:</strong> {{ profile.bio }}
+                      </p>
+                      <p>
+                        <strong>Recipes:</strong> {{ posted_recipes|length }}
+                      </p>
+                      <p>
+                        <strong>Posts:</strong> {{ posted }}
+                      </p>
+                      {% if user == profile.user %}
+                      <div class="row mt-3 justify-content-around align-items-end mt-auto">
+                        <div class="col-12 d-flex">
+                          <!-- Edit profile -->
+                          <a href="" class="btn btn-sign">Edit Profile</a>
+                        </div>
+                      </div>
+                      {% endif %}
+                  </form>
+              </div>
+          </div>
+       </div>
+   </div>
+</div>
+{% endblock content %}

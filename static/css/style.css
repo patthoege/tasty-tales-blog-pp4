@@ -38,14 +38,25 @@ body {
     max-height: 150px;
     margin-left: 30%;
 }
-/* Add shadow effect to the navbar */
+
 header.navbar {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Add underline to the active link in the navbar */
+
 nav.navbar-nav a.nav-link.active {
     border-bottom: 2px solid #bb9223;
+}
+
+.navbar-dark .navbar-toggler {
+    color: grey; 
+    background-color: #bb9223cc; 
+    margin: 29px;
+    padding: 16px 20px;
+}
+
+.nav-item.dropdown {
+    list-style: none;
 }
 
 /* ---------------------------------- Recipe Cards */

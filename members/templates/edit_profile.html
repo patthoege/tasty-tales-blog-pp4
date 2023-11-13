@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Edit Profile" %}{% endblock head_title %}
+
+{% block content %}
+<div class="bg-img-container">
+  <div class="row">
+    <div class="form-signin form-sign w-100 m-auto">
+        <h3 class="text-center">{% trans "Edit Your Profile" %}</h3>
+        <form class="edit-profile" method="POST" action="{% url 'edit_profile' %}">
+           <!-- Your form fields go here -->
+           <button class="btn btn-sign" type="submit">{% trans "Save Changes" %}</button>
+        </form>        
+    </div>
+  </div>
+</div>
+{% endblock content %}
