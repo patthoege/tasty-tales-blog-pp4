@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 {% load account socialaccount %}
 
@@ -16,7 +17,7 @@
                     <div class="col-md-7 d-flex flex-column pt-3">
                       <div class="profile-img">
                         {% if "placeholder" in profile.profile_image.url %}
-                        <img class="rounded-circle" src="https://www.clipartmax.com/png/middle/219-2192251_chef-hat-comments-black-chef-hat-png.png" width="200" height="200">
+                        <img class="rounded-circle" role="img" src="{% static 'images/default-profile.png' %}" width="200" height="200">
                         {% else %}
                         <img src="{{ profile.profile_image.url }}"class="rounded-circle" width="150" height="150" alt="Featured Image">
                         {% endif %}

@@ -14,6 +14,7 @@
             <form class="edit-profile" method="POST" action="{% url 'edit_profile' %}">
                 {{ profile_form | crispy }}
                 {% csrf_token %}
+                
                 {% if user == profile.user %}
                 <div class="row mt-3 justify-content-around align-items-end mt-auto">
                   <div class="col-12 d-flex">

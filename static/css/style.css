@@ -392,14 +392,14 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 }
 
 .link {
-    color: #bb9223;
+    color: #000000;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
     color: #bb9223;
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 .btn-like {

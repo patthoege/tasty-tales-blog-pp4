@@ -10,7 +10,7 @@ class UserProfile(models.Model):
         )
     first_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50, blank=True)
-    profile_image = CloudinaryField('image', default='placeholder', blank=True)
+    profile_image = models.ImageField(upload_to='images/', blank=True)
     bio = models.TextField(null=True, blank=True)
     posted = models.ManyToManyField(
         Post, related_name='blog_posts', blank=True
