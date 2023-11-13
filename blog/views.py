@@ -139,10 +139,14 @@ class PostDetail(View):
         if post.author != self.request.user and post.status == 0:
             return redirect(reverse('home'))
 
+        author_profile = post.author.profile
+
         return render(
                     request,
                     "post_detail.html",
                     {
+                        "author_profile": author_profile,
+                        "author_username": post.author.username,
                         "post": post,
                         "comments": comments,
                         "liked": liked,

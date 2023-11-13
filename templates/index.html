@@ -28,7 +28,7 @@
                                     <div class="content-container">
                                         <p class="author">Written by 
                                         <!-- Post author goes before in the anchor tag -->
-                                            <a href="" class="author-name fw-medium">{{ post.author }}</a>
+                                        <a href="{% url 'profile' profile=post.author.username %}" class="author-name fw-medium">{{ post.author }}</a>
                                         </p>
                                         <!-- Post's created date goes inside the card-text | date filter inside the template tags -->
                                         <p class="card-text text-muted h6"> {{ post.created_on|date:"F j, Y"|upper }} </p>

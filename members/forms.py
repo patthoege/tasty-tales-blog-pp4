@@ -7,9 +7,8 @@ class ProfileForm(forms.ModelForm):
         model = UserProfile
         template_name = 'profile.html'
         fields = (
+            'profile_image',
             'first_name',
             'last_name',
-            'profile_image',
             'bio',
-            'posted',
         )

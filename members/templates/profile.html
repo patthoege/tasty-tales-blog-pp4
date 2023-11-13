@@ -16,9 +16,9 @@
                     <div class="col-md-7 d-flex flex-column pt-3">
                       <div class="profile-img">
                         {% if "placeholder" in profile.profile_image.url %}
-                        <img class="rounded-circle" src="https://www.pngitem.com/pimgs/m/0-9712_moustache-chef-hat-chef-hat-png-black-transparent.png" width="200" height="200">
+                        <img class="rounded-circle" src="https://www.clipartmax.com/png/middle/219-2192251_chef-hat-comments-black-chef-hat-png.png" width="200" height="200">
                         {% else %}
-                        <img src="{{ profile.profile_image.url }}"class="rounded-circle" width="200" height="200" alt="Featured Image">
+                        <img src="{{ profile.profile_image.url }}"class="rounded-circle" width="150" height="150" alt="Featured Image">
                         {% endif %}
                       </div>
                       <h3>{{ profile }}</h3>
@@ -29,16 +29,22 @@
                         <strong>Recipes:</strong> {{ posted_recipes|length }}
                       </p>
                       <p>
-                        <strong>Posts:</strong> {{ posted }}
-                      </p>
-                      {% if user == profile.user %}
-                      <div class="row mt-3 justify-content-around align-items-end mt-auto">
-                        <div class="col-12 d-flex">
-                          <!-- Edit profile -->
-                          <a href="" class="btn btn-sign">Edit Profile</a>
-                        </div>
+                        <strong>Posts:</strong>
+                    </p>
+                    <ul>
+                        {% for post in user_posts %}
+                            <li>{{ post.title }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    {% if user == profile.user %}
+                    <div class="row mt-3 justify-content-around align-items-end mt-auto">
+                      <div class="col-12 d-flex">
+                        <!-- Edit profile -->
+                        <a href="{% url 'edit_profile' %}" class="btn btn-sign">Edit Profile</a>
                       </div>
-                      {% endif %}
+                    </div>
+                    {% endif %}
                   </form>
               </div>
           </div>
