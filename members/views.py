@@ -56,7 +56,13 @@ class EditProfile(LoginRequiredMixin, View):
             )
 
         if profile_form.is_valid():
-            profile_form.save()
+            if 'clear_image' in request.POST: 
+                get_user.profile.profile_image.delete()
+                get_user.profile.profile_image = None
+                get_user.profile.save()  
+            else:
+                profile_form.save()
+
             messages.success(request, 'Profile updated successfully.')
             recipes = Post.objects.filter(author=get_user)
             posted_recipes = Post.objects.filter(author=get_user)
@@ -64,7 +70,7 @@ class EditProfile(LoginRequiredMixin, View):
             return redirect(
                 reverse(
                     "profile",
-                    kwargs={'profile': get_user.profile}
+                    kwargs={'profile': get_user.profile} 
                     ))
         else:
             messages.error(request, 'There was an error updating the profile. Please check the form.')

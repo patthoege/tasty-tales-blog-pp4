@@ -219,6 +219,31 @@ nav.navbar-nav a.nav-link.active {
     margin-top: 1.3em;
     margin-bottom: 1em;
 }
+/* ---------------------------------- Profile  */
+
+.custom-border {
+    border-image: radial-gradient(circle, #000000);
+    border-image-slice: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px #030303;
+}
+
+.card-title {
+    margin: 5px auto;
+}
+
+.title-background {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    height: 81px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.card-footer {
+    margin-top: -40px;
+}
 
 /* ---------------------------------- Sign In */
 .bg-img-container {

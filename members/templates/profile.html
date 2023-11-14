@@ -7,49 +7,75 @@
 
 {% block content %}
 <div class="bg-img-container">
-    <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-lg-6 mb-4 mt-5">
-              <div class="bg-light p-4 custom-form">
-                  <h3 class="text-center">{% trans "Profile" %}</h3>
-                  <form class="profile" method="POST" action="{% url 'profile' profile=request.user.username %}">
-                    <!-- Profile Info -->
-                    <div class="col-md-7 d-flex flex-column pt-3">
-                      <div class="profile-img">
-                        {% if "placeholder" in profile.profile_image.url %}
-                        <img class="rounded-circle" role="img" src="{% static 'images/default-profile.png' %}" width="200" height="200">
-                        {% else %}
-                        <img src="{{ profile.profile_image.url }}"class="rounded-circle" width="150" height="150" alt="Featured Image">
-                        {% endif %}
-                      </div>
-                      <h3>{{ profile }}</h3>
-                      <p>
-                        <strong>Bio:</strong> {{ profile.bio }}
-                      </p>
-                      <p>
-                        <strong>Recipes:</strong> {{ posted_recipes|length }}
-                      </p>
-                      <p>
-                        <strong>Posts:</strong>
-                    </p>
-                    <ul>
-                        {% for post in user_posts %}
-                            <li>{{ post.title }}</li>
-                        {% endfor %}
-                    </ul>
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mt-5">
+                <div class="col-md-10 bg-light p-4 custom-form">
+                    <h3 class="text-center">{% trans "Profile" %}</h3>
+                    <form class="profile" method="POST" action="{% url 'profile' profile=request.user.username %}">
+                        
+                        <!-- Profile Info -->
+                        <div class="container profile-container mt-5">
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    {% if profile.profile_image and profile.profile_image.url %}
+                                        <img src="{{ profile.profile_image.url }}" class="rounded-circle custom-border" width="150" height="150" alt="Profile Image">
+                                    {% else %}
+                                        <img class="rounded-circle custom-border" role="img" src="{% static 'images/logo-brand.png' %}" width="200" height="200" alt="Default Image">
+                                    {% endif %}
+                                </div>
+                                <div class="col-8">
+                                    <div class="profile-info">
+                                        <h3>{{ profile }}</h3>
+                                        <p><strong>Bio:</strong> {{ profile.bio }}</p>
+                                        <p><strong>Recipes:</strong> {{ posted_recipes|length }}</p>
+                                    </div>
+                                </div>
+                                {% if user == profile.user %}
+                                <div class="row mt-3 justify-content-around align-items-end mt-auto">
+                                    <div class="col-12 d-flex text-end">
+                                        <a href="{% url 'edit_profile' %}" class="btn btn-sm btn-sign">Edit Profile</a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
 
-                    {% if user == profile.user %}
-                    <div class="row mt-3 justify-content-around align-items-end mt-auto">
-                      <div class="col-12 d-flex">
-                        <!-- Edit profile -->
-                        <a href="{% url 'edit_profile' %}" class="btn btn-sign">Edit Profile</a>
-                      </div>
-                    </div>
-                    {% endif %}
-                  </form>
-              </div>
-          </div>
-       </div>
-   </div>
+                        </br></br>
+
+                        <!-- Profile card posts -->
+                        <div class="col-8">
+                            <p><strong>Posts:</strong></p>
+                        </div>
+                        <div class="col-md-10 bg-light ">
+                            {% for post in user_posts %}
+                                {% if forloop.counter0|divisibleby:3 %}
+                                    </div><div class="row">
+                                {% endif %}
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <div class="card text-bg-dark">
+                                        {% if "placeholder" in post.featured_image.url %}
+                                            <img class="card-img-top" src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                                        {% else %}
+                                            <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                        {% endif %}
+                                        <div class="card-img-overlay position-relative">
+                                            <div class="title-background"></div>
+                                            <h5 class="card-title text-white position-absolute bottom-0 mb-5">{{ post.title }}</h5>
+                                        </div>
+                                        <div class="card-footer">
+                                            <span class="card-counter"><i class="fa-solid fa-heart"></i> {{ post.number_of_likes }}</span>
+                                            <span class="card-counter"><i class="fa-solid fa-comment"></i> {{ post.total_comments }}</span>
+                                            <a href="{% url 'post_detail' post.slug  %}" class="link stretched-link float-end">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

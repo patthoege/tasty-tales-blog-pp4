@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
@@ -11,18 +12,28 @@
         <div class="col-lg-6 mb-4 mt-5">
           <div class="bg-light p-4 custom-form">
             <h3 class="text-center">{% trans "Edit Your Profile" %}</h3>
-            <form class="edit-profile" method="POST" action="{% url 'edit_profile' %}">
-                {{ profile_form | crispy }}
-                {% csrf_token %}
+            <hr>
+            <div class="text-center">
+              {% if profile.profile_image and profile.profile_image.url %}
+              <img src="{{ profile.profile_image.url }}" class="rounded-circle custom-border" width="150" height="150" alt="Profile Image">
+             {% else %}
+              <img class="rounded-circle custom-border" role="img" src="{% static 'images/logo-brand.png' %}" width="200" height="200" alt="Default Image">
+             {% endif %}
+            </div>
+          
+            <form class="edit-profile" method="POST" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ profile_form.media }}
+              {{ profile_form | crispy }}
                 
-                {% if user == profile.user %}
-                <div class="row mt-3 justify-content-around align-items-end mt-auto">
-                  <div class="col-12 d-flex">
-                    <button class="btn btn-sign" type="submit">{% trans "Save Changes" %}</button>
+              {% if user == profile.user %}
+                  <div class="row mt-3 justify-content-around align-items-end mt-auto">
+                      <div class="col-12 d-flex">
+                          <button class="btn btn-sign" type="submit">{% trans "Save Changes" %}</button>
+                      </div>
                   </div>
-                </div>
-                {% endif %}
-            </form>  
+              {% endif %}
+            </form>
         </div>
       </div>      
     </div>
