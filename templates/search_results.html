@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5 min-vh-100">
+        {% if searched %}
+            <h1 class="post-list-title text-center mb-4">You Searched For "{{ searched }}"</h1>
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title"><a class="link" href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h5>
+                                <p class="card-text text-sm">{{ post.excerpt }}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center h-100 d-flex flex-column justify-content-center">
+                <h2>Oops! You Forgot To Search For A Recipe...!<br/> Use the search bar at the top</h2>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

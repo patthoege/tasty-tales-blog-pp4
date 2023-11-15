@@ -39,20 +39,30 @@ body {
     margin-left: 30%;
 }
 
-header.navbar {
+.navbar {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 
 nav.navbar-nav a.nav-link.active {
-    border-bottom: 2px solid #bb9223;
+    border-bottom: 1px solid #bb9223;
 }
 
 .navbar-dark .navbar-toggler {
-    color: grey; 
-    background-color: #bb9223cc; 
+    background-color: #000; 
     margin: 29px;
     padding: 16px 20px;
+    border-color: #fff;
+    transition: color .15s ease-in-out,
+                background-color .15s ease-in-out,
+                border-color .15s ease-in-out,
+                box-shadow .15s ease-in-out;
+}
+
+.navbar-toggler:hover {
+    background-color: #bb9223; 
+    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+
 }
 
 .nav-item.dropdown {
@@ -327,9 +337,11 @@ nav.navbar-nav a.nav-link.active {
 
 .form-sign input[type="text"]:hover,
 .form-sign input[type="password"]:hover,
-.form-sign input[type="email"]:hover {
+.form-sign input[type="email"]:hover,
+.form-control:hover {
     border-color: #bb9223; 
     box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+    transition: all 0.3s ease; 
 }
 
 .form-sign form .btn-sign {
@@ -337,7 +349,24 @@ nav.navbar-nav a.nav-link.active {
     margin-top: 10px; 
 }
 
+.form-control:active {
+    border-color: #bb9223; 
+    background-color: #fff;
+    color: #333;
+}
+
 /* ---------------------------------- Link - Button */
+.btn-search {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-search:hover,
+.btn-search:active {
+    background-color: #bb9223;
+    color: #fff;
+    border-color: #fff;
+}
 .post-buttons {
     margin-top: 10px;
     margin-left: 25px;

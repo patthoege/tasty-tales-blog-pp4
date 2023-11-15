@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .forms import NewPost
 from .models import Post
 from .forms import CommentForm
+from django.db.models import Q
 
 
 class PostList(generic.ListView):
@@ -245,3 +246,28 @@ def comment_edit(request, slug, comment_id, *args, **kwargs):
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class SearchResults(View):
+    """
+    Custom view for displaying search results. 
+    # Tutorial to retrieve search term available at
+    # https://www.youtube.com/watch?v=AGtae4L5BbI
+    """
+    
+    def post(self, request, *args, **kwargs):
+        searched = request.POST['searched']
+        posts = Post.objects.filter(
+            Q(title__icontains=searched) |
+            Q(author__username__icontains=searched) |
+            Q(category__icontains=searched)
+            )
+
+        return render(
+            request,
+            'search_results.html',
+            {'searched': searched, 'posts': posts}
+            )
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'search_results.html')
