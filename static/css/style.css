@@ -68,6 +68,22 @@ nav.navbar-nav a.nav-link.active {
 .nav-item.dropdown {
     list-style: none;
 }
+/* ---------------------------------- Alert messages */
+.custom-alert {
+    justify-content: center;
+
+    margin: auto;
+    text-align: left;
+    padding: 1rem;
+    background-color: rgba(44, 43, 43, 0.5); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.custom-alert .bi {
+    width: 1.5em;
+    height: 1.5em;
+
+}
 
 /* ---------------------------------- Recipe Cards */
 
@@ -443,6 +459,18 @@ nav.navbar-nav a.nav-link.active {
 button.nav-link.btn.me-2, button.nav-link.btn-signup {
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.link-sign {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-sign:hover,
+.link-sign:active {
+    color: #bb9223;
+    font-weight: bold;
 }
 
 .link {
