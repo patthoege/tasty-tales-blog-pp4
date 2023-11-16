@@ -14,3 +14,6 @@ urlpatterns = [
     path('edit/<slug>/', views.EditPost.as_view(), name='edit_post'),
     path('delete/<slug>/', views.DeletePost.as_view(), name='delete_post'),
 ]
+
+# handling the 404 error
+handler404 = 'blog.views.error_404_view'

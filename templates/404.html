@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row text-center mt-5">
+        <h2 class="fs-1">404</h2>
+        <h3>Page unavailable</h3>
+        <p>This page doesn't exist</p>
+    </div>
+    <div class="row text-center">
+        <div class="col-sm-10 offset-sm-1 mt-5">
+            <h4>Can't find what you're looking for?</h4>
+            <p>Looks like nothing was found at this location.
+                Maybe try one of the links below, click on the top menu
+                or try a search?
+            </p>
+             <!-- Search bar -->
+             <form class="d-flex" role="search" method="POST" action="{% url 'search_results' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search recipes" name="searched"
+                    aria-label="Input search">
+                <button class="btn btn-search btn-dark fw-bold" type="submit" aria-label="Search"><i
+                    class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

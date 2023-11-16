@@ -271,3 +271,12 @@ class SearchResults(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'search_results.html')
+
+
+ 
+def error_404_view(request, exception):
+    """
+    # we add the path to the 404.html file
+    # https://www.geeksforgeeks.org/django-creating-a-404-error-page/
+    """
+    return render(request, '404.html')
