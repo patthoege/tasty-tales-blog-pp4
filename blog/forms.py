@@ -10,7 +10,7 @@ class NewPost(forms.ModelForm):
         template_name = 'add_post.html'
         fields = [
             'title', 'excerpt', 'featured_image', 
-            'category', 'ingredients', 'instructions',
+            'category', 'tags','ingredients', 'instructions',
             'preparation_time', 'cooking_time', 'portions'
         ]
         # How to use widgets with class form control
@@ -19,6 +19,7 @@ class NewPost(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.TextInput(attrs={'class': 'form-control'}),
+            'tags': forms.TextInput(attrs={'class': 'form-control'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 

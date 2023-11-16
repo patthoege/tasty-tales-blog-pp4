@@ -9,6 +9,8 @@ from .forms import NewPost
 from .models import Post
 from .forms import CommentForm
 from django.db.models import Q
+from taggit.models import Tag  
+from django.db.models import Count
 
 
 class PostList(generic.ListView):
@@ -34,7 +36,6 @@ class AddPost(LoginRequiredMixin, View):
     it creates a new instance of the NewPost and re-renders the add_post.html.
     """
     def get(self, request, *args, **kwargs):
-        # queryset = Post.objects.filter(status=1)
         return render(
             request,
             'add_post.html',
@@ -133,6 +134,7 @@ class PostDetail(View):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by("-created_on")
+        post_tags = post.tags.all()
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -150,6 +152,7 @@ class PostDetail(View):
                         "author_username": post.author.username,
                         "post": post,
                         "comments": comments,
+                        "post_tags": post_tags,
                         "liked": liked,
                         "comment_form": CommentForm()
                     },
@@ -170,6 +173,12 @@ class PostDetail(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+            
+            tags_input = request.POST.get("tags", "")
+            if tags_input:
+                post.tags.set(*tags_input.split(","))
+                post.save()
+
             messages.success(request, 'Comment posted successfully!')
             return HttpResponseRedirect(reverse("post_detail", args=[post.slug]))
 
@@ -187,6 +196,20 @@ class PostDetail(View):
                 "liked": liked
             },
         )
+
+class Tagged(View):
+    """
+    # Tutorial to retrieve the class tagged
+    # https://www.youtube.com/watch?v=pnFCdWQbryo
+    """
+    def get(self, request, slug, *args, **kwargs):
+        tag = get_object_or_404(Tag, slug=slug)
+        posts = Post.objects.filter(tags=tag)
+        context = {
+            'tag': tag,
+            'posts': posts,
+        }
+        return render(request, 'tags_page.html', context)
 
 
 class PostLike(View):
@@ -253,6 +276,11 @@ class SearchResults(View):
     Custom view for displaying search results. 
     # Tutorial to retrieve search term available at
     # https://www.youtube.com/watch?v=AGtae4L5BbI
+    # Tutorial to retrieve common tags available at
+    # https://www.youtube.com/watch?v=pnFCdWQbryo
+    # counting common number of tags
+    # https://stackoverflow.com/questions/1895638/django-tagging-count-and-ordering-top-tags-is-there-a-cleaner-solution-to-m
+    # https://docs.djangoproject.com/en/dev/topics/db/aggregation/#filter-and-exclude
     """
     
     def post(self, request, *args, **kwargs):
@@ -260,18 +288,29 @@ class SearchResults(View):
         posts = Post.objects.filter(
             Q(title__icontains=searched) |
             Q(author__username__icontains=searched) |
-            Q(category__icontains=searched)
-            )
+            Q(category__icontains=searched) |
+            Q(tags__name__icontains=searched)
+            ).distinct()
+
+        common_tags = Tag.objects.annotate(num_posts=Count('taggit_taggeditem_items')).order_by('-num_posts')[:4]
 
         return render(
             request,
             'search_results.html',
-            {'searched': searched, 'posts': posts}
-            )
+            {
+                'searched': searched, 
+                'posts': posts,
+                'common_tags': common_tags
+            })
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'search_results.html')
-
+        common_tags = Tag.objects.annotate(num_posts=Count('taggit_taggeditem_items')).order_by('-num_posts')[:4]
+        return render(
+            request,
+            'search_results.html', 
+            {
+                'common_tags': common_tags
+            })
 
  
 def error_404_view(request, exception):

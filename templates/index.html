@@ -17,10 +17,10 @@
                                     <div class="image-container">
                                         <!-- The featured image URL goes in the src attribute -->
                                         {% if "placeholder" in post.featured_image.url %}
-                                        <img class="card-img-top"
+                                        <img class="card-img-top img-fluid"
                                             src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                                         {% else %}
-                                        <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                        <img class="card-img-top img-fluid" src=" {{ post.featured_image.url }}">
                                         {% endif %}
                                     </div>
                                 </div>
@@ -37,12 +37,15 @@
                                             <h2 class="card-title"> {{ post.title }} </h2>
                                         </a>
                                         <!-- The post excerpt goes before the p closing tag -->
-                                        <p class="card-text"> {{ post.excerpt }} </p>
+                                        <p class="card-text m-0"> {{ post.excerpt }} </p>
+                                        <div class="post-tags">
+                                            {% for tag in post.tags.all %}
+                                            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none m1">#{{ tag }}</a>
+                                            {% endfor %}    
+                                        </div>
                                         <!-- The number of likes goes before the closing i tag -->
                                         <i class="far fa-heart"> {{ post.number_of_likes }} </i>
-                                        <a href="{% url 'post_detail' post.slug  %}" class="post-link fw-bold"> 
-                                            <p> Continue reading </p>
-                                        </a>
+                                        <a href="{% url 'post_detail' post.slug  %}" class="post-link fw-bold m-2">Continue reading</a>
                                     </div>
                                 </div>
                             </div>

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'blog',
     'members',
     'ckeditor',
+    'taggit',
 ]
 
 SITE_ID = 1
@@ -80,6 +81,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+]
+
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://tasty-tales-pp4.herokuapp.com', 'https://8000-patthoege-tastytalesblo-ytkicm5hagp.ws-eu106.gitpod.io']
+CORS_ALLOWED_ORIGINS = [
+    "https://tasty-tales-pp4.herokuapp.com",
+    "https://8000-patthoege-tastytalesblo-ytkicm5hagp.ws-eu106.gitpod.io",
 ]
 
 ROOT_URLCONF = 'tastytales.urls'

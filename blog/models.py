@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from taggit.managers import TaggableManager
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -19,6 +20,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=20)
+    tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True
