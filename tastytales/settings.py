@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'blog',
-    'members',
+    'members.apps.MembersConfig',
     'ckeditor',
     'taggit',
 ]

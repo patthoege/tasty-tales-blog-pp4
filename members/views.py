@@ -12,7 +12,8 @@ from django.contrib import messages
 
 class Profile(View):
     def get(self, request, profile, *args, **kwargs):
-        get_user = User.objects.get(username=profile)
+        # get_user = User.objects.get(username=profile)
+        get_user = get_object_or_404(User, username=profile)
 
         if request.user == get_user:
             posted_recipes = Post.objects.filter(author=get_user)
@@ -22,6 +23,10 @@ class Profile(View):
             user_posts = Post.objects.filter(author=get_user, approved=True)
 
         profile_image = CloudinaryImage().image(quality='auto', fetch_format='auto')
+
+        if not request.user.is_authenticated:
+            # If the user is not authenticated, redirect them to the sign-up page
+            return redirect(reverse('account_signup'))
 
         return render(
             request,
@@ -36,7 +41,8 @@ class Profile(View):
 
 class EditProfile(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        get_user = User.objects.get(id=request.user.id)
+        # get_user = User.objects.get(id=request.user.id)
+        get_user = get_object_or_404(User, id=request.user.id)
         profile_form = ProfileForm(instance=get_user.profile)
 
         return render(
@@ -81,5 +87,3 @@ class EditProfile(LoginRequiredMixin, View):
                     'profile_form': profile_form,
                     'profile': get_user.profile,
                 })
-
-        
