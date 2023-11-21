@@ -4,7 +4,7 @@
 
 <!-- User must be logged in -->
 {% if user.is_authenticated %}
-<div class="bg-img-container-post">
+<!-- <div class="bg-img-container-post"> -->
         <div class="form-group">
         <div class="container pt-5">
             <div class="row">
@@ -14,12 +14,19 @@
                         <h1 class="h4 font-weight-bold mb-3">Editing your post</h1>
                         <p class="text-muted mb-3">The body of your content can be edited using the Rich Text Editor. 
                             Your post remains private until you “publish” the article.</p>
-                            <button class="btn btn-primary">View Preview</button>
-                            <br/><br/>
+                            <br/>
                             <h2 class="h4 font-weight-bold mb-3">How to use the editor</h2>
-                            <p class="text-muted mb-3">You can edit and format the main content 
-                            of your article using Rich Text Editor. </p>
-                        
+                            <p class="text-muted mb-3">
+                                You can edit and format the main content of your article using the Rich Text Editor. 
+                                Use the toolbar above the text area to apply various formatting options:
+                                <ul>
+                                    <li><strong>Headers:</strong> Select different heading levels for your text.</li>
+                                    <li><strong>Images:</strong> Click the "Image" button to add or upload images.</li>
+                                    <li><strong>Font Styles:</strong> Apply bold, italic, or underline to your text.</li>
+                                    <li><strong>Lists:</strong> Create ordered or unordered lists with ease.</li>
+                                    <li><strong>Undo/Redo:</strong> Use the undo/redo buttons to revert or reapply changes.</li>
+                                </ul>
+                            </p>
                     </div>
                 </div>
                 <!-- Column 2: Post Form -->
@@ -30,14 +37,15 @@
                             {% csrf_token %}
                             {{ form.media }}
                             {{ form | crispy }}
-                            <button type="submit" class="btn btn-sign">Publish</button>
+                            <button type="submit" name="save_draft" value="1" class="btn btn-sign">Save Draft</button>
+                            <button type="submit" name="publish" class="btn btn-sign">Publish</button>
                         </form>
                     </div>            
                 </div>
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
 
 {% endif %}
 {% endblock %}

@@ -1,0 +1,14 @@
+<!-- draft_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-12 m-5 left">
+    <h2>Your Drafts</h2>
+    <ul>
+        {% for draft in drafts %}
+        <li><a class="link" href="{% url 'edit_draft' slug=draft.slug %}">{{ draft.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+  
+{% endblock %}

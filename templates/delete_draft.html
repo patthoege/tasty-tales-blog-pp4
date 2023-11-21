@@ -1,0 +1,20 @@
+<!-- delete_draft.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="bg-img-container d-flex align-items-center justify-content-center">
+  <div class="col-lg-6 p-5">
+    <div class="custom-form text-white text-center">
+      <h2>Delete Draft</h2>
+      <p class="text-danger">Are you sure you want to delete "{{ draft.title }}"?</p>
+      <form method="post" action="{% url 'delete_draft' slug=draft.slug %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'draft_list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

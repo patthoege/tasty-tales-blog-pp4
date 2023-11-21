@@ -1,0 +1,19 @@
+<!-- edit_draft.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="bg-light p-4 custom-form">
+    <h2>Draft</h2>
+    <form method="post" action="{% url 'publish_draft' slug=draft.slug %}">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form | crispy }}
+        <button type="submit" name="publish_draft" class="btn btn-sm">Publish</button> 
+        <button type="submit" name="save_draft" value="1" class="btn btn-sm">Save Draft</button>
+        <a href="{% url 'delete_draft' slug=draft.slug %}" class="btn btn-sm btn-delete btn-outline-danger">Delete</a>
+    </form>
+    </div>
+</div>
+{% endblock %}

@@ -4,6 +4,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import NewPost
 from .models import Post
@@ -69,6 +70,85 @@ class AddPost(LoginRequiredMixin, View):
                     "form": form
                 }
             )
+
+
+ # It retrieves drafts belonging to the logged-in user 
+ # with a status of 0 and renders them using the draft_list template.
+@login_required
+def draft_list(request):
+    drafts = Post.objects.filter(author=request.user, status=0)
+    return render(request, 'draft_list.html', {'drafts': drafts})
+
+
+class EditDraft(View):
+    """
+    Retrieves a draft for editing and renders the 'edit_draft.html' template 
+    with the draft form. The post method handles form submission. 
+    If the form is valid, it either saves the draft or publishes it, 
+    depending on the button clicked.
+    """
+    def get(self, request, slug, *args, **kwargs):
+        draft = get_object_or_404(Post, slug=slug, author=request.user)
+        form = NewPost(instance=draft)
+        return render(
+            request, 'edit_draft.html', 
+            {
+                'form': form, 
+                'draft': draft
+            })
+
+    def post(self, request, slug, *args, **kwargs):
+        draft = get_object_or_404(Post, slug=slug, author=request.user)
+        form = NewPost(request.POST, request.FILES, instance=draft)
+
+        if 'publish_draft' in request.POST:
+            print("Target publish draft inside method")
+            return self.publish_draft(request, form, draft)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your draft has been saved.')
+            print("Saved draft")
+            return HttpResponseRedirect(reverse('draft_list'))
+
+        return render(request, 'edit_draft.html', {'form': form, 'draft': draft})
+
+    def publish_draft(self, request, form, draft):
+        """
+        If the form is valid and the publish_draft button is clicked, 
+        it saves the form, displays a success message, 
+        and redirects to the post detail view for the published post.
+        """
+        if form.is_valid() and 'publish_draft' in request.POST:
+            form.save()
+            messages.success(request, 'Your post is awaiting approval.')
+            print("Published draft!")
+            slug = form.instance.slug
+            return HttpResponseRedirect(reverse('post_detail', kwargs={"slug": slug}))
+
+        return render(request, 'edit_draft.html', {'form': form, 'draft': draft})
+
+
+class DeleteDraft(View):
+    """
+    Retrieves the draft to be deleted and renders the delete_draft template. 
+    The post method deletes the draft and redirects to the draft list view.
+    """
+    def get(self, request, slug, *args, **kwargs):
+        draft = get_object_or_404(Post, slug=slug, author=request.user, status=0)
+        return render(request, 
+        'delete_draft.html', 
+        {
+            'draft': draft
+        })
+
+    def post(self, request, slug, *args, **kwargs):
+        draft = get_object_or_404(Post, slug=slug, author=request.user, status=0)
+        draft.delete()
+        return HttpResponseRedirect(
+            reverse(
+                'draft_list'
+                ))
 
 
 class EditPost(LoginRequiredMixin, View):

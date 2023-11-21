@@ -4,7 +4,7 @@ from django import forms
 
 
 class NewPost(forms.ModelForm):
-
+    save_draft = forms.BooleanField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = Post
         template_name = 'add_post.html'
