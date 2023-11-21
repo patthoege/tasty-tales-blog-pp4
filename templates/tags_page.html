@@ -5,7 +5,7 @@
         <!-- Tag post section -->
         <h3 class="">Most Common Tags:
             {% for tag in common_tags %}
-            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none">#{{ tag }}</a>
+            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none">#{{ tag.name }}</a>
             {% endfor %}
         </h3>
         
@@ -19,7 +19,7 @@
                             <h3 class="my-1"><a class="text-decoration-none link"href="{% url 'post_detail' post.slug %}">{{post.title}}</a></h3>
                             <div style="display: flex;">
                                 {% for tag in post.tags.all %}
-                                <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none m-1">#{{ tag }}</a>
+                                <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none m-1">#{{ tag.name }}</a>
                                 {% endfor %}
                             </div>                                    
                             <p class="mb-auto">{{post.excerpt}}</p>
