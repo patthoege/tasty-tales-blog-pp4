@@ -12,7 +12,11 @@
                             <div class="cards">
                                 <div class="row no-gutters border rounded  flex-md-row mb-4 shadow-sm h-md-250">
                                     <div class="col p-4 d-flex flex-column">
+                                        {% if "placeholder" not in post.featured_image.url %}
                                         <img src="{{ post.featured_image.url }}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;" alt="{{ post.title }}">
+                                        {% else %}
+                                        <img src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;" alt="Default Image">
+                                        {% endif %}
                                         <h3 class="my-1"><a class="text-decoration-none link"href="{% url 'post_detail' post.slug %}">{{post.title}}</a></h3>
                                         <div style="display: flex;">
                                             {% for tag in post.tags.all %}
@@ -36,7 +40,7 @@
                         <!-- Display the tags -->
                         <h3>Most Common Tags
                             {% for tag in common_tags %}
-                            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none m-1"> # {{ tag }} </a>
+                            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none m-1"> # {{ tag.name }} </a>
                             {% endfor %}
                         </h3>
                     </div>
@@ -53,7 +57,7 @@
                 <!-- Display the tags -->
                 <h3>Most Common Tags
                     {% for tag in common_tags %}
-                    <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none">#{{ tag }}</a>
+                    <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none">#{{ tag.name }}</a>
                     {% endfor %}
                 </h3>
             </div>
