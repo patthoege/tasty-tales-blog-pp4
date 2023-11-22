@@ -565,15 +565,14 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 }
 /* ----------------------------------  Media Queries */
 @media (max-width: 768px) {
-    .logo-image {
-        width: 50%;
-        height: 20%;
+    .logo-img {
+        width: 70%;
+        margin-left: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    .logo-image {
-        width: 30%; 
-        height: 25%;
+    .logo-img {
+        width: 80%;
     }
 }
