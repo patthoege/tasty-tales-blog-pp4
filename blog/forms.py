@@ -3,6 +3,13 @@ from .models import Comment, Post
 from django import forms
 
 
+class TagWidget(forms.TextInput):
+    def format_value(self, value):
+        if isinstance(value, list):
+            return ', '.join(str(tag) for tag in value)
+        return value
+
+
 class NewPost(forms.ModelForm):
     save_draft = forms.BooleanField(widget=forms.HiddenInput(), required=False)
     class Meta:
@@ -19,7 +26,8 @@ class NewPost(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.TextInput(attrs={'class': 'form-control'}),
-            'tags': forms.TextInput(attrs={'class': 'form-control'}),
+            # 'tags': forms.TextInput(attrs={'class': 'form-control'}),
+            'tags': TagWidget(attrs={'class': 'form-control', 'placeholder': 'Enter tags by comma separated'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
