@@ -26,8 +26,7 @@
     <div class="container-fluid">
     <header>
         <!-- Nav Bar template by Bootstrap -->
-        <nav class="
-                    navbar navbar-expand-lg navbar-dark fixed-top bg-white">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white">
             <div class="container-fluid">
                 <!-- Logo -->
                 <div class="col-md-3 mb-2 mb-md-0">
@@ -140,51 +139,97 @@
         {% endblock content %}
     </main>
 
-    
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <!-- Footer Content -->
-            <div class="footer-content">
-                <div class="row footer-logo">
-                    <!-- Logo and Social Icons -->
-                    <div class="col-md-12">
-                        <h2>TastyTales</h2>
-                        <div class="text-lg-start text-muted">
-                            <span>Get connected with us:</span>
-                            <div class="social-icons">
-                                <a href="" class="me-4 link-secondary">
-                                    <i class="fab fa-google"></i>
-                                </a>
-                                <a href="" class="me-4 link-secondary">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/patricia-h%C3%B6ge-417b72228/" target="_blank"  class="me-4 link-secondary">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://github.com/patthoege" target="_blank" class="me-4 link-secondary">
-                                    <i class="fab fa-github"></i>
-                                </a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-lg-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-8 mb-md-0 mb-4 px-4">
+                            <h2 class="footer-heading"><a href="{% url 'home' %}" class="logo link-sign">TastyTales</a></h2>
+                            <p class="text-muted"> Dive into a world where every dish tells a tale, and our community of passionate cooks and foodies swap,
+                                create, and indulge in the joy of mouthwatering narratives.</p>
+                            <div class="nav-item dm-none">
+                                <p>Join us on this flavorful journey for free</p>
+                                <a href="{% url 'account_signup' %}" class="btn btn-outline-warning btn-sm me-2">Sign Up</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Sign Up Button -->
-            <div class="footer-navigation">
-                <div class="d-flex justify-content-center align-items-center">
-                    <p class="nav-item dm-none">Register for free
-                        <a href="{% url 'account_signup' %}" class="btn nav-link me-2"><button class="btn btn-outline-secondary btn-sign">Sign Up</button></a>
-                    </p>
+                <!-- Tags -->
+                <div class="col-md-6 col-lg-3 mb-md-0 mb-4 px-4 d-none d-md-block">
+                    <div class="tagcloud">
+                            <!-- Display the tags -->
+                            <h3 class="mb-2">Common Tags</h3>
+                            
+                                {% for tag in common_tags %}
+                                    <div class="col-4">
+                                        <a href="{% url 'tagged' tag.slug %}" class="text-decoration-none m-1 text-white">#{{ tag.name }}</a>
+                                    </div>
+                                {% endfor %}
+                            
+                    </div>
+                </div>                               
+                <!-- Quick links -->
+                <div class="col-md-3 mb-md-0 mb-4 border-left px-4">
+                    <h2 class="footer-heading">Quick links</h2>
+                    <ul class="list-unstyled">
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a class="footer-link" href="{% url 'add_post' %}">New Post</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" href="{% url 'draft_list' %}">Your Drafts</a>
+                        </li>
+                        <li>
+                            <a class="footer-link" href="{% url 'profile' profile=request.user.username %}">{{ user.profile }}</a>
+                        </li>
+                        {% else %}
+                        <li class="d-sm-block d-md-none">
+                            <a href="{% url 'account_login' %}" class="footer-link me-2">Login</a>
+                        </li>
+                        <li class="d-sm-block d-md-none">
+                            <a href="{% url 'account_signup' %}" class="footer-link me-2">Sign Up</a>
+                        </li>
+                        
+                        <!-- Login and Sign Up Links (visible on medium and larger screens) -->
+                        <li class="d-none d-md-block">
+                            <a href="{% url 'account_login' %}" class="footer-link me-2">Login</a>
+                        </li>
+                        <li class="d-none d-md-block">
+                            <a href="{% url 'account_signup' %}" class="footer-link me-2">Sign Up</a>
+                        </li>                        
+                        {%  endif %}
+                            </ul>
+                    </ul>
                 </div>
-            </div>
-            <!-- Footer Bottom -->
-            <div class="footer-bottom text-center text-muted p-4">
-                <p class="copy-text">&copy; {% now "Y" %} TastyTales. <br>All rights reserved.</p>
+                <!-- Footer social links -->
+                <div class="col-md-3 mb-md-0 mb-4 border-left px-4">
+                    <h2 class="footer-heading">Connect with us</h2>
+                    <div class="social-links">
+                        <a class="social-link text-muted me-4" href="">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a class="social-link text-muted me-4 " href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="social-link text-muted me-4" href="https://www.linkedin.com/in/patricia-h%C3%B6ge-417b72228/" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a class="social-link text-muted me-4" href="https://github.com/patthoege" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Footer Bottom -->
+                <div class="footer-bottom text-center text-muted p-4">
+                    <div class="row mt-5">
+                        <p class="copy-text">&copy; {% now "Y" %} TastyTales. <br>All rights reserved.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
-    
     
     {% block extras %}
     {% endblock extras %}

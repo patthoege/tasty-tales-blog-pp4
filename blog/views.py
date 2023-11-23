@@ -12,6 +12,7 @@ from .forms import CommentForm
 from django.db.models import Q
 from taggit.models import Tag  
 from django.db.models import Count
+from .context_processors import common_tags
 
 
 class PostList(generic.ListView):
