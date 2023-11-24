@@ -208,13 +208,13 @@ nav.navbar-nav a.nav-link.active {
 }
 
 /* ---------------------------------- Add post page */
-/* .bg-img-container-post {
-    background-image: url('../images/add-post-bckgnd-img.jpg');
+.bg-img-container-post {
+    background-image: url('../images/add-post-bckgnd-img.webp');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat; 
     background-color: rgba(0, 0, 0, 0.5);
-} */
+}
 
 .custom-form {
     display: flex;
@@ -283,7 +283,7 @@ nav.navbar-nav a.nav-link.active {
 }
 /* ---------------------------------- Sign In */
 .bg-img-container {
-    background-image: url('../images/bg-img.jpg');
+    background-image: url('../images/bg-img.webp');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
