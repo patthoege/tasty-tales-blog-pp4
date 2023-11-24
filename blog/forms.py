@@ -22,12 +22,13 @@ class NewPost(forms.ModelForm):
         ]
         # How to use widgets with class form control
         # https://www.youtube.com/watch?v=6-XXvUENY_8&list=PLxED07G8CYrqly5rRO93Xi5HNo8kRT6GO&index=1
+        # How to fix tags input in the form field 
+        # https://stackoverflow.com/questions/64957025/how-to-display-just-the-tags-in-form-instead-of-all-the-list-elements-in-django
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'tags': forms.TextInput(attrs={'class': 'form-control'}),
-            'tags': TagWidget(attrs={'class': 'form-control', 'placeholder': 'Enter tags by comma separated'}),
+            'tags': TagWidget(attrs={'class': 'form-control'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
