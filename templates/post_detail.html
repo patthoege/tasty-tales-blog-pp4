@@ -28,10 +28,10 @@
                         Comments {{ total_comments }}
                     </p>
                     {% endwith %}
-                    <div class="post-buttons">
+                    <div class="post-buttons mt-5 m-3">
                         {% if user.is_authenticated and user.username == post.author.username %}
                         <a href="/edit/{{ post.slug }}" class="btn btn-sm btn-edit btn-outline-warning">Edit</a>
-                        <a href="/delete/{{ post.slug }}" class="btn btn-sm btn-delete btn-outline-danger">Delete</a>
+                        <a href="/delete/{{ post.slug }}" class="btn btn-sm btn-delete-post btn-outline-danger">Delete</a>
                         {% endif %}
                     </div>
             </div>
@@ -153,8 +153,8 @@
                     </div>
                     {% if user.is_authenticated and comment.name == user.username %}
                     
-                     <button class="btn btn-delete btn-sm btn-comment" comment_id="{{ comment.id }}">Delete</button>
-                     <button class="btn btn-edit btn-sm btn-comment" comment_id="{{ comment.id }}">Edit</button>
+                     <button class="btn btn-delete btn-sm" comment_id="{{ comment.id }}">Delete</button>
+                     <button class="btn btn-edit btn-sm" comment_id="{{ comment.id }}">Edit</button>
                      {% endif %}
                 </div>
                 {% endfor %}
@@ -173,7 +173,7 @@
                         {{ comment_form | crispy }}
                         {{ comment_form.body.errors }} <!-- Renders form errors, keep this line if needed -->
                         {% csrf_token %}
-                        <button id="submitButton" type="submit" class="btn btn-comment btn-send">Send</button>
+                        <button id="submitButton" type="submit" class="btn btn-comment btn-send mt-4">Send</button>
                     </form>
                     {% else %}
                     <h3>Log in to leave a comment</h3>                                   
