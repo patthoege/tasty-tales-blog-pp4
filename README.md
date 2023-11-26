@@ -160,8 +160,14 @@ The wireframes for the project can be found [here.]()
 # Bugs
 
 ## Fixed bugs
-1. 
+### 1. "RelatedObjectDoesNotExist" Error
+- I encounter the "RelatedObjectDoesNotExist" error at /members/edit_profile/ stating, "User has no profile," I was trying to access a related UserProfile object for a User that does not exist. I ensure using the signals method to create a profile upon user registration. Additionally, the MembersConfig class in the apps.py file in the members app, ensures that signals, including user profile creation signals, are appropriately registered during the Django application setup.
 
+### 2. Tags in Footer not Displaying
+- Tags declared in the footer base.html were not displaying as I entended using same methods for other templates as tags_page.html, post_detail.html and search_results.html, so I've created a context processors file to declare the tags logic and in the views.py file (blog app), import and include this processor to enable the global display of tags in all templates within the app.
+
+### 3. Tags Input Field Displaying Signs and Brackets
+- To address the issue of the tags input field displaying signs and brackets, I fix this by adding the TagWidget in the NewPost form. This modification to the TagWidget class ensures that when rendering the widget, it will display a comma-separated string of tags, ensuring a clean and user-friendly appearance.
 
 
 ## Media Query - Responsive Web Design
