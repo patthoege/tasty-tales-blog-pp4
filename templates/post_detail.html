@@ -13,8 +13,8 @@
                 <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle">
                     <a href="{% url 'profile' profile=author_username %}"
-                        class="text-reset">{{ post.author }} | {{ post.created_on|date:"Y.m.d" }}
-                     </a>
+                        class="text-reset link">{{ post.author }}</a>| {{ post.created_on|date:"Y.m.d" }}
+                     
                 </p>
                     <div class="post-recipe-meta">
                         <div><i class="fa-solid fa-clock"></i> prep: {{ post.preparation_time }}</div>
@@ -107,15 +107,15 @@
         <div class="row no-gutters">
           <div class="col-md-2">
             {% if post.author.profile.profile_image and post.author.profile.profile_image.url %}
-            <img src="{{ post.author.profile.profile_image.url }}" class="card-img rounded-circle custom-border" width="190" height="180" alt="Featured Image">
+            <img src="{{ post.author.profile.profile_image.url }}" class="card-img rounded-circle custom-border" alt="Featured Image">
             {% else %}
-            <img src="{% static 'images/logo-brand.png' %}" role="img" class="card-img rounded-circle custom-border" width="190" height="180" alt="Default Image">
+            <img src="{% static 'images/logo-brand.webp' %}" role="img" class="card-img rounded-circle custom-border" alt="Default Image">
             {% endif %}
           </div>
           <div class="col-md-10">
             <div class="card-body">
-              <h5 class="card-title">{{ post.author }}</h5>
-              <p class="card-text">{{ post.author.profile.bio }}</p> 
+              <h5 class="card-title fw-bold">{{ post.author }}</h5>
+              <p class="card-text mb-0">{{ post.author.profile.bio }}</p> 
               <p class="card-text"><small class="text-muted"><a href="{% url 'profile' profile=author_username %}" class="link">Find out more!</small></a></p>
             </div>
           </div>
@@ -148,7 +148,7 @@
                         </span>
                     </p>
                      <!-- The body of the comment goes before the | -->
-                     <div id="comment{{ comment.id }}">
+                     <div id="comment{{ comment.id }}" class="fw-normal">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if user.is_authenticated and comment.name == user.username %}
@@ -169,11 +169,11 @@
                     {% if user.is_authenticated %}
                     <h3 class="border-bottom border-dark pb-2">Leave a comment</h3>
                     <p>Posting as <strong>{{ user.username }}</strong> </p>
-                    <form id="commentForm" method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-text-field">
+                    <form id="commentForm" method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-text-field m-2">
                         {{ comment_form | crispy }}
                         {{ comment_form.body.errors }} <!-- Renders form errors, keep this line if needed -->
                         {% csrf_token %}
-                        <button id="submitButton" type="submit" class="btn btn-comment btn-send mt-4">Send</button>
+                        <button id="submitButton" type="submit" class="btn btn-comment btn-send mt-2">Send</button>
                     </form>
                     {% else %}
                     <h3>Log in to leave a comment</h3>                                   

@@ -1,39 +1,12 @@
-/* ---------------------------------- Global */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@100;400&family=Playfair+Display&display=swap');
+/* -------------------------------------------- Global */
 body {
-    background-color: #F9FAFC;
+    background-color: #cfc4b9ea;
     padding-top: 8.5rem;
     margin: 0;
+    font-family: 'Noto Serif', serif;
 }
-
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
-}
-
-.red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
-
-/* ---------------------------------- Navigation/Logo */
+/* -------------------------------------------- Navigation/Logo */
 .logo-img {
     max-width: 180px;
     max-height: 150px;
@@ -69,7 +42,7 @@ nav.navbar-nav a.nav-link.active {
 .nav-item.dropdown {
     list-style: none;
 }
-/* ---------------------------------- Alert messages */
+/* -------------------------------------------- Alert messages */
 .custom-alert {
     justify-content: center;
     margin: auto;
@@ -84,9 +57,7 @@ nav.navbar-nav a.nav-link.active {
     height: 1.5em;
 
 }
-
-/* ---------------------------------- Recipe Cards */
-
+/* -------------------------------------------- Recipe Cards */
 .card {
     border: none;
     background-color: transparent;
@@ -119,9 +90,7 @@ nav.navbar-nav a.nav-link.active {
     text-decoration: none;
     color: rgb(115 115 115/var(--tw-text-opacity));
 }
-
-/* ---------------------------------- Post detail */
-
+/* -------------------------------------------- Post detail */
 .masthead {
     margin-top: 30px;
     /* overflow: hidden; */
@@ -201,21 +170,12 @@ nav.navbar-nav a.nav-link.active {
     margin-left: 5%;
     margin-top: 5%;
 }
-/* ---------------------------------- Comment */
+/* -------------------------------------------- Comment */
 .comment-text-field {
     margin-top: 1.3em; 
     margin-bottom: 1em;
 }
-
-/* ---------------------------------- Add post page */
-.bg-img-container-post {
-    background-image: url('../images/add-post-bckgnd-img.webp');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat; 
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
+/* -------------------------------------------- Add post page */
 .custom-form {
     display: flex;
     flex-direction: column;
@@ -246,8 +206,7 @@ nav.navbar-nav a.nav-link.active {
     margin-top: 1.3em;
     margin-bottom: 1em;
 }
-/* ---------------------------------- Profile  */
-
+/* -------------------------------------------- Profile  */
 .custom-border {
     border-image: radial-gradient(circle, #000000);
     border-image-slice: 1;
@@ -281,7 +240,7 @@ nav.navbar-nav a.nav-link.active {
 .card-footer {
     margin-top: -40px;
 }
-/* ---------------------------------- Sign In */
+/* -------------------------------------------- Sign In */
 .bg-img-container {
     background-image: url('../images/bg-img.webp');
     background-size: cover;
@@ -299,15 +258,19 @@ nav.navbar-nav a.nav-link.active {
     margin-top: 20px;
     color: #fff;
 }
+
 .form-signin {
     max-width: 330px;
 }
+
 .form-signout {
     max-width: 500px;
 }
+
 .form-signup {
     max-width: 500px;
 }
+
 .form-sign {
     display: flex;
     flex-direction: column;
@@ -380,8 +343,7 @@ nav.navbar-nav a.nav-link.active {
     background-color: #fff;
     color: #333;
 }
-
-/* ---------------------------------- Link - Button */
+/* -------------------------------------------- Link - Button */
 /* Button Styles */
 .btn-search,
 .btn-sign,
@@ -519,9 +481,8 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 .footer-link:hover {
     color: #bb9223;
 }
-/* ---------------------------------- Footer */
-
-/* Override Bootstrap container styles for the footer */
+/* -------------------------------------------- Footer */
+/* Override Bootstrap container styles */
 .container,
 .container-fluid,
 .container-lg,
@@ -590,12 +551,20 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
     justify-content: center;
 }
 
-/* ----------------------------------  Media Queries */
-@media (max-width: 768px) {
+/* --------------------------------------------  Media Queries */
+@media (max-width: 768px) and (max-width: 1200px) {
     .logo-img {
         width: 70%;
         margin-left: 10px;
     }
+    .card-img {
+        width: 100%;
+        max-width: 180px;
+        display: block;
+        margin: 0 auto;
+        height: auto;
+    }
+    
 }
 
 @media (max-width: 480px) {

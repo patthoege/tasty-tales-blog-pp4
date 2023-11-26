@@ -5,7 +5,7 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<div class="bg-img-container">
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 mb-4 mt-5">
@@ -20,7 +20,7 @@
                                     {% if profile.profile_image and profile.profile_image.url %}
                                         <img src="{{ profile.profile_image.url }}" class="rounded-circle custom-border" width="150" height="150" alt="Profile Image">
                                     {% else %}
-                                        <img class="rounded-circle custom-border" role="img" src="{% static 'images/logo-brand.png' %}" width="200" height="200" alt="Default Image">
+                                        <img class="rounded-circle custom-border" role="img" src="{% static 'images/logo-brand.webp' %}" width="200" height="200" alt="Default Image">
                                     {% endif %}
                                 </div>
                                 <!-- Profile Info -->
@@ -78,5 +78,5 @@
             </div>
         </div>
     </div>
-</div>
+
 {% endblock content %}
