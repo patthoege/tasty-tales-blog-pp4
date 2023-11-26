@@ -52,13 +52,23 @@ class AddPost(LoginRequiredMixin, View):
 
         if new_post.is_valid():
             new_post.instance.author = request.user
-            new_post.save()
-            messages.success(request, 'Your post is awaiting approval')
-            slug = new_post.instance.slug
 
-            # Construct the URL using reverse and redirect to the post detail page
-            post_detail_url = reverse('post_detail', kwargs={"slug": slug})
-            return HttpResponseRedirect(post_detail_url)
+            if "save_post" in request.POST:
+                new_post.instance.status = '0'
+                new_post.save()
+                messages.success(request, 'Your post has been saved.')
+
+                # Redirect to the draft_list page
+                return HttpResponseRedirect(reverse('draft_list'))
+
+            elif "publish_post" in request.POST:
+                new_post.save()
+                messages.success(request, 'Your post is awaiting approval')
+                slug = new_post.instance.slug
+
+                # Redirect to the post_detail page
+                post_detail_url = reverse('post_detail', kwargs={"slug": slug})
+                return HttpResponseRedirect(post_detail_url)
             
         else:
             form = new_post
@@ -103,13 +113,11 @@ class EditDraft(View):
         form = NewPost(request.POST, request.FILES, instance=draft)
 
         if 'publish_draft' in request.POST:
-            print("Target publish draft inside method")
             return self.publish_draft(request, form, draft)
 
         if form.is_valid():
             form.save()
             messages.success(request, 'Your draft has been saved.')
-            print("Saved draft")
             return HttpResponseRedirect(reverse('draft_list'))
 
         return render(request, 'edit_draft.html', {'form': form, 'draft': draft})
@@ -123,7 +131,6 @@ class EditDraft(View):
         if form.is_valid() and 'publish_draft' in request.POST:
             form.save()
             messages.success(request, 'Your post is awaiting approval.')
-            print("Published draft!")
             slug = form.instance.slug
             return HttpResponseRedirect(reverse('post_detail', kwargs={"slug": slug}))
 
