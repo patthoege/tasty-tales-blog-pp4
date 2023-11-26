@@ -3,6 +3,7 @@
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load custom_filters %}
 
 <div class="masthead">
     <div class="container">
@@ -17,8 +18,8 @@
                      
                 </p>
                     <div class="post-recipe-meta">
-                        <div><i class="fa-solid fa-clock"></i> prep: {{ post.preparation_time }}</div>
-                        <div><i class="fa-solid fa-clock"></i> cook: {{ post.cooking_time }}</div>
+                        <div><i class="fa-solid fa-clock"></i> prep: {{ post.preparation_time| duration  }}</div>
+                        <div><i class="fa-solid fa-clock"></i> cook: {{ post.cooking_time | duration  }}</div>
                         <div><i class="fa-solid fa-utensils"></i> yield: {{ post.portions }}</div>
                     </div>
                     <p class="post-review"><i class="far fa-star"></i> {{ post.number_of_likes }} </p>
