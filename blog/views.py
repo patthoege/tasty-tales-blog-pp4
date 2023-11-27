@@ -403,7 +403,6 @@ class SearchResults(View):
 
  
 def about_me(request):
-    # Your view logic here
     return render(request, 'about_me.html')
 
 
