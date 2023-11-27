@@ -12,15 +12,15 @@ from django.contrib import messages
 
 class Profile(View):
     def get(self, request, profile, *args, **kwargs):
-        # get_user = User.objects.get(username=profile)
         get_user = get_object_or_404(User, username=profile)
 
         if request.user == get_user:
-            posted_recipes = Post.objects.filter(author=get_user)
+            posted_recipes = Post.objects.filter(author=get_user, status=1)
             user_posts = Post.objects.filter(author=get_user, status=1)
         else:
-            posted_recipes = Post.objects.filter(author=get_user, approved=True)
+            posted_recipes = Post.objects.filter(author=get_user, approved=True, status=1)
             user_posts = Post.objects.filter(author=get_user, approved=True, status=1)
+
 
         profile_image = CloudinaryImage().image(quality='auto', fetch_format='auto')
 
