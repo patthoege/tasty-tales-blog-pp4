@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from taggit.managers import TaggableManager
+from django.utils import timezone
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -19,6 +20,7 @@ class Post(models.Model):
     excerpt = models.TextField(max_length=200, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    date_published = models.DateTimeField(default=timezone.now)
     category = models.CharField(max_length=20)
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)

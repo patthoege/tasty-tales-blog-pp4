@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -67,8 +68,10 @@ class AddPost(LoginRequiredMixin, View):
                 slug = new_post.instance.slug
 
                 # Redirect to the post_detail page
-                post_detail_url = reverse('post_detail', kwargs={"slug": slug})
-                return HttpResponseRedirect(post_detail_url)
+                # post_detail_url = reverse('post_detail', kwargs={"slug": slug})
+
+                # return HttpResponseRedirect(post_detail_url)
+                return HttpResponseRedirect(reverse('post_detail', kwargs={"slug": slug}))
             
         else:
             form = new_post
@@ -81,6 +84,8 @@ class AddPost(LoginRequiredMixin, View):
                     "form": form
                 }
             )
+
+        return HttpResponse("Invalid request")
 
 
  # It retrieves drafts belonging to the logged-in user 
@@ -125,10 +130,12 @@ class EditDraft(View):
     def publish_draft(self, request, form, draft):
         """
         If the form is valid and the publish_draft button is clicked, 
-        it saves the form, displays a success message, 
-        and redirects to the post detail view for the published post.
+        it updates the date_published field, saves the form, 
+        displays a success message, and redirects to the 
+        post detail view for the published post.
         """
         if form.is_valid() and 'publish_draft' in request.POST:
+            form.instance.date_published = timezone.now()
             form.save()
             messages.success(request, 'Your post is awaiting approval.')
             slug = form.instance.slug
@@ -178,9 +185,11 @@ class EditPost(LoginRequiredMixin, View):
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         form = NewPost(request.POST, request.FILES, instance=post)
+
         if form.is_valid() and post.author == request.user:
             form.save()
             messages.success(request, 'Post Updated!')
+            return redirect('home')
         else:
             messages.error(request, 'You are not authorized to edit this post.')
         return redirect('home')

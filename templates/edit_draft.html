@@ -9,7 +9,7 @@
             <div class="col-lg-10">
                 <div class="bg-light p-4 custom-form">
                     <h2>Draft</h2>
-                    <form method="post" action="{% url 'publish_draft' slug=draft.slug %}">
+                    <form method="post" action="{% url 'publish_draft' slug=draft.slug %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.media }}
                         {{ form | crispy }}
