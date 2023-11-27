@@ -17,10 +17,10 @@ class Profile(View):
 
         if request.user == get_user:
             posted_recipes = Post.objects.filter(author=get_user)
-            user_posts = Post.objects.filter(author=get_user)
+            user_posts = Post.objects.filter(author=get_user, status=1)
         else:
             posted_recipes = Post.objects.filter(author=get_user, approved=True)
-            user_posts = Post.objects.filter(author=get_user, approved=True)
+            user_posts = Post.objects.filter(author=get_user, approved=True, status=1)
 
         profile_image = CloudinaryImage().image(quality='auto', fetch_format='auto')
 

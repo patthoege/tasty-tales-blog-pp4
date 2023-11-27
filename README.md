@@ -172,9 +172,14 @@ The wireframes for the project can be found [here.]()
 ### 4. Profile Image Upload Issue
 - I encountered issues with the profile image being unable to upload. To enable image uploads for the profile_image field in the UserProfile model, I updated it to use the ImageField and installed the Pillow library. 
 
+### 5. Display of Users Draft Posts in Search Results and Profile
+- An issue I identified wherein draft posts were erroneously appearing in the search results and the profile page. To prevent this behavior, drafts are now excluded from the search results in the class view when a user conducts a search and in the Profile class view.
 
 ## Media Query - Responsive Web Design
-*
+-
+
+## Unfixed bugs
+-
 
 [Back to top](<#table-of-contents>)
 

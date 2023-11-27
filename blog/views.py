@@ -377,7 +377,8 @@ class SearchResults(View):
             Q(title__icontains=searched) |
             Q(author__username__icontains=searched) |
             Q(category__icontains=searched) |
-            Q(tags__name__icontains=searched)
+            Q(tags__name__icontains=searched), 
+            status=1 
             ).distinct()
 
         common_tags = Tag.objects.annotate(num_posts=Count('taggit_taggeditem_items')).order_by('-num_posts')[:4]
