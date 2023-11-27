@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@100;400&family=Playfair+Display&display=swap');
 /* -------------------------------------------- Global */
 body {
-    background-color: #cfc4b9ea;
+    background-color: #ebe7e4bd;
     padding-top: 8.5rem;
     margin: 0;
     font-family: 'Noto Serif', serif;
@@ -19,7 +19,7 @@ body {
 
 
 nav.navbar-nav a.nav-link.active {
-    border-bottom: 1px solid #bb9223;
+    border-bottom: 1px solid #ffc107;
 }
 
 .navbar-dark .navbar-toggler {
@@ -34,9 +34,8 @@ nav.navbar-nav a.nav-link.active {
 }
 
 .navbar-toggler:hover {
-    background-color: #bb9223; 
-    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
-
+    background-color: #ffc107; 
+    box-shadow: 0 0 10px rgba(255, 196, 0.5); 
 }
 
 .nav-item.dropdown {
@@ -137,7 +136,7 @@ nav.navbar-nav a.nav-link.active {
 
 .post-link:hover,
 .page-link {
-    color: #bb9223;
+    color: #ffc107;
 }
 
 .post-title {
@@ -194,13 +193,13 @@ nav.navbar-nav a.nav-link.active {
 }
 
 .custom-form .form-control:hover {
-    border-color: #bb9223; 
-    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+    border-color: #ffc107; 
+    box-shadow: 0 0 10px rgba(255, 196, 0.5); 
 }
 
 .comment-text-field textarea:hover {
-    border-color: #bb9223;
-    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+    border-color: #ffc107;
+    box-shadow: 0 0 10px rgba(255, 196, 0.5); 
 }
 
 .comment-text-field {
@@ -215,7 +214,7 @@ nav.navbar-nav a.nav-link.active {
 }
 .heart-icon {
     background: #fffcd5;
-    box-shadow: 4px 4px #bb9223, 9px 9px #151515;
+    box-shadow: 4px 4px #ffc107, 9px 9px #151515;
     color: #151515;
     border: solid 1px #151515;
     padding: 10px 15px;
@@ -239,7 +238,7 @@ nav.navbar-nav a.nav-link.active {
 }
 
 .costum-card-profile, .custom-card-search {
-    box-shadow: 0 0 10px 5px rgba(129, 97, 9, 0.911);
+    box-shadow: 0 0 10px 5px rgba(255, 196, 0.8);
     border: 2px solid #000;
     border-radius: 4%;
 }
@@ -345,8 +344,8 @@ nav.navbar-nav a.nav-link.active {
 .form-sign input[type="password"]:hover,
 .form-sign input[type="email"]:hover,
 .form-control:hover {
-    border-color: #bb9223; 
-    box-shadow: 0 0 10px rgba(187, 159, 35, 0.5); 
+    border-color: #ffc107; 
+    box-shadow: 0 0 10px rgba(255, 196, 0.5); 
     transition: all 0.3s ease; 
 }
 
@@ -356,7 +355,7 @@ nav.navbar-nav a.nav-link.active {
 }
 
 .form-control:active {
-    border-color: #bb9223; 
+    border-color: #ffc107; 
     background-color: #fff;
     color: #333;
 }
@@ -365,7 +364,7 @@ nav.navbar-nav a.nav-link.active {
 /* inspiration from https://codepen.io/flvffywvffy/pen/rNoeymB */
 .btn-effect {
     background: #fffcd5;
-    box-shadow: 4px 4px #bb9223, 9px 9px #151515;
+    box-shadow: 4px 4px #ffc107, 9px 9px #151515;
     color: #151515;
     text-transform: lowercase;
     border: solid 2px #151515;
@@ -407,7 +406,7 @@ nav.navbar-nav a.nav-link.active {
   }
 
   .btn-effect:hover {
-    box-shadow: 0 0 #bb9223, 0 0 #151515;
+    box-shadow: 0 0 #ffc107, 0 0 #151515;
     color: white;
   }
 
@@ -464,7 +463,7 @@ nav.navbar-nav a.nav-link.active {
 
 .btn-search:hover,
 .btn-search:active {
-    background-color: #bb9223;
+    background-color: #ffc107;
     border: none;
 }
 
@@ -478,7 +477,7 @@ nav.navbar-nav a.nav-link.active {
 .btn-edit:active,
 .btn-send:hover,
 .btn-send:active {
-    background-color: #bb9223;
+    background-color: #ffc107;
 }
 
 .btn-like {
@@ -504,11 +503,11 @@ nav.navbar-nav a.nav-link.active {
 }
 
 .navbar-dark .navbar-nav .nav-item .nav-link:hover {
-    color: #bb9223 !important;
+    color: #ffc107 !important;
 }
 
 .nav-link:hover {
-    color: #bb9223;
+    color: #ffc107;
 }
 
 button.nav-link.btn.me-2, button.nav-link.btn-signup {
@@ -524,7 +523,7 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 
 .link-sign:hover,
 .link-sign:active {
-    color: #bb9223;
+    color: #ffc107;
     font-weight: bold;
 }
 
@@ -535,7 +534,7 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 
 .link:hover,
 .link:active {
-    color: #bb9223;
+    color:#ffc107;
     font-weight: bold;
 }
 
@@ -545,7 +544,7 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 }
 
 .footer-link:hover {
-    color: #bb9223;
+    color: #ffc107;
 }
 /* -------------------------------------------- Footer */
 /* Override Bootstrap container styles */
@@ -608,7 +607,7 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: #bb9223;
+    background: #ffc107;
     transition: .5s;
     transform: scale(.2);
     z-index: -1;
@@ -616,13 +615,13 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
   
 .social-links li a:hover::before {
     transform: scale(1.1);
-    box-shadow: 0 0 15px #bb9223;
+    box-shadow: 0 0 15px #ffc107;
 }
   
 .social-links li a:hover {
-    color: #bb9223;
-    box-shadow: 0 0 5px #bb9223;
-    text-shadow: 0 0 5px #bb9223;
+    color: #ffc107;
+    box-shadow: 0 0 5px#ffc107;
+    text-shadow: 0 0 5px #ffc107;
 }
   
 .copy-text {
@@ -640,7 +639,7 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 }
 
 .tagcloud a:hover {
-    border: 1px solid #bb9223; 
+    border: 1px solid #ffc107; 
 }  
 
 .tag-list {
@@ -661,7 +660,7 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
         max-width: 180px;
         display: block;
         margin: 0 auto;
-        height: auto;
+        height: 100%;
     }
     
 }
