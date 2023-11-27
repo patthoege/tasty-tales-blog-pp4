@@ -292,7 +292,7 @@ class Tagged(View):
     """
     def get(self, request, slug, *args, **kwargs):
         tag = get_object_or_404(Tag, slug=slug)
-        posts = Post.objects.filter(tags=tag)
+        posts = Post.objects.filter(tags=tag, status=1)
         context = {
             'tag': tag,
             'posts': posts,
