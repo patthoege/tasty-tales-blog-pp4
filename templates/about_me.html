@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2>About Me</h2>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <p> 
+                Hey there! I'm Patricia, the heart and soul behind TastyTales. I wear many hats - author, developer, and creator. 
+                This is my fourth project as a web developer for the Code Institute, and TastyTales is my cozy corner on the internet dedicated to a world where every dish tells a tale..
+            </p>
+
+            <p>
+                At TastyTales, we're not just cooking; we're crafting delicious stories with every dish. 
+                Join our vibrant community of passionate cooks and foodies, where we share, create, and savor the joy of mouthwatering narratives.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <h2>Purpose</h2>
+            <p>
+                To spice up your experience, create an account and unlock a treasure trove of the author's recipes and culinary delights. 
+                Dive into the community spirit by leaving comments, sharing likes, and becoming a storyteller of your own. 
+                TastyTales is where every recipe is a story, and the kitchen is your canvas.
+            </p>
+            <p>
+                Looking for something specific? TastyTales allows you to search for recipes by title, ingredients, tags, and even by the author. 
+                It's an easy way to find common interests, especially with the functionality of tags.
+            </p>
+            <p>
+                TastyTales is not just another recipe hub; it's a culinary storytelling adventure! 
+                Join us on a gastronomic journey where recipes are more than ingredients – they're tales waiting to be savored.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2 text-center">
+            <p>Ready to embark on this culinary adventure?</p>
+            <a href="{% url 'account_signup' %}" class="btn-effect">Sign Up Now!</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

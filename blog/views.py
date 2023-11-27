@@ -402,6 +402,11 @@ class SearchResults(View):
             })
 
  
+def about_me(request):
+    # Your view logic here
+    return render(request, 'about_me.html')
+
+
 def error_404_view(request, exception):
     """
     # we add the path to the 404.html file

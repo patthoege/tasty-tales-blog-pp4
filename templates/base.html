@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" aria-current="page" href="{% url 'home' %}" aria-label="Home">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="{% url 'about_me' %}" aria-label="about_me">About</a>
+                        </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'add_post' %}">New Post</a>
