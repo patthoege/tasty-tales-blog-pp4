@@ -169,6 +169,9 @@ The wireframes for the project can be found [here.]()
 ### 3. Tags Input Field Displaying Signs and Brackets
 - To address the issue of the tags input field displaying signs and brackets, I fix this by adding the TagWidget in the NewPost form. This modification to the TagWidget class ensures that when rendering the widget, it will display a comma-separated string of tags, ensuring a clean and user-friendly appearance.
 
+### 4. Profile Image Upload Issue
+- I encountered issues with the profile image being unable to upload. To enable image uploads for the profile_image field in the UserProfile model, I updated it to use the ImageField and installed the Pillow library. 
+
 
 ## Media Query - Responsive Web Design
 *

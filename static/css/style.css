@@ -346,6 +346,55 @@ nav.navbar-nav a.nav-link.active {
 }
 /* -------------------------------------------- Link - Button */
 /* Button Styles */
+/* inspiration from https://codepen.io/flvffywvffy/pen/rNoeymB */
+.btn-effect {
+    background: #fffcd5;
+    box-shadow: 4px 4px #bb9223, 9px 9px #151515;
+    color: #151515;
+    text-transform: lowercase;
+    border: solid 2px #151515;
+  
+    text-decoration: none;
+  
+    padding: 18px 32px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    transition: 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    cursor: pointer;
+    overflow: hidden;
+    transition-delay: 0s !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px;
+    font-family: freight-sans-pro, sans-serif;
+  }
+
+  .btn-effect::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    background: #151515;
+    z-index: -1;
+    transition: 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  .btn-effect:hover::before {
+    width: 100%;
+    left: 0;
+    right: unset;
+  }
+
+  .btn-effect:hover {
+    box-shadow: 0 0 #bb9223, 0 0 #151515;
+    color: white;
+  }
+
 .btn-search,
 .btn-sign,
 .btn-draft,
@@ -508,25 +557,58 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
     align-items: center;
 }
 
-.social-icons a {
-    text-decoration: none;
-    margin-right: 20px;
+/* Inspiration https://codepen.io/dig-lopes/pen/WLVGda */
+.social-links {
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
-
-.text-muted span {
+  
+.social-links li {
+    margin-right: 10px; 
+    text-decoration: none;
+}
+  
+.social-links li a {
     display: block;
-    margin-top: 10px;
+    position: relative;
+    margin-bottom: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 41px;
+    text-align: center;
+    background: #bb922331;
+    border-radius: 20%;
+    font-size: 20px;
+    color: #ffffff7a;
+    transition: .5s;
 }
-
-.social-links .social-link {
-    text-decoration: none;
-    margin-right: 20px;
+  
+.social-links li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #bb9223;
+    transition: .5s;
+    transform: scale(.2);
+    z-index: -1;
 }
-
-.social-links .social-link:hover {
+  
+.social-links li a:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #bb9223;
+}
+  
+.social-links li a:hover {
     color: #bb9223;
+    box-shadow: 0 0 5px #bb9223;
+    text-shadow: 0 0 5px #bb9223;
 }
-
+  
 .copy-text {
     font-size: 14px;
 }

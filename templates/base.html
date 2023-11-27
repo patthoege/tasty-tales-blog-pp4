@@ -152,9 +152,9 @@
                             <h2 class="footer-heading"><a href="{% url 'home' %}" class="logo link-sign">TastyTales</a></h2>
                             <p class="text-muted"> Dive into a world where every dish tells a tale, and our community of passionate cooks and foodies swap,
                                 create, and indulge in the joy of mouthwatering narratives.</p>
-                            <div class="nav-item dm-none">
+                            <div class="nav-item dm-none mb-4">
                                 <p>Join us on this flavorful journey for free</p>
-                                <a href="{% url 'account_signup' %}" class="btn btn-outline-warning btn-sm me-2">Sign Up</a>
+                                <a href="{% url 'account_signup' %}" class="btn-effect me-2">Sign Up</a>
                             </div>
                         </div>
                     </div>
@@ -209,25 +209,25 @@
                 <!-- Footer social links -->
                 <div class="col-md-3 mb-md-0 mb-4 border-left mt-2 px-4">
                     <h2 class="footer-heading">Connect with us</h2>
-                    <div class="social-links">
-                        <a class="social-link text-muted me-4" href="">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a class="social-link text-muted me-4 " href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="social-link text-muted me-4" href="https://www.linkedin.com/in/patricia-h%C3%B6ge-417b72228/" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a class="social-link text-muted me-4" href="https://github.com/patthoege" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
+                    <ul class="list-unstyled social-links">
+                        <li>
+                            <a class="social-link mb-3" href="https://google.com/"><i class="fab fa-google"></i></a>
+                        </li>
+                        <li>
+                            <a class="social-link mb-3" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a class="social-link mb-3" href="https://www.linkedin.com/in/patricia-h%C3%B6ge-417b72228/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a class="social-link mb-3" href="https://github.com/patthoege" target="_blank"><i class="fab fa-github"></i> </a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- Footer Bottom -->
                 <div class="footer-bottom text-center text-muted p-4">
                     <div class="row mt-5">
-                        <p class="copy-text">&copy; {% now "Y" %} TastyTales. <br>All rights reserved.</p>
+                        <p class="copy-text">&copy; {% now "Y" %} TastyTales <br>All rights reserved.</p>
                     </div>
                 </div>
             </div>
