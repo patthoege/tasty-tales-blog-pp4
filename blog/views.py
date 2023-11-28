@@ -14,6 +14,7 @@ from django.db.models import Q
 from taggit.models import Tag  
 from django.db.models import Count
 from .context_processors import common_tags
+from django.utils import timezone
 
 
 class PostList(generic.ListView):
@@ -25,7 +26,7 @@ class PostList(generic.ListView):
     """
 
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.filter(status=1).order_by('-date_published')
     template_name = 'index.html'
     paginate_by = 3
 

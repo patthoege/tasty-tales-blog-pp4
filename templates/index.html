@@ -29,7 +29,7 @@
                                         <p class="author fs-6">Written by 
                                         <a href="{% url 'profile' profile=post.author.username %}" class="author-name link">{{ post.author }}</a>
                                         </p>
-                                        <p class="card-text text-muted h6"> {{ post.created_on|date:"F j, Y"|upper }} </p>
+                                        <p class="card-text text-muted h6"> {{ post.date_published|date:"F j, Y"|upper }} </p>
                                         <a href="{% url 'post_detail' post.slug  %}" class="post-link">
                                             <h2 class="card-title"> {{ post.title }} </h2>
                                         </a>
