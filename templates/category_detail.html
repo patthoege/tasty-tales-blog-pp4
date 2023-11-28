@@ -4,11 +4,12 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
 <div class="container">
-    <div class="row pt-5">
-        <div class="col-md-12 mb-4">
-            <div class="bg-light p-4 custom-form">
+{% if user.is_authenticated %}    
+    <!-- Users can add categories -->
+    <div class="row pt-5 p-2">
+        <div class="col-md-4 offset-md-4 mb-4 mx-auto">
+            <div class="bg-light p-4 custom-form custom-card-search">
                 <h2 class="h4 font-weight-bold mb-3">Create Category</h2>
                 <form method="post" action="{% url 'category_list' %}">
                     {% csrf_token %}
@@ -19,8 +20,36 @@
                 </form>
             </div>            
         </div>
-    </div>            
+    </div>
+    {% else %}
+    <!-- For visitors will display to sign up to add categories -->
+    <div class="row pt-5 p-2">
+        <div class="col-md-4 offset-md-4 mb-4 mx-auto">
+            <div class="bg-light p-4 custom-form custom-card-search text-center">
+                <p class="h5 mb-3">Sign up to add your favorite category!</p>
+                <p><a href="{% url 'account_signup' %}" class="btn btn-effect">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+{% endif %} 
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="h4 font-weight-bold mb-3">Existing Categories</h2>
+            <div class="row">
+                <!-- Content to display categories -->
+                {% for category in categories %}
+                    <div class="col-md-4 mb-3">
+                        <div class="bg-light p-3 text-center">
+                            <h5><a href="{% url 'category_posts' category.name %}" class="link">{{ category.name }}</a></h5>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+<br/><br/>
+<a href="{% url 'home' %}" class="post-link"> >> Back</a>
+<br/><br/>      
 </div>
 
-{% endif %}
 {% endblock %}

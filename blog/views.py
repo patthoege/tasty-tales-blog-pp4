@@ -88,7 +88,7 @@ class AddPost(LoginRequiredMixin, View):
         return HttpResponse("Invalid request")
 
 
-class CategoryView(LoginRequiredMixin, View):
+class CategoryView(View):
     """
     Manages category creation and display.
     Get method renders the category creation form. 
@@ -125,6 +125,20 @@ class CategoryView(LoginRequiredMixin, View):
             'category_form': NewCategory(),
             'categories': categories,
         })
+
+
+class CategoryPosts(View):
+    template_name = 'category_posts.html'
+
+    def get(self, request, category_name, *args, **kwargs):
+        category = get_object_or_404(Category, name=category_name)
+        posts = Post.objects.filter(category=category, status=1)
+        context = {
+            'category': category,
+            'posts': posts,
+        }
+
+        return render(request, self.template_name, context)
 
 
  # It retrieves drafts belonging to the logged-in user 
