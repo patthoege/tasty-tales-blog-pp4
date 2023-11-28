@@ -1,11 +1,12 @@
 from . import views
-from .views import AddPost, SearchResults, Tagged, draft_list, EditDraft, DeleteDraft, about_me 
+from .views import AddPost, SearchResults, Tagged, draft_list, EditDraft, DeleteDraft, about_me, CategoryView
 from django.urls import path
 
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
     path('about_me/', about_me, name='about_me'),
+    path('category/', views.CategoryView.as_view(), name='category_list'),
     path('add_post/', views.AddPost.as_view(), name='add_post'),
     path('search/', views.SearchResults.as_view(), name='search_results'),
     path('drafts/', draft_list, name='draft_list'),

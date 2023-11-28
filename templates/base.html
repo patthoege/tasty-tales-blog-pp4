@@ -46,12 +46,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="{% url 'about_me' %}" aria-label="about_me">About</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'category_list' %}">Category</a>
+                        </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'add_post' %}">New Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'draft_list' %}">Your Drafts</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
@@ -62,6 +62,8 @@
                                 <li><a class="dropdown-item" href="{% url 'profile' profile=request.user.username %}">{{ user.profile }}</a></li>
 
                                 <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+
+                                <li><a class="dropdown-item" href="{% url 'draft_list' %}">Your Drafts</a></li>
 
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                         {% else %}

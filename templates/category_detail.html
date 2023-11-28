@@ -1,0 +1,26 @@
+<!-- category_detail.html -->
+{% extends 'base.html' %}
+{% block title %}Category{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-md-12 mb-4">
+            <div class="bg-light p-4 custom-form">
+                <h2 class="h4 font-weight-bold mb-3">Create Category</h2>
+                <form method="post" action="{% url 'category_list' %}">
+                    {% csrf_token %}
+                    {{ category_form.as_p }}
+                    <div class="d-flex justify-content-evenly mt-3">
+                        <button type="submit" class="btn btn-sign">Add Category</button>
+                    </div>  
+                </form>
+            </div>            
+        </div>
+    </div>            
+</div>
+
+{% endif %}
+{% endblock %}

@@ -7,9 +7,8 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import NewPost
-from .models import Post
-from .forms import CommentForm
+from .forms import NewPost, CommentForm, NewCategory
+from .models import Post, Category
 from django.db.models import Q
 from taggit.models import Tag  
 from django.db.models import Count
@@ -87,6 +86,45 @@ class AddPost(LoginRequiredMixin, View):
             )
 
         return HttpResponse("Invalid request")
+
+
+class CategoryView(LoginRequiredMixin, View):
+    """
+    Manages category creation and display.
+    Get method renders the category creation form. 
+    The post method processes the form submission, 
+    saves a new category if valid, and displays
+    appropriate messages, else it notifies the user 
+    and reloads the form.
+    """
+    model = Category
+    template_name = 'category_detail.html'
+    paginate_by = 6
+
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        return render(request, 
+        'category_detail.html',
+        {
+            'category_form': NewCategory(),
+            'categories': categories,
+        })
+    
+    def post(self, request, *args, **kwargs):
+        category_form = NewCategory(request.POST)
+        if category_form.is_valid():
+            category_form.save()
+            messages.success(request, 'Your new category has been added!')
+            return HttpResponseRedirect(reverse('category_list'))
+        else:
+            categories = Category.objects.all()
+            messages.warning(request, 'Invalid input: Avoid using symbols or numbers.')
+            return render(request, 
+        'category_detail.html',
+        {
+            'category_form': NewCategory(),
+            'categories': categories,
+        })
 
 
  # It retrieves drafts belonging to the logged-in user 
@@ -388,7 +426,7 @@ class SearchResults(View):
         posts = Post.objects.filter(
             Q(title__icontains=searched) |
             Q(author__username__icontains=searched) |
-            Q(category__icontains=searched) |
+            Q(category__name__icontains=searched) |
             Q(tags__name__icontains=searched), 
             status=1 
             ).distinct()

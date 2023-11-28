@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from members.models import UserProfile
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -34,3 +34,8 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'full_name')
     list_filter = ('user',)
     search_fields = ['bio', 'first_name', 'last_name']
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_filter = ('name',)
+    

@@ -1,6 +1,33 @@
 from django.utils.text import slugify
-from .models import Comment, Post
+from .models import Comment, Post, Category
 from django import forms
+from django.core.exceptions import ValidationError
+
+
+# How to create choices for the category
+# https://www.youtube.com/watch?v=_ph8GF84fX4
+choices = Category.objects.all().values_list('name','name')
+choice_list = []
+for item in choices:
+    choice_list.append(item)
+
+
+class NewCategory(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        undesired_characters = ['?','!','#','&','@', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+        for char in undesired_characters:
+            if char in name:
+                raise ValidationError(f'Invalid input: "{char}" is not allowed.')
+
+        return name
 
 
 class TagWidget(forms.TextInput):
@@ -27,7 +54,7 @@ class NewPost(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
-            'category': forms.TextInput(attrs={'class': 'form-control'}),
+            'category': forms.Select(choices=choices, attrs={'class': 'form-control'}),
             'tags': TagWidget(attrs={'class': 'form-control'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),
         }

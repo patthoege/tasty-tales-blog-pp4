@@ -21,7 +21,9 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     date_published = models.DateTimeField(default=timezone.now)
-    category = models.CharField(max_length=20)
+    category = models.ForeignKey(
+        'Category', on_delete=models.SET_NULL, null=True, blank=True
+    )
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
@@ -73,3 +75,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('home')
