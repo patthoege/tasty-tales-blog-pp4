@@ -130,12 +130,13 @@ The wireframes for the project can be found [here.]()
 
 [Back to top](<#table-of-contents>)
 
-## Testing
+## Testing  
+A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md)
+
 * ## Code Validation
 
-  
 
-### Validator Testing
+
 
 
 * ## Browser Compatibility
@@ -174,6 +175,9 @@ The wireframes for the project can be found [here.]()
 
 ### 5. Display of Users Draft Posts in Search Results and Profile
 - An issue I identified wherein draft posts were erroneously appearing in the search results and the profile page. To prevent this behavior, drafts are now excluded from the search results in the class view when a user conducts a search and in the Profile class view.
+
+### 6. ProgrammingError at /admin/blog/post/
+- An issue occurred when attempting to change the `category` field from the Post model to a ForeignKey to establish a relationship with the Category Model.  After running command `python manage.py migrate` did not successfully create the category_id field as expected. I reset the migrations `python3 manage.py migrate your_app_name zero` in this case, to get a fresh start on these. This action effectively clears the existing migration files and the database schema.
 
 ## Media Query - Responsive Web Design
 -
