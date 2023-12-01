@@ -115,8 +115,10 @@ By adopting Agile principles, it helped me to developed with a focus on adaptabi
 
 ## Design
 
-### Wireframes
-The wireframes for the project can be found [here.]()
+### Wireframes  
+   - A separate document for the wireframes can be viewed here: 
+      - [For Desktop view](docs/WIREFRAMES.md)
+      - [For Mobile view](docs/WIREFRAMES-MOBILE.md)    
 
 [Back to top](<#table-of-contents>)
 
@@ -162,22 +164,27 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 
 ## Fixed bugs
 ### 1. "RelatedObjectDoesNotExist" Error
-- I encounter the "RelatedObjectDoesNotExist" error at /members/edit_profile/ stating, "User has no profile," I was trying to access a related UserProfile object for a User that does not exist. I ensure using the signals method to create a profile upon user registration. Additionally, the MembersConfig class in the apps.py file in the members app, ensures that signals, including user profile creation signals, are appropriately registered during the Django application setup.
+- I encounter the "RelatedObjectDoesNotExist" error at /members/edit_profile/ stating, "User has no profile," I was trying to access a related UserProfile object for a User that does not exist. I ensure using the signals method to create a profile upon user registration. Additionally, the `MembersConfig` class in the apps.py file in the members app, ensures that signals, including user profile creation signals, are appropriately registered during the Django application setup.
 
 ### 2. Tags in Footer not Displaying
 - Tags declared in the footer base.html were not displaying as I entended using same methods for other templates as tags_page.html, post_detail.html and search_results.html, so I've created a context processors file to declare the tags logic and in the views.py file (blog app), import and include this processor to enable the global display of tags in all templates within the app.
 
 ### 3. Tags Input Field Displaying Signs and Brackets
-- To address the issue of the tags input field displaying signs and brackets, I fix this by adding the TagWidget in the NewPost form. This modification to the TagWidget class ensures that when rendering the widget, it will display a comma-separated string of tags, ensuring a clean and user-friendly appearance.
+- To address the issue of the tags input field displaying signs and brackets, I fix this by adding the `TagWidget` in the NewPost form. This modification to the TagWidget class ensures that when rendering the widget, it will display a comma-separated string of tags, ensuring a clean and user-friendly appearance.
 
 ### 4. Profile Image Upload Issue
-- I encountered issues with the profile image being unable to upload. To enable image uploads for the profile_image field in the UserProfile model, I updated it to use the ImageField and installed the Pillow library. 
+- I encountered issues with the profile image being unable to upload. To enable image uploads for the `profile_image` field in the UserProfile model, I updated it to use the `ImageField` and installed the Pillow library. 
 
 ### 5. Display of Users Draft Posts in Search Results and Profile
 - An issue I identified wherein draft posts were erroneously appearing in the search results and the profile page. To prevent this behavior, drafts are now excluded from the search results in the class view when a user conducts a search and in the Profile class view.
 
 ### 6. ProgrammingError at /admin/blog/post/
-- An issue occurred when attempting to change the `category` field from the Post model to a ForeignKey to establish a relationship with the Category Model.  After running command `python manage.py migrate` did not successfully create the category_id field as expected. I reset the migrations `python3 manage.py migrate your_app_name zero` in this case, to get a fresh start on these. This action effectively clears the existing migration files and the database schema.
+- An issue occurred when attempting to change the `category` field to a ForeignKey from the Post model to establish a relationship with the Category Model.  After running command `python manage.py migrate` did not successfully create the category_id field as expected. I reset the migrations `python3 manage.py migrate your_app_name zero` in this case, to get a fresh start on these. This action effectively clears the existing migration files and the database schema.
+
+### 7. Most Common Tags Not Displaying Updated Information
+- The common tags feature, the tags were not displaying the most recent and common ones. I realized that after resetting the database schema and creating new posts with updated tags, the old most common tags continued to be displayed. The issue stemmed from the context processor that was fetching the first four tags without considering the number of associated posts. To resolve this, I modified the context processor to use the same logic applied in the SearchResults view. The context processor now annotates the tags with the count of associated posts and orders them accordingly, ensuring that only the top four most common tags are retrieved.
+
+
 
 ## Media Query - Responsive Web Design
 -
