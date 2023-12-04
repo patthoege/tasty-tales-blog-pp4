@@ -8,6 +8,7 @@ from django.utils.dateparse import parse_duration
 # https://copyprogramming.com/howto/display-and-format-django-durationfield-in-template#durationfield-format
 register = template.Library()
 
+
 @register.filter(name='duration')
 @stringfilter
 def duration_format(value):

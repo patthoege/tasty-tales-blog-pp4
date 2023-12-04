@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from .forms import NewPost, CommentForm, NewCategory
 from .models import Post, Category
 from django.db.models import Q
-from taggit.models import Tag  
+from taggit.models import Tag
 from django.db.models import Count
 from .context_processors import common_tags
 from django.utils import timezone
@@ -67,17 +67,16 @@ class AddPost(LoginRequiredMixin, View):
                 messages.success(request, 'Your post is awaiting approval')
                 slug = new_post.instance.slug
 
-                # Redirect to the post_detail page
-                # post_detail_url = reverse('post_detail', kwargs={"slug": slug})
-
-                # return HttpResponseRedirect(post_detail_url)
-                return HttpResponseRedirect(reverse('post_detail', kwargs={"slug": slug}))
-            
+                return HttpResponseRedirect(
+                    reverse(
+                        'post_detail',
+                        kwargs={"slug": slug}
+                    ))
         else:
             form = new_post
 
             return render(
-                request,   
+                request,
                 "add_post.html",
                 {
                     "posted": True,
@@ -91,10 +90,10 @@ class AddPost(LoginRequiredMixin, View):
 class CategoryView(View):
     """
     Manages category creation and display.
-    Get method renders the category creation form. 
-    The post method processes the form submission, 
+    Get method renders the category creation form.
+    The post method processes the form submission,
     saves a new category if valid, and displays
-    appropriate messages, else it notifies the user 
+    appropriate messages, else it notifies the user
     and reloads the form.
     """
     model = Category
@@ -103,13 +102,14 @@ class CategoryView(View):
 
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
-        return render(request, 
-        'category_detail.html',
-        {
-            'category_form': NewCategory(),
-            'categories': categories,
-        })
-    
+        return render(
+            request,
+            'category_detail.html',
+            {
+                'category_form': NewCategory(),
+                'categories': categories,
+            })
+
     def post(self, request, *args, **kwargs):
         category_form = NewCategory(request.POST)
         if category_form.is_valid():
@@ -118,13 +118,17 @@ class CategoryView(View):
             return HttpResponseRedirect(reverse('category_list'))
         else:
             categories = Category.objects.all()
-            messages.warning(request, 'Invalid input: Avoid using symbols or numbers.')
-            return render(request, 
-        'category_detail.html',
-        {
-            'category_form': NewCategory(),
-            'categories': categories,
-        })
+            messages.warning(
+                request,
+                'Invalid input: Avoid using symbols or numbers.'
+                )
+            return render(
+                request,
+                'category_detail.html',
+                {
+                    'category_form': NewCategory(),
+                    'categories': categories,
+                })
 
 
 class CategoryPosts(View):
@@ -141,8 +145,8 @@ class CategoryPosts(View):
         return render(request, self.template_name, context)
 
 
- # It retrieves drafts belonging to the logged-in user 
- # with a status of 0 and renders them using the draft_list template.
+# It retrieves drafts belonging to the logged-in user
+# with a status of 0 and renders them using the draft_list template.
 @login_required
 def draft_list(request):
     drafts = Post.objects.filter(author=request.user, status=0)
@@ -151,18 +155,18 @@ def draft_list(request):
 
 class EditDraft(View):
     """
-    Retrieves a draft for editing and renders the 'edit_draft.html' template 
-    with the draft form. The post method handles form submission. 
-    If the form is valid, it either saves the draft or publishes it, 
+    Retrieves a draft for editing and renders the 'edit_draft.html' template
+    with the draft form. The post method handles form submission.
+    If the form is valid, it either saves the draft or publishes it,
     depending on the button clicked.
     """
     def get(self, request, slug, *args, **kwargs):
         draft = get_object_or_404(Post, slug=slug, author=request.user)
         form = NewPost(instance=draft)
         return render(
-            request, 'edit_draft.html', 
+            request, 'edit_draft.html',
             {
-                'form': form, 
+                'form': form,
                 'draft': draft
             })
 
@@ -178,13 +182,20 @@ class EditDraft(View):
             messages.success(request, 'Your draft has been saved.')
             return HttpResponseRedirect(reverse('draft_list'))
 
-        return render(request, 'edit_draft.html', {'form': form, 'draft': draft})
+        return render(
+            request,
+            'edit_draft.html',
+            {
+                'form': form,
+                'draft': draft
+
+            })
 
     def publish_draft(self, request, form, draft):
         """
-        If the form is valid and the publish_draft button is clicked, 
-        it updates the date_published field, saves the form, 
-        displays a success message, and redirects to the 
+        If the form is valid and the publish_draft button is clicked,
+        it updates the date_published field, saves the form,
+        displays a success message, and redirects to the
         post detail view for the published post.
         """
         if form.is_valid() and 'publish_draft' in request.POST:
@@ -192,26 +203,41 @@ class EditDraft(View):
             form.save()
             messages.success(request, 'Your post is awaiting approval.')
             slug = form.instance.slug
-            return HttpResponseRedirect(reverse('post_detail', kwargs={"slug": slug}))
+            return HttpResponseRedirect(
+                reverse(
+                    'post_detail',
+                    kwargs={"slug": slug}
+                    ))
 
-        return render(request, 'edit_draft.html', {'form': form, 'draft': draft})
+        return render(
+            request,
+            'edit_draft.html',
+            {
+                'form': form,
+                'draft': draft
+            })
 
 
 class DeleteDraft(View):
     """
-    Retrieves the draft to be deleted and renders the delete_draft template. 
+    Retrieves the draft to be deleted and renders the delete_draft template.
     The post method deletes the draft and redirects to the draft list view.
     """
     def get(self, request, slug, *args, **kwargs):
-        draft = get_object_or_404(Post, slug=slug, author=request.user, status=0)
-        return render(request, 
-        'delete_draft.html', 
-        {
-            'draft': draft
-        })
+        draft = get_object_or_404(
+            Post, slug=slug, author=request.user, status=0
+        )
+        return render(
+            request,
+            'delete_draft.html',
+            {
+                'draft': draft
+            })
 
     def post(self, request, slug, *args, **kwargs):
-        draft = get_object_or_404(Post, slug=slug, author=request.user, status=0)
+        draft = get_object_or_404(
+            Post, slug=slug, author=request.user, status=0
+        )
         draft.delete()
         return HttpResponseRedirect(
             reverse(
@@ -229,7 +255,7 @@ class EditPost(LoginRequiredMixin, View):
     """
     def get(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
-        form =  NewPost(instance=post)
+        form = NewPost(instance=post)
         context = {
             'form': form
         }
@@ -244,7 +270,9 @@ class EditPost(LoginRequiredMixin, View):
             messages.success(request, 'Post Updated!')
             return redirect('home')
         else:
-            messages.error(request, 'You are not authorized to edit this post.')
+            messages.error(
+                request, 'You are not authorized to edit this post.'
+            )
         return redirect('home')
 
 
@@ -253,7 +281,7 @@ class DeletePost(LoginRequiredMixin, View):
     If user is authenticated can delete their blog posts.
     When a user accesses the delete post page for a specific slug,
     it retrieves the corresponding post. If the user confirms the deletion,
-    the post is deleted from the database, and the user is 
+    the post is deleted from the database, and the user is
     redirected to the home page and gets notified.
     """
     def get(self, request, slug):
@@ -266,9 +294,10 @@ class DeletePost(LoginRequiredMixin, View):
             post.delete()
             messages.success(request, 'Post deleted successfully!')
         else:
-            messages.error(request, 'You are not authorized to delete this post.')
+            messages.error(
+                request, 'You are not authorized to delete this post.'
+            )
         return redirect('home')
-
 
 
 class PostDetail(View):
@@ -323,14 +352,18 @@ class PostDetail(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            
+
             tags_input = request.POST.get("tags", "")
             if tags_input:
                 post.tags.set(*tags_input.split(","))
                 post.save()
 
             messages.success(request, 'Comment posted successfully!')
-            return HttpResponseRedirect(reverse("post_detail", args=[post.slug]))
+            return HttpResponseRedirect(
+                reverse(
+                    "post_detail",
+                    args=[post.slug]
+                ))
 
         else:
             comment_form = CommentForm()
@@ -346,6 +379,7 @@ class PostDetail(View):
                 "liked": liked
             },
         )
+
 
 class Tagged(View):
     """
@@ -396,7 +430,11 @@ def comment_delete(request, slug, comment_id, *args, **kwargs):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'You can only delete your own comments!'
+        )
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
@@ -418,14 +456,18 @@ def comment_edit(request, slug, comment_id, *args, **kwargs):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'Error updating comment!'
+            )
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 class SearchResults(View):
     """
-    Custom view for displaying search results. 
+    Custom view for displaying search results.
     # Tutorial to retrieve search term available at
     # https://www.youtube.com/watch?v=AGtae4L5BbI
     # Tutorial to retrieve common tags available at
@@ -434,38 +476,41 @@ class SearchResults(View):
     # https://stackoverflow.com/questions/1895638/django-tagging-count-and-ordering-top-tags-is-there-a-cleaner-solution-to-m
     # https://docs.djangoproject.com/en/dev/topics/db/aggregation/#filter-and-exclude
     """
-    
+
     def post(self, request, *args, **kwargs):
         searched = request.POST['searched']
         posts = Post.objects.filter(
             Q(title__icontains=searched) |
             Q(author__username__icontains=searched) |
             Q(category__name__icontains=searched) |
-            Q(tags__name__icontains=searched), 
-            status=1 
+            Q(tags__name__icontains=searched),
+            status=1
             ).distinct()
 
-        common_tags = Tag.objects.annotate(num_posts=Count('taggit_taggeditem_items')).order_by('-num_posts')[:4]
+        common_tags = Tag.objects.annotate(
+            num_posts=Count('taggit_taggeditem_items')).order_by(
+            '-num_posts')[:4]
 
         return render(
             request,
             'search_results.html',
             {
-                'searched': searched, 
+                'searched': searched,
                 'posts': posts,
                 'common_tags': common_tags
             })
 
     def get(self, request, *args, **kwargs):
-        common_tags = Tag.objects.annotate(num_posts=Count('taggit_taggeditem_items')).order_by('-num_posts')[:4]
+        common_tags = Tag.objects.annotate(num_posts=Count(
+            'taggit_taggeditem_items')).order_by('-num_posts')[:4]
         return render(
             request,
-            'search_results.html', 
+            'search_results.html',
             {
                 'common_tags': common_tags
             })
 
- 
+
 def about_me(request):
     return render(request, 'about_me.html')
 

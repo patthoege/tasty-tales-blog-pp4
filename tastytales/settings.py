@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', '8000-patthoege-tastytalesblo-47mrfhdlzr0.ws-eu106.gitpod.io']
+ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', '8000-patthoege-tastytalesblo-iiznuaza0dh.ws-eu106.gitpod.io']
 
 
 # Application definition
@@ -84,10 +84,10 @@ MIDDLEWARE = [
 ]
 
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://tasty-tales-pp4.herokuapp.com', 'https://8000-patthoege-tastytalesblo-47mrfhdlzr0.ws-eu106.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://tasty-tales-pp4.herokuapp.com', 'https://8000-patthoege-tastytalesblo-iiznuaza0dh.ws-eu106.gitpod.io']
 CORS_ALLOWED_ORIGINS = [
     "https://tasty-tales-pp4.herokuapp.com",
-    "https://8000-patthoege-tastytalesblo-47mrfhdlzr0.ws-eu106.gitpod.io",
+    "https://8000-patthoege-tastytalesblo-iiznuaza0dh.ws-eu106.gitpod.io",
 ]
 
 ROOT_URLCONF = 'tastytales.urls'

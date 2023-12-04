@@ -6,8 +6,6 @@ var commentText = document.getElementsByTagName("textarea")[0];
 var commentForm = document.getElementById("commentForm");
 var submitButton = document.getElementById("submitButton");
 
-// empty the comment text after post
-
 commentText.value = "";
 
 console.log('script.js loaded');

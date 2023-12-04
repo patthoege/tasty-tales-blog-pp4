@@ -11,6 +11,9 @@ from django.contrib import messages
 
 
 class Profile(View):
+    """
+    Handle GET  and POST requests for the profile view.
+    """
     def get(self, request, profile, *args, **kwargs):
         get_user = get_object_or_404(User, username=profile)
 
@@ -18,14 +21,18 @@ class Profile(View):
             posted_recipes = Post.objects.filter(author=get_user, status=1)
             user_posts = Post.objects.filter(author=get_user, status=1)
         else:
-            posted_recipes = Post.objects.filter(author=get_user, approved=True, status=1)
-            user_posts = Post.objects.filter(author=get_user, approved=True, status=1)
+            posted_recipes = Post.objects.filter(
+                author=get_user, approved=True, status=1
+            )
+            user_posts = Post.objects.filter(
+                author=get_user, approved=True, status=1
+            )
 
-
-        profile_image = CloudinaryImage().image(quality='auto', fetch_format='auto')
+        profile_image = CloudinaryImage().image(
+            quality='auto', fetch_format='auto'
+        )
 
         if not request.user.is_authenticated:
-            # If the user is not authenticated, redirect them to the sign-up page
             return redirect(reverse('account_signup'))
 
         return render(
@@ -39,9 +46,12 @@ class Profile(View):
             },
         )
 
+
 class EditProfile(LoginRequiredMixin, View):
+    """
+    Handle GET and POST requests for the edit profile view.
+    """
     def get(self, request, *args, **kwargs):
-        # get_user = User.objects.get(id=request.user.id)
         get_user = get_object_or_404(User, id=request.user.id)
         profile_form = ProfileForm(instance=get_user.profile)
 
@@ -52,6 +62,7 @@ class EditProfile(LoginRequiredMixin, View):
                     'profile_form': profile_form,
                     'profile': get_user.profile,
                 })
+
     def post(self, request, *args, **kwargs):
         get_user = User.objects.get(username=request.user)
 
@@ -62,10 +73,10 @@ class EditProfile(LoginRequiredMixin, View):
             )
 
         if profile_form.is_valid():
-            if 'clear_image' in request.POST: 
+            if 'clear_image' in request.POST:
                 get_user.profile.profile_image.delete()
                 get_user.profile.profile_image = None
-                get_user.profile.save()  
+                get_user.profile.save()
             else:
                 profile_form.save()
 
@@ -76,10 +87,12 @@ class EditProfile(LoginRequiredMixin, View):
             return redirect(
                 reverse(
                     "profile",
-                    kwargs={'profile': get_user.profile} 
+                    kwargs={'profile': get_user.profile}
                     ))
         else:
-            messages.error(request, 'There was an error updating the profile. Please check the form.')
+            messages.error(
+                request, 'There was an error updating the profile'
+            )
             return render(
                 request,
                 'edit_profile.html',

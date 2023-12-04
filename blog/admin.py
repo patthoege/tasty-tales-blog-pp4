@@ -35,7 +35,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_filter = ('user',)
     search_fields = ['bio', 'first_name', 'last_name']
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_filter = ('name',)
-    
