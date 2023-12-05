@@ -359,8 +359,6 @@ nav.navbar-nav a.nav-link.active {
     color: #333;
 }
 /* -------------------------------------------- Link - Button */
-/* Button Styles */
-/* inspiration from https://codepen.io/flvffywvffy/pen/rNoeymB */
 .btn-effect {
     background: #fffcd5;
     box-shadow: 4px 4px #ffc107, 9px 9px #151515;

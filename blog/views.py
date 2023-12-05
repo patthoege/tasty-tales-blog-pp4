@@ -59,7 +59,6 @@ class AddPost(LoginRequiredMixin, View):
                 new_post.save()
                 messages.success(request, 'Your post has been saved.')
 
-                # Redirect to the draft_list page
                 return HttpResponseRedirect(reverse('draft_list'))
 
             elif "publish_post" in request.POST:
