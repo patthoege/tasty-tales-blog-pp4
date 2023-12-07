@@ -146,11 +146,21 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - **Logo:** A TastyTales logo with a link to the home page.
     - **Navigation Links:** Home, About, Category, New Post, and Profile (with dropdown for authenticated users). Login and Sign Up links are also included for non-authenticated users.
     - **Search Bar:** A search bar with a search button, allowing users to search for recipes.
-    ![Navbar Image](docs/img/.png)
+    <details><summary><b> Navbar Non-user Image</b></summary>
+    
+    ![Navbar Non-user Image](docs/img/features/navbar-invalid.png)
+    </details><br />
+    <details><summary><b>Navbar User Image</b></summary>
 
+    ![Navbar User Image](docs/img/features/navbar-valid.png)
+    </details><br />
+    <details><summary><b>Navbar User Dropdown Image</b></summary>
+    
+    ![Navbar User Dropdown Image](docs/img/features/navbar-dropdown.png)
+    </details><br />
+   
     ## 2. Message Alerts
     The template displays message alerts to users for various CRUD operations or other system messages. Messages include icons for success, info, warning, or error, along with a close button. Includes a JavaScript script that automatically removes message alerts after a timeout of 4 seconds, providing a clean user experience.
-    ![Message Alerts Image](docs/img/.png)
 
     ## 3. Footer
     The footer is divided into several sections:
@@ -159,12 +169,23 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - **Quick Links:** Links to About, Category, New Post, Your Drafts, and user profile pages (if authenticated).
     - **Connect with Us:** Social media links (Google, Instagram, LinkedIn, GitHub) for users to connect with the platform.
     - **Footer Bottom:** Displays copyright information and states that all rights are reserved to TastyTales.
-    ![Footer Image](docs/img/.png)
+    
+    <details><summary><b>Footer Image</b></summary>
+
+    ![Footer Image](docs/img/features/footer.png)
+    </details><br />
+    <details><summary><b>Footer Non-users Image</b></summary>
+
+    ![Footer Non-users Image](docs/img/features/footer-invalid.png)
+    </details><br />
 
     ## 4. Main Page 
 
     This template extends the base.html template, indicating that it inherits its structure and styles.
-
+  - Hero Section
+    - Displays a welcoming message with the title "Welcome to TastyTales" for non-authenticated users.
+    - Showcases the essence of TastyTales, inviting users to join the culinary adventure.
+  - Blog List Column
     - Displays a large title "The Latest & Greatest."
     - Iterates over a list of blog posts (`post_list`) and displays each post in a card format.
     - If a featured image is present, it is displayed. Otherwise, a default image is used.
@@ -178,15 +199,12 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - If pagination is enabled (is_paginated), standard pagination links are displayed to navigate between pages.
     - "Previous" and "Next" buttons are provided when applicable.
 
-    **Responsive Design**
-    - The layout is designed to be responsive, adapting to different screen sizes.
+    <details><summary><b>Main Page Image</b></summary>
 
-    **External Libraries**
-    - Utilizes FontAwesome for the heart icon.
+    ![ Main Page Image](docs/img/features/main-page.png)
+    </details><br />
 
-    ![ Main Page Image](docs/img/.png)
-
-    ## 5. Post Creation and Editing Page
+    ## 5. Post Creation Page
 
     This template is designed for editing and creating blog posts. It includes features to guide users through the editing process.
 
@@ -204,12 +222,16 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - Includes a title, body, and an option to upload a featured image.
     - "Save Draft" button: Allows saving the post as a draft.
     - "Publish" button: Publishes the post.
+    
+    <details><summary><b>Add Post Image</b></summary>
 
-    ![ Image](docs/img/.png)
+    ![Add Post Image](docs/img/features/add-post.png)
+    </details><br />
 
     ## 6.Post Editing Page
 
     This template is designed for editing an existing blog post. It includes features to display an alert for post approval and a form for editing a post.
+    ![ Image]
 
     -  Provides a background image container for an enhanced visual experience.
     - Checks if the post has been successfully submitted.
@@ -221,8 +243,14 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - Heading for the post editing section.
     -  Uses Crispy Forms to render the form with enhanced styling.
     - A button for submitting the updated post.
+    <details><summary><b>Post Awaiting Approval Image</b></summary>
 
-    ![ Image](docs/img/.png)
+    ![Post Awaiting Approval Image](docs/img/features/post-detail-awaiting-approval.png)
+    </details><br />
+    <details><summary><b>Edit Draft Image</b></summary>
+
+    ![Edit Draft Image](docs/img/features/edit-draft.png)
+    </details><br />
 
     ## 7. Post Deletion Confirmation Page
     This template is designed for confirming the deletion of a blog post. It includes features for displaying a confirmation message and providing options to either delete the post or cancel the action.
@@ -236,7 +264,10 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Button for confirming and submitting the deletion.
       - Button for canceling the deletion and redirecting to the home page.
 
-    ![ Image](docs/img/.png)
+    <details><summary><b>Delete Post Image</b></summary>
+
+    ![Delete Post Image](docs/img/features/delete-post.png)
+    </details><br />
 
     ## 8. Draft List Page
 
@@ -253,8 +284,11 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - Handles the case when there are no drafts.
       - Displays a message encouraging the user to turn their draft ideas into posts.
         - Button for creating a new post.
+    
+    <details><summary><b>Draft List Image</b></summary>
 
-    ![ Image](docs/img/.png)
+    ![Draft List Image](docs/img/features/draft-list.png)
+    </details><br />
 
     ## 9. Draft Editing Template Features
 
@@ -268,8 +302,15 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Button for deleting the draft.
       - Button for saving the draft.
       - Button for publishing the draft.
+    
+    <details><summary><b>Draft List Image</b></summary>
 
-    ![ Image](docs/img/.png)
+    ![Draft List image](docs/img/features/draft-list.png)
+    </details><br />
+    <details><summary><b>Draft List Empty Image</b></summary>
+
+    ![Draft List image](docs/img/features/empty-draft.png)
+    </details><br />
 
     ## 10. Post Detail Page
 
@@ -297,7 +338,18 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Shows a login prompt if the user is not authenticated.
     - Modal for confirming the deletion of a comment.
 
-    ![ Image](docs/img/.png)
+    <details><summary><b> Masthead Image</b></summary>
+    
+    ![Masthead image](docs/img/features/masthead.png)
+    </details><br />
+    <details><summary><b>Post Detail Image</b></summary>
+    
+    ![Post detail image](docs/img/features/content.png)
+    </details><br />
+    <details><summary><b>Comment Section Image</b></summary>
+    
+    ![Comment image](docs/img/features/comment.png)
+    </details><br />
 
     ## 11. Category List Page
 
@@ -318,7 +370,15 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
           - Each category is displayed in a column with a link to view posts in that category.
     - Link to navigate back to the home page.
 
-    ![ Image](docs/img/.png)
+    
+    <details><summary><b>Category Add List Image</b></summary>
+    
+    ![Category Image](docs/img/features/category-add-list.png)
+    </details><br />
+    <details><summary><b>Category List SignUp Image</b></summary>
+    
+    ![Category Image](docs/img/features/category-signup.png)
+    </details><br />
 
     ## 12. Category Posts Page
 
@@ -336,8 +396,14 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - "Create a Post" button to redirect to the add post page.
 
     - Link to navigate back to the category list.
-
-    ![ Image](docs/img/.png)
+    <details><summary><b>Category Post Image</b></summary>
+    
+    ![Category Post Image](docs/img/features/category-post.png)
+    </details><br />
+    <details><summary><b>Category Empty Post Image</b></summary>
+    
+    ![Category Empty Post Image](docs/img/features/category-empty-post.png)
+    </details><br />
 
     ## 13. About Me Page
 
@@ -349,7 +415,10 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - Invitation message.
       - Call-to-action button linking to the account signup page.
 
-    ![ Image](docs/img/.png)
+    <details><summary><b>About Image</b></summary>
+    
+    ![About Image](docs/img/features/about.png)
+    </details><br />
 
     ## 14. Search Results Page
 
@@ -372,8 +441,14 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - If no search query is provided.
       -  Display a message indicating no search query.
       -  Display common tags section.
-
-    ![ Image](docs/img/.png)
+    <details><summary><b>Search Page Image</b></summary>
+    
+    ![Search Page Image](docs/img/features/search-page.png)
+    </details><br />
+    <details><summary><b>No Search Results Page Image</b></summary>
+    
+     ![No Search Results Page Image](docs/img/features/no-search-results.png)
+    </details><br />
 
     ## 15. Posts by Tag Page
 
@@ -397,10 +472,26 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
             -  Post title with a link to the post detail page.
             - Post excerpt.
             - Display post tags.
+    <details><summary><b>Post Tag Page Image</b></summary>
+    
+    ![ Post Tag Image](docs/img/features/post-tag-page.png)
+    </details><br />
 
-    ![ Image](docs/img/.png)
-
-    ## 16. 404 Page Page
+    ## 16. SignUp, SignIn and SignOut Page
+    <details><summary><b>SignUp Image</b></summary>
+    
+    ![SignUp Image](docs/img/features/signup.png)
+    </details><br />
+    <details><summary><b>SignIn Image</b></summary>
+    
+    ![SignIn Image](docs/img/features/login.png)
+    </details><br />
+    <details><summary><b>SignOut Image</b></summary>
+    
+    ![SignOut Image](docs/img/features/signout.png)
+    </details><br />
+      
+    ## 17. 404 Page
 
     This template is designed to display a 404 page indicating that the requested page is unavailable. It includes a 404 heading, a message, and a search bar for users to navigate or search for content.
 
@@ -416,7 +507,10 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Form for the search bar. Input field for searching recipes.
           - Search button with a magnifying glass icon.
 
-    ![ Image](docs/img/.png)
+    <details><summary><b>Image</b></summary>
+    
+    ![ Image](docs/img/features/)
+    </details><br />
 
     [Back to top](<#table-of-contents>)
 
@@ -580,6 +674,8 @@ To run TastyTales on the local machine, I follow these steps:
   - Was used to to incorporate font styles.  
 - [Bootstrap](https://getbootstrap.com/)
   - Was used to create the front-end design.
+- [Animate.css](https://animate.style/)
+  - Was used to create animation to the project.
 - [GitPod:](https://gitpod.io/)
   - Gitpod was used as IDE to commit and push the project to GitHub.
 - [GitHub:](https://github.com/)
