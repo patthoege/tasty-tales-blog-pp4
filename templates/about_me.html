@@ -2,7 +2,7 @@
 {% block title %}About Me{% endblock %}
 
 {% block content %}
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5 p-3">
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
             <h2>About Me</h2>
@@ -39,11 +39,13 @@
             </p>
         </div>
     </div>
+    {% if not user.is_authenticated %}
     <div class="row mt-4">
         <div class="col-md-8 offset-md-2 text-center">
             <p>Ready to embark on this culinary adventure?</p>
             <a href="{% url 'account_signup' %}" class="btn-effect">Sign Up Now!</a>
         </div>
     </div>
+    {% endif %}
 </div>
 {% endblock %}

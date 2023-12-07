@@ -3,12 +3,7 @@
 {% block content %}
     <div class="container mt-5 min-vh-100">
         <!-- Tag post section -->
-        <h3 class="m-4">Most Common Tags:
-            {% for tag in common_tags %}
-            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none">#{{ tag.name }}</a>
-            {% endfor %}
-        </h3>
-        <div class="row m-1 mb-2">
+        <div class="row m-1 mb-2 animate__animated animate__fadeIn">
             {% for post in posts %}
                 <div class="col-md-6">
                     <div class="card-body py-0 custom-card-search mb-4">
@@ -35,5 +30,10 @@
                 </div>
             {% endfor %}
         </div>
+        <h3 class="m-4">Most Common Tags:
+            {% for tag in common_tags %}
+            <a href="{% url 'tagged' tag.slug %}" class="badge bg-warning text-dark text-decoration-none me-1 m-1">#{{ tag.name }}</a>
+            {% endfor %}
+        </h3>
     </div>
 {% endblock %}

@@ -3,9 +3,24 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-5">
+    <!-- Hero Section -->
+    {% if not user.is_authenticated %}
+    <div class="row px-4 py-5 my-5 hero-content text-center animate__animated animate__fadeIn animate__slow animate__delay-1s animate__repeat-1">
+        <h1 class="display-5 fw-bold">Welcome to <span>TastyTales</span></h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="m-4">At TastyTales, we're not just cooking; we're crafting delicious stories with every dish. Join our vibrant community of passionate cooks and foodies, where we share, create, and savor the joy of mouthwatering narratives.</p>
+            <div class="mt-4">
+                <div class="col-md-8 offset-md-2 text-center animate__animated animate__fadeIn">
+                    <p>Ready to embark on this culinary adventure?</p>
+                    <a href="{% url 'account_signup' %}" class="btn-effect">Sign Up Now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Blog Entries Column -->
+    <div class="row no-gutters animate__animated animate__fadeInLeft animate__slow animate__delay-1s animate__repeat-1">
+        <div class="col-12 mt-2">
                 <h2 class="post-list-title m-2 fs-2 ms-4">The Latest & Greatest</h2>
                 {% for post in post_list %}
                 <div class="col-md-9 ms-5">

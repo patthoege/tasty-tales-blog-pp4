@@ -55,6 +55,11 @@ nav.navbar-nav a.nav-link.active {
     height: 1.5em;
 
 }
+/* -------------------------------------------- Main Page */
+.hero-content h1 span {
+    color: #ffc107;
+}
+  
 /* -------------------------------------------- Recipe Cards */
 .card {
     border: none;
@@ -205,6 +210,11 @@ nav.navbar-nav a.nav-link.active {
     margin-top: 1.3em;
     margin-bottom: 1em;
 }
+/* -------------------------------------------- Draft List Page */
+.draft-container {
+    min-height: 60vh;
+}
+
 /* -------------------------------------------- Search Page & Tags Page */
 .card-img-top {
     width: 100%; 

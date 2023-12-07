@@ -7,7 +7,7 @@
 <div class="container">
 {% if user.is_authenticated %}    
     <!-- Users can add categories -->
-    <div class="row pt-5 p-2">
+    <div class="row pt-5 p-2 animate__animated animate__fadeIn animate__slow animate__delay-1s animate__repeat-1">
         <div class="col-md-4 offset-md-4 mb-4 mx-auto">
             <div class="bg-light p-4 custom-form custom-card-search">
                 <h2 class="h4 font-weight-bold mb-3">Create Category</h2>
@@ -33,7 +33,7 @@
     </div>
 {% endif %} 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 animate__animated animate__fadeInLeft animate__slow animate__delay-1s animate__repeat-1">
             <h2 class="h4 font-weight-bold mb-3">Existing Categories</h2>
             <div class="row">
                 <!-- Content to display categories -->
@@ -47,9 +47,13 @@
             </div>
         </div>
     </div> 
-<br/><br/>
-<a href="{% url 'home' %}" class="post-link"> >> Back</a>
-<br/><br/>      
+<br/>
+<div class="d-flex justify-content-start p-3">
+    <div class="btn page-link">
+        <a href="{% url 'home' %}" class="text-decoration-none text-dark link"> >> Back </a>
+    </div>
+</div>
+<br/> 
 </div>
 
 {% endblock %}

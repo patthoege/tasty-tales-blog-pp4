@@ -2,9 +2,9 @@
 {% extends 'base.html' %}
 {% block title %}Your Drafts{% endblock %}
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-10 m-4">
+<div class="container d-flex flex-column draft-container">
+    <div class="row flex-grow-1">
+        <div class="col-10 mt-5">
             <h2>Your Drafts</h2>
 
             {% if drafts %}
