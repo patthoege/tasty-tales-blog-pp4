@@ -7,10 +7,12 @@
 
 <div class="bg-img-container">
   <div class="welcome-container">
-    <p class="text-center">{% blocktrans %}Already have an account? </br>Then please <a class="link-sign" href="{{ login_url }}">Sign In</a>.{% endblocktrans %}</p>
-    <div class="row">
+    <div class="row mt-5 pt-5">
       <div class="col-lg-6 mx-auto">
-        <div class="form-sign form-signup w-100 m-auto">
+        <p class="text-center mt-5 pt-5">
+          {% blocktrans %}Already have an account? </br>Then please <a class="link-sign" href="{{ login_url }}">Sign In</a>.{% endblocktrans %}
+        </p>
+        <div class="form-sign form-signup w-100 m-auto mt-2">
           <form id="signup_form" method="post" action="{% url 'account_signup' %}">
             <h1 class="text-center">{% trans "Sign Up" %}</h1>
             {% csrf_token %}

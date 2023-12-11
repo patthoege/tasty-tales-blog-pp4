@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Searched For "{{ searched }}"{% endblock %}
 {% block content %}
-    <div class="container mt-5 min-vh-100">
+    <div class="container mt-5 pt-5 min-vh-100">
         {% if searched %}
-            <h1 class="post-list-title text-center mb-4">You Searched For "{{ searched }}"</h1>
+            <h1 class="post-list-title text-center mb-5 mt-5">You Searched For "{{ searched }}"</h1>
             {% if posts %}
             <!-- Display the posts -->
                 <div class="row m-1 animate__animated animate__fadeIn">
@@ -36,9 +36,9 @@
             {% else %}
             <!-- Not results found -->
                 <div class="text-center animate__animated animate__fadeIn">
-                    <h3>NO POSTS FOUND. TRY A DIFFERENT SEARCH?</h3>
+                    <h3 class="mt-5">NO POSTS FOUND. TRY A DIFFERENT SEARCH?</h3>
                     <br/><br/>
-                    <div class="text-center">
+                    <div class="text-center ">
                         <!-- Display the tags -->
                         <h3>Most Common Tags
                             {% for tag in common_tags %}
@@ -50,7 +50,7 @@
             {% endif %}
         {% else %}
            <!-- No searched -->
-            <div class="text-center h-100 d-flex flex-column justify-content-center">
+            <div class="text-center pt-5 h-100 d-flex flex-column justify-content-center">
                 <h2>Oops! You Forgot To Search For A Recipe...!<br/> Use the search bar at the top</h2>
             </div>
             <br/><br/>

@@ -23,92 +23,79 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body class="d-flex flex-column h-100 main-bg navbar-padding">
-    <div class="container-fluid">
-    <header>
-        <!-- Nav Bar template by Bootstrap -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <a class="navbar-brand logo" href="{% url 'home' %}">
-                        <img class="logo-img" role="img" src="{% static 'images/logo-brand.webp' %}" alt="Logo">
-                    </a> 
-                </div>
-                <!-- Navbar toggle for smaller screens, targets nav menu container -->
-                <button class="navbar-toggler bg-main" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                 </button>
+<body class="d-flex flex-column h-100 main-bg">
+ <!-- ======= Header ======= -->
+<header id="header" class="fixed-top p-sm-1 p-md-1 p-lg-2 mt-0">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+        <nav id="navbar" class="navbar navbar-expand-lg order-last order-lg-0 w-100">
+        <!-- Logo -->
+        <h1 class="logo me-auto me-lg-0 fw-bold">
+            <a class="navbar-brand logo mb-2" href="{% url 'home' %}">Tasty<span class="fs-6 text fw-lighter">for the homecook</span>Tales</a>
+        </h1>            
             
-                <!-- Nav menu (collapsible on smaller screens) -->
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" aria-current="page" href="{% url 'home' %}" aria-label="Home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="{% url 'about_me' %}" aria-label="about_me">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'category_list' %}">Category</a>
-                        </li>
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'add_post' %}">New Post</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Profile
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'profile' profile=request.user.username %}">{{ user.profile }}</a></li>
+            <!-- Navbar toggle for smaller screens, targets nav menu container -->
+            <button class="navbar-toggler bg-main" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="navbar-toggler-icon fa-solid fa-bars mobile-nav-toggle"></i>
+            </button>
 
-                                <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
+                    <li><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+                    <li><a class="nav-link" href="{% url 'about_me' %}">About</a></li>
+                    <li><a class="nav-link" href="{% url 'category_list' %}">Category</a></li>
 
-                                <li><a class="dropdown-item" href="{% url 'draft_list' %}">Your Drafts</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="nav-link" href="{% url 'add_post' %}">New Post</a></li>
 
-                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                        {% else %}
-                                <li class="nav-item d-sm-block d-md-none">
-                                    <a href="{% url 'account_login' %}" class="nav-link me-2">Login</a>
-                                </li>
-                                <li class="nav-item d-sm-block d-md-none">
-                                    <a href="{% url 'account_signup' %}" class="nav-link me-2">Sign Up</a>
-                                </li>
-                                
-                                <!-- Login and Sign Up Links (visible on medium and larger screens) -->
-                                <li class="nav-item d-none d-md-block">
-                                    <a href="{% url 'account_login' %}" class="nav-link me-2">Login</a>
-                                </li>
-                                <li class="nav-item d-none d-md-block">
-                                    <a href="{% url 'account_signup' %}" class="nav-link me-2">Sign Up</a>
-                                </li>                        
-                        {%  endif %}
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- Search bar -->
-                    <form class="d-flex" role="search" method="POST" action="{% url 'search_results' %}">
-                        {% csrf_token %}
-                        <input class="form-control me-2" type="search" placeholder="Search recipes" name="searched"
-                            aria-label="Input search">
-                            <div class="d-flex me-4">
-                                <button class="btn btn-search btn-dark fw-bold" type="submit" aria-label="Search">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
-                    </form>
-                </div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Profile
+                        </a>
+                        <ul class="dropdown-menu fw-bold">
+                            <li><a class="dropdown-item" href="{% url 'profile' profile=request.user.username %}">{{ user.profile }}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'draft_list' %}">Your Drafts</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="d-sm-block d-md-none">
+                        <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                    </li>
+                    <li class="d-sm-block d-md-none">
+                        <a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a>
+                    </li>
+                    <!-- Login and Sign Up Links (visible on medium and larger screens) -->
+                    <li class="d-none d-md-block fw-bold">
+                        <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                    </li>
+                    <li class="d-none d-md-block fw-bold">
+                        <a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <!-- Search bar -->
+                <form class="d-flex p-lg-1" role="search" method="POST" action="{% url 'search_results' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search recipes" name="searched"
+                        aria-label="Input search">
+                    <div class="d-flex me-4">
+                        <button class="btn btn-search btn-dark fw-bold" type="submit" aria-label="Search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </nav>
-    </header>
+    </div>
+</header><!-- End Header -->
 
-    <!-- Message alert user crud functionality -->
+    <!-- Message alert user CRUD functionality -->
     <div class="container">
-        <div class="row pt-4">
-            <div class="col-lg-6 col-md-8 offset-md-2">
+        <div class="row">
+            <div class="col-lg-6 col-md-8">
                 {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -141,6 +128,10 @@
           <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
         </symbol>
     </svg>
+
+  {% block hero_image %}
+  {% endblock %}
+
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -277,5 +268,4 @@
     </script>
     </div>
 </body>
-
 </html>
