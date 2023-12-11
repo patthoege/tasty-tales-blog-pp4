@@ -13,14 +13,14 @@
 <section id="hero" class="d-flex align-items-center justify-content-center">
     <div class="container mt-5">
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center animate__animated animate__fadeInDown animate__slow animate__delay-1s animate__repeat-1">
         <div class="col-xl-6 col-lg-8">
             <h1 class="mt-5">Discover Popular Tales</h1>
             <h2 class="mb-4">Explore trending topics and discover delicious stories</h2>
         </div>
       </div>
    
-      <div class="row gy-4 justify-content-center">
+      <div class="row gy-4 justify-content-center animate__animated animate__fadeIn animate__slow animate__delay-2s animate__repeat-1">
         {% for tag in common_tags %}
         <div class="col-xl-2 col-md-4">
           <div class="icon-box">
@@ -37,12 +37,12 @@
 <!-- ======= Hero Section for Non-Logged-in Users ======= -->
 <section id="hero" class="d-flex align-items-center justify-content-center">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center animate__animated animate__fadeInDown animate__slow animate__delay-1s animate__repeat-1">
       <div class="col-xl-6 col-lg-8">
         <h1 class="display-5 fw-bold text-white mt-5">Welcome to <span>TastyTales</span></h1>
         <p class="m-4 text-white">At TastyTales, we're not just cooking; we're crafting delicious stories with every dish. Join our vibrant community of passionate cooks and foodies, where we share, create, and savor the joy of mouthwatering narratives.</p>
         <div class="mt-4">
-          <div class="col-md-8 offset-md-2 text-white text-center animate__animated animate__fadeIn">
+          <div class="col-md-8 offset-md-2 text-white text-center">
             <p>Ready to embark on this culinary adventure?</p>
             <a href="{% url 'account_signup' %}" class="btn-effect mt-2">Sign Up Now!</a>
           </div>
