@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 {% load custom_filters %}
 
-<div class="masthead mt-5 pt-5">
+<div class="masthead mt-5 pt-2">
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-md-6 masthead-text">
@@ -109,9 +109,9 @@
         <div class="row no-gutters">
           <div class="col-md-2">
             {% if post.author.profile.profile_image and post.author.profile.profile_image.url %}
-            <img src="{{ post.author.profile.profile_image.url }}" class="img-fluid card-img rounded-circle custom-border"  width="110" height="180" alt="Featured Image">
+            <img src="{{ post.author.profile.profile_image.url }}" class="img-fluid card-img rounded-circle custom-border" width="110" height="180" alt="Featured Image">
             {% else %}
-            <img src="{% static 'images/logo-brand.webp' %}" role="img" class="img-fluid card-img rounded-circle custom-border"  width="110" height="180" alt="Default Image">
+            <img src="{% static 'images/logo-brand.webp' %}" role="img" class="img-fluid card-img rounded-circle custom-border" width="110" height="180" alt="Default Image">
             {% endif %}
           </div>
           <div class="col-md-10">

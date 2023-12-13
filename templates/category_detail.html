@@ -8,7 +8,7 @@
 {% if user.is_authenticated %}    
     <!-- Users can add categories -->
     <div class="row pt-5 p-2 animate__animated animate__fadeIn animate__slow animate__delay-1s animate__repeat-1">
-        <div class="col-md-4 mt-3 pt-5 offset-md-4 mb-4 mx-auto">
+        <div class="col-md-4 mt-3 pt-3 offset-md-4 mb-4 mx-auto">
             <div class="bg-light p-4 custom-form custom-card-search">
                 <h2 class="h4 font-weight-bold mt-sm-5 mb-3">Create Category</h2>
                 <form method="post" action="{% url 'category_list' %}">

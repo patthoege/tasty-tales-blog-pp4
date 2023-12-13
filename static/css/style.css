@@ -4,7 +4,7 @@ body {
     background-color: #ebe7e4bd;
     font-family: 'Noto Serif', serif;
     margin: 0;
-    padding-top: 5em;
+    padding: 0;
 }
 /*-------------------------------------------------- 
 Navigation/Logo
@@ -402,19 +402,34 @@ Navigation/Logo
 /* -------------------------------------------------- 
 Alert messages 
 -------------------------------------------------- */
-.custom-alert {
+.alert-container {
+    display: flex;
     justify-content: center;
-    margin: auto;
-    text-align: left;
-    padding: 1rem;
-    background-color: rgba(44, 43, 43, 0.5); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    align-items: center;
+    position: relative;
+    top: 14%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
 }
 
-.custom-alert .bi {
+ul .messages  {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(44, 43, 43, 0.5); 
+    padding: 0;
+    margin: 0; 
+}
+
+.messages li {
+  list-style: none;
+}
+
+.messages .bi {
     width: 1.5em;
     height: 1.5em;
-
 }
 /* -------------------------------------------------- 
 Main Page 
@@ -759,7 +774,9 @@ Profile
     background-color: #fff;
     color: #333;
 }
-/* -------------------------------------------- Link - Button */
+/* --------------------------------------------------
+Link - Button 
+--------------------------------------------------*/
 .btn-effect {
     background: #fffcd5;
     box-shadow: 4px 4px #ffc107, 9px 9px #151515;
@@ -944,7 +961,9 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 .footer-link:hover {
     color: #ffc107;
 }
-/* -------------------------------------------- Footer */
+/* --------------------------------------------------
+ Footer 
+ --------------------------------------------------*/
 /* Override Bootstrap container styles */
 .container,
 .container-fluid,
@@ -1047,7 +1066,9 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
     justify-content: center;
 }
 
-/* --------------------------------------------  Media Queries */
+/* --------------------------------------------------
+ Media Queries 
+ --------------------------------------------------*/
 @media (max-width: 768px) and (max-width: 1200px) {
     .logo {
       margin-left: 10px;

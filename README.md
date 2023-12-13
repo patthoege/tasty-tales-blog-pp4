@@ -571,13 +571,12 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 ### 7. Most Common Tags Not Displaying Updated Information
 - The common tags feature, the tags were not displaying the most recent and common ones. I realized that after resetting the database schema and creating new posts with updated tags, the old most common tags continued to be displayed. The issue stemmed from the context processor that was fetching the first four tags without considering the number of associated posts. To resolve this, I modified the context processor to use the same logic applied in the SearchResults view. The context processor now annotates the tags with the count of associated posts and orders them accordingly, ensuring that only the top four most common tags are retrieved.
 
-
-
 ## Media Query - Responsive Web Design
 -
 
 ## Unfixed bugs
--
+- Unique Title Constraint: Editing a post in draft mode cannot be saved due to the unique title constraint. Removing the constraint alters slug-related issues.
+- ck Editor Form Image Upload Responsiveness: Uploading images in the form without setting a radio button for image selection results in unresponsiveness across the screen, particularly on small devices.
 
 [Back to top](<#table-of-contents>)
 
