@@ -158,11 +158,49 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     
     ![Navbar User Dropdown Image](docs/img/features/navbar-dropdown.png)
     </details><br />
-   
-    ## 2. Message Alerts
-    The template displays message alerts to users for various CRUD operations or other system messages. Messages include icons for success, info, warning, or error, along with a close button. Includes a JavaScript script that automatically removes message alerts after a timeout of 4 seconds, providing a clean user experience.
 
-    ## 3. Footer
+    ## 2. Hero Image
+    The Hero Content template is designed to dynamically display content based on whether the user is authenticated or not. It serves as the introduction to the TastyTales website, welcoming users and providing a glimpse into the platform's features.
+
+    ### For Logged-in Users
+    - If the user is logged in, the Hero Section showcases popular tales and trending topics. It features an animated presentation with a header, subheader, and a set of icon boxes representing common tags. Users can click on these tags to explore related content.
+      <details><summary><b>Hero Image</b></summary>
+        
+      ![Hero Image](docs/img/features/hero-image-valid.png)
+      </details><br />
+
+    ### For Non-Logged-in Users
+    - For non-logged-in users, the Hero Section invites them to join TastyTales and explore the world of culinary storytelling. It includes a welcoming header, a brief description of TastyTales' purpose, and a call-to-action button for signing up.
+      <details><summary><b>Hero Image</b></summary>
+        
+      ![Hero Image](docs/img/features/hero-image-invalid.png)
+      </details><br />
+   
+    ## 3. Message Alerts
+    The template displays message alerts to users for various CRUD operations or other system messages. Messages include icons for success, info, warning, or error, along with a close button. Includes a JavaScript script that automatically removes message alerts after a timeout of 4 seconds, providing a clean user experience.
+    - Examples
+      <details><summary><b>Message One Image</b></summary>
+    
+      ![ Message Image](docs/img/features/alert-message-1.png)
+      </details><br />
+
+      <details><summary><b>Message Two Image</b></summary>
+    
+      ![ Message Image](docs/img/features/alert-message-2.png)
+      </details><br />
+
+      <details><summary><b>Message Three Image</b></summary>
+    
+      ![ Message Image](docs/img/features/alert-message-3.png)
+      </details><br />
+
+      <details><summary><b>Message Four Image</b></summary>
+    
+      ![ Message Image](docs/img/features/alert-message-4.png)
+      </details><br />
+
+
+    ## 4. Footer
     The footer is divided into several sections:
     - **Brand Information:** Includes the TastyTales logo, a brief description, and a call-to-action for users to sign up.
     - **Common Tags:** Displays a list of common tags, each clickable and leading to posts with the respective tag.
@@ -179,7 +217,28 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Footer Non-users Image](docs/img/features/footer-invalid.png)
     </details><br />
 
-    ## 4. Main Page 
+    ## 5. Profile
+    * Profile Page: is designed to display user profile information, including a user's bio, profile image, and published posts. Only logged-in users can access the profile template.
+      - Profile Image: The user's profile image is displayed, or a default image is shown if not available.
+      - Profile Info: Shows the username and bio of the user.
+      - Edit Profile Button: Appears only if the logged-in user is viewing their own profile, allowing them to edit their profile.
+      - Post Cards: Posts are presented in a card format with featured images.
+        <details><summary><b>Profile Page Image</b></summary>
+
+        ![ Profile Page Image](docs/img/features/profile.png)
+        </details><br />
+
+    * Edit Profile:
+    The Edit Profile template provides a form for users to edit their profile information. Below is an explanation of its features:
+      - Profile Image: Displays the user's current profile image or a default image if not available.
+      - Edit Profile Form: Allows users to update their profile details, including the profile image.
+      - Save Changes Button: Appears only if the logged-in user is editing their own profile, enabling them to save the changes made.
+        <details><summary><b>Edit Profile Page Image</b></summary>
+
+        ![ Edit Profile Page Image](docs/img/features/edit-profile.png)
+        </details><br />
+
+    ## 6. Main Page 
 
     This template extends the base.html template, indicating that it inherits its structure and styles.
   - Hero Section
@@ -204,7 +263,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![ Main Page Image](docs/img/features/main-page.png)
     </details><br />
 
-    ## 5. Post Creation Page
+    ## 7. Post Creation Page
 
     This template is designed for editing and creating blog posts. It includes features to guide users through the editing process.
 
@@ -228,7 +287,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Add Post Image](docs/img/features/add-post.png)
     </details><br />
 
-    ## 6.Post Editing Page
+    ## 8. Post Editing Page
 
     This template is designed for editing an existing blog post. It includes features to display an alert for post approval and a form for editing a post.
     ![ Image]
@@ -243,16 +302,13 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     - Heading for the post editing section.
     -  Uses Crispy Forms to render the form with enhanced styling.
     - A button for submitting the updated post.
-    <details><summary><b>Post Awaiting Approval Image</b></summary>
 
-    ![Post Awaiting Approval Image](docs/img/features/post-detail-awaiting-approval.png)
-    </details><br />
     <details><summary><b>Edit Draft Image</b></summary>
 
     ![Edit Draft Image](docs/img/features/edit-draft.png)
     </details><br />
 
-    ## 7. Post Deletion Confirmation Page
+    ## 9. Post Deletion Confirmation Page
     This template is designed for confirming the deletion of a blog post. It includes features for displaying a confirmation message and providing options to either delete the post or cancel the action.
 
     - Creates a background image container with flex properties, aligning and justifying content in the center.
@@ -269,7 +325,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Delete Post Image](docs/img/features/delete-post.png)
     </details><br />
 
-    ## 8. Draft List Page
+    ## 10. Draft List Page
 
     This template is designed to display a user's drafts. It includes features for showing a list of drafts and providing a message when there are no drafts available.
 
@@ -290,7 +346,12 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Draft List Image](docs/img/features/draft-list.png)
     </details><br />
 
-    ## 9. Draft Editing Template Features
+    <details><summary><b>Draft List Empty Image</b></summary>
+
+    ![Draft List image](docs/img/features/empty-draft.png)
+    </details><br />
+
+    ## 11. Draft Editing Template
 
     This template is designed for editing and managing a draft. It provides features for editing draft content, deleting drafts, and saving or publishing drafts.
 
@@ -303,16 +364,12 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Button for saving the draft.
       - Button for publishing the draft.
     
-    <details><summary><b>Draft List Image</b></summary>
+    <details><summary><b>Edit Draft Image</b></summary>
 
-    ![Draft List image](docs/img/features/draft-list.png)
-    </details><br />
-    <details><summary><b>Draft List Empty Image</b></summary>
-
-    ![Draft List image](docs/img/features/empty-draft.png)
+    ![Draft List image](docs/img/features/edit-draft.png)
     </details><br />
 
-    ## 10. Post Detail Page
+    ## 12. Post Detail Page
 
     This template is designed for displaying the details of a blog post, including the post content, author information, comments section, and related actions.
 
@@ -351,7 +408,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Comment image](docs/img/features/comment.png)
     </details><br />
 
-    ## 11. Category List Page
+    ## 13. Category List Page
 
     This template is designed for displaying a list of existing categories, allowing users to add new categories if they are authenticated. If the user is not authenticated, a prompt to sign up is displayed.
 
@@ -380,7 +437,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Category Image](docs/img/features/category-signup.png)
     </details><br />
 
-    ## 12. Category Posts Page
+    ## 14. Category Posts Page
 
     This template is designed for displaying a list of posts within a specific category. It includes content to show posts when available and a message when there are no posts in the category.
 
@@ -405,7 +462,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Category Empty Post Image](docs/img/features/category-empty-post.png)
     </details><br />
 
-    ## 13. About Me Page
+    ## 15. About Me Page
 
     This template is designed for displaying information about the author and the purpose of the website. It includes sections about the author, the purpose of the website, and a call-to-action for signing up.
 
@@ -420,7 +477,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![About Image](docs/img/features/about.png)
     </details><br />
 
-    ## 14. Search Results Page
+    ## 16. Search Results Page
 
     This template is designed to display search results for recipes. It includes sections for displaying searched posts, handling cases where no results are found, and suggesting common tags for exploration.
 
@@ -450,7 +507,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
      ![No Search Results Page Image](docs/img/features/no-search-results.png)
     </details><br />
 
-    ## 15. Posts by Tag Page
+    ## 17. Posts by Tag Page
 
     This template is designed to display a list of posts associated with a specific tag. It includes sections for displaying the most common tags and a grid of posts related to the selected tag.
 
@@ -477,7 +534,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![ Post Tag Image](docs/img/features/post-tag-page.png)
     </details><br />
 
-    ## 16. SignUp, SignIn and SignOut Page
+    ## 17. SignUp, SignIn and SignOut Page
     <details><summary><b>SignUp Image</b></summary>
     
     ![SignUp Image](docs/img/features/signup.png)
@@ -491,7 +548,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![SignOut Image](docs/img/features/signout.png)
     </details><br />
       
-    ## 17. 404 Page
+    ## 18. 404 Page
 
     This template is designed to display a 404 page indicating that the requested page is unavailable. It includes a 404 heading, a message, and a search bar for users to navigate or search for content.
 
@@ -507,14 +564,16 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Form for the search bar. Input field for searching recipes.
           - Search button with a magnifying glass icon.
 
-    <details><summary><b>Image</b></summary>
+    <details><summary><b>404 PageImage</b></summary>
     
-    ![ Image](docs/img/features/)
+    ![404 Page Image](docs/img/features/)  
     </details><br />
 
     [Back to top](<#table-of-contents>)
 
   * ## Future Features
+    - Allow repetition of post titles for more flexibility.
+    - Implement a ratio image option in the ck editor form.
     - Enable users to print recipes.
     - Integrate a button option for selecting measurements in grams or ounces for precise ingredient quantities.
     - Incorporate the capability to dynamically adjust recipe quantities based on desired portions, with interactive "+" and "-"
