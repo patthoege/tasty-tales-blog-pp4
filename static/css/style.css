@@ -383,12 +383,15 @@ Navigation/Logo
   @media (max-width: 768px) {
     #hero h1 {
       font-size: 28px;
-      /* line-height: 36px; */
     }
+
     #hero .icon-box {
       padding: 10px 10px;
-      margin-top: 0;
+     
+      width: 50%;
+      margin: 0 auto;
     }
+
     #hero .icon-box h3 {
       font-weight: 500;
       margin: 5px;
@@ -397,7 +400,6 @@ Navigation/Logo
       font-size: 18px;
       line-height: 5px;
     }
-  
   }
 /* -------------------------------------------------- 
 Alert messages 
@@ -431,13 +433,12 @@ ul .messages  {
     width: 1.5em;
     height: 1.5em;
 }
-/* -------------------------------------------------- 
-Main Page 
--------------------------------------------------- */
-.hero-content h1 span {
-    color: #ffc107;
+
+@media (max-width: 768px) {
+  .alert-container {
+    top: 20%;
+  }
 }
-  
 /* -------------------------------------------------- 
 Recipe Cards 
 -------------------------------------------------- */
@@ -595,6 +596,33 @@ Add post page
 .comment-text-field {
     margin-top: 1.3em;
     margin-bottom: 1em;
+}
+/* -------------------------------------------------- 
+Category Page 
+-------------------------------------------------- */
+.category-wrapper {
+  transition: ease-in-out 0.3s;
+  border: 1px solid rgba(255, 196, 0.5);
+  background: #fff;
+  margin: 1em;
+}
+
+.category-wrapper:hover {
+  border-color: #fff;
+  background-color: rgba(255, 196, 0.5);
+  color: #000;
+}
+
+.category-wrapper a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .category-wrapper {
+    width: 50%; 
+    margin: 0 auto;
+  }
 }
 /* -------------------------------------------------- 
 Draft List Page 
@@ -783,9 +811,7 @@ Link - Button
     color: #151515;
     text-transform: lowercase;
     border: solid 2px #151515;
-  
     text-decoration: none;
-  
     padding: 18px 32px;
     display: inline-flex;
     align-items: center;
@@ -799,7 +825,6 @@ Link - Button
     transition-delay: 0s !important;
     text-transform: uppercase !important;
     letter-spacing: 1.5px;
-    font-family: freight-sans-pro, sans-serif;
   }
 
   .btn-effect::before {
@@ -961,10 +986,10 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
 .footer-link:hover {
     color: #ffc107;
 }
+
 /* --------------------------------------------------
- Footer 
+/* Override Bootstrap grid */
  --------------------------------------------------*/
-/* Override Bootstrap container styles */
 .container,
 .container-fluid,
 .container-lg,
@@ -975,6 +1000,20 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
     padding-right: 0;
     padding-left: 0;
 }
+
+.row {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x)/ -2);
+  margin-left: calc(var(--bs-gutter-x)/ -2);
+}
+
+/* --------------------------------------------------
+ Footer 
+ --------------------------------------------------*/
 
 .footer {
     background-color: #000;
@@ -1083,5 +1122,4 @@ button.nav-link.btn.me-2, button.nav-link.btn-signup {
     #header {
       line-height: 0.8;
     }
-    
 }

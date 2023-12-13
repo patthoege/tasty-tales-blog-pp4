@@ -5,55 +5,55 @@
 {% block content %}
 
 <div class="container mt-5 mt-sm-5 pt-5">
-{% if user.is_authenticated %}    
-    <!-- Users can add categories -->
-    <div class="row pt-5 p-2 animate__animated animate__fadeIn animate__slow animate__delay-1s animate__repeat-1">
-        <div class="col-md-4 mt-3 pt-3 offset-md-4 mb-4 mx-auto">
-            <div class="bg-light p-4 custom-form custom-card-search">
-                <h2 class="h4 font-weight-bold mt-sm-5 mb-3">Create Category</h2>
-                <form method="post" action="{% url 'category_list' %}">
-                    {% csrf_token %}
-                    {{ category_form.as_p }}
-                    <div class="d-flex justify-content-evenly mt-3">
-                        <button type="submit" class="btn btn-sign">Add Category</button>
-                    </div>  
-                </form>
-            </div>            
-        </div>
-    </div>
-    {% else %}
-    <!-- For visitors will display to sign up to add categories -->
-    <div class="row pt-5 p-2">
-        <div class="col-md-4 offset-md-4 mb-4 mx-auto">
-            <div class="bg-light p-4 custom-form custom-card-search text-center">
-                <p class="h5 mb-3">Sign up to add your favorite category!</p>
-                <p><a href="{% url 'account_signup' %}" class="btn btn-effect">Sign Up</a></p>
+    {% if user.is_authenticated %}    
+        <!-- Users can add categories -->
+        <div class="row pt-5 p-2 animate__animated animate__fadeIn animate__slow animate__delay-1s animate__repeat-1">
+            <div class="col-md-4 mt-3 pt-3 offset-md-4 mb-4 mx-auto">
+                <div class="bg-light p-4 custom-form custom-card-search">
+                    <h2 class="h4 font-weight-bold mt-sm-5 mb-3">Create Category</h2>
+                    <form method="post" action="{% url 'category_list' %}">
+                        {% csrf_token %}
+                        {{ category_form.as_p }}
+                        <div class="d-flex justify-content-evenly mt-3">
+                            <button type="submit" class="btn btn-sign">Add Category</button>
+                        </div>  
+                    </form>
+                </div>            
             </div>
         </div>
-    </div>
-{% endif %} 
-    <div class="row">
-        <div class="col-md-12 animate__animated animate__fadeInLeft animate__slow animate__delay-1s animate__repeat-1">
-            <h2 class="h4 font-weight-bold mb-3">Existing Categories</h2>
-            <div class="row">
+        {% else %}
+        <!-- For visitors will display to sign up to add categories -->
+        <div class="row pt-5 p-2">
+            <div class="col-md-4 offset-md-4 mb-4 mx-auto">
+                <div class="bg-light p-4 custom-form custom-card-search text-center">
+                    <p class="h5 mb-3">Sign up to add your favorite category!</p>
+                    <p><a href="{% url 'account_signup' %}" class="btn btn-effect">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    {% endif %} 
+        <div class="row">
+            <div class="col-md-12 animate__animated animate__fadeInLeft animate__slow animate__delay-1s animate__repeat-1">
+                <h2 class="h4 font-weight-bold mb-3">Existing Categories</h2>
                 <!-- Content to display categories -->
-                {% for category in categories %}
+                <div class="row">
+                    {% for category in categories %}
                     <div class="col-md-4 mb-3">
-                        <div class="bg-light p-3 text-center">
-                            <h5><a href="{% url 'category_posts' category.name %}" class="link">{{ category.name }}</a></h5>
+                        <div class="text-center category-wrapper p-3">
+                            <h5><a href="{% url 'category_posts' category.name %}">{{ category.name }}</a></h5>
                         </div>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
+        </div> 
+    <br/>
+    <div class="d-flex justify-content-start p-3">
+        <div class="btn page-link">
+            <a href="{% url 'home' %}" class="text-decoration-none text-dark link"> >> Back </a>
         </div>
-    </div> 
-<br/>
-<div class="d-flex justify-content-start p-3">
-    <div class="btn page-link">
-        <a href="{% url 'home' %}" class="text-decoration-none text-dark link"> >> Back </a>
     </div>
-</div>
-<br/> 
+    <br/> 
 </div>
 
 {% endblock %}

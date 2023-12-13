@@ -21,6 +21,14 @@ In addition, thorough testing has been performed and is described below, it cont
 | **User login - Form validation** | Submit incorrect name | Form validation prompts the user | PASS |
 | **User Logout page** | Test link is working | User is logged out | PASS |
 
+#### Hero Image
+| Testing  | Steps | Expected Outcome | Results |  
+| - | - | - | - |
+| **For Logged-in Users** | | | |
+| | View the page | The hero section displays with user-specific content. | PASS |
+| **For Non-Logged-in Users** | | | |
+| | View the page | The hero section displays a welcome message and an invitation to sign up. | PASS |
+
 #### Home Page
 | Testing | Steps | Expected Outcome| Results |
 | - | - | - | - |

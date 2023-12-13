@@ -564,9 +564,9 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
       - Form for the search bar. Input field for searching recipes.
           - Search button with a magnifying glass icon.
 
-    <details><summary><b>404 PageImage</b></summary>
+    <details><summary><b>404 Page Image</b></summary>
     
-    ![404 Page Image](docs/img/features/)  
+    ![404 Page Image](docs/img/features/error-page.png)  
     </details><br />
 
     [Back to top](<#table-of-contents>)
@@ -574,6 +574,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
   * ## Future Features
     - Allow repetition of post titles for more flexibility.
     - Implement a ratio image option in the ck editor form.
+    - Unable repitition of categories.
     - Enable users to print recipes.
     - Integrate a button option for selecting measurements in grams or ounces for precise ingredient quantities.
     - Incorporate the capability to dynamically adjust recipe quantities based on desired portions, with interactive "+" and "-"
