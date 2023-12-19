@@ -483,6 +483,10 @@ Recipe Cards
   background-color: #23BBBB;
 }
 
+.content-container {
+  margin-left: 10px;
+}
+
 .author {
   color: #5a5a5fe0;
   margin: 4px;
@@ -598,6 +602,7 @@ Add post page
   border-left-color: rgba(225, 225, 225, 0.5);
   border-right-color: rgba(225, 225, 225, 0.5);
   border-bottom-color: rgba(225, 225, 225, 0.5);
+  margin: 10px;
 }
 
 .custom-form .form-control:hover {
@@ -687,6 +692,7 @@ Profile
   box-shadow: 0 0 10px 5px rgba(255, 196, 0.8);
   border: 2px solid #000;
   border-radius: 4%;
+  margin: 15px;
 }
 
 .card-title {
