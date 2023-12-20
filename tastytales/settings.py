@@ -32,7 +32,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', '8000-patthoege-tastytalesblo-31iz79bxz17.ws-eu107.gitpod.io']
+ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', 'tasty-tales-pp4-461c66292712.herokuapp.com', '8000-patthoege-tastytalesblo-31iz79bxz17.ws-eu107.gitpod.io']
 
 
 # Application definition

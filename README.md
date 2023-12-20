@@ -22,7 +22,6 @@ You can view the live site here - <a href="#" target="_blank" rel="noopener">Tas
    * [Validator testing](<#validator-testing>)
    * [Manual testing](<#manual-testing>)
    * [Browser Testing](<#browser-testing>)
-   * [Functionality](<#functionality>)
 * [**Bugs**](<#bugs>)
    * [Fixed Bugs](<#bugs>)
    * [Media Query - Responsive Web Design](<#media-query---responsive-web-design>)
@@ -585,9 +584,21 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
 
 * ## Validator Testing
  - [W3C MarkUp Validation](https://validator.w3.org/)
+    - All clear, no errors found.
+    - <details><summary><b>W3C MarkUp Validator Image</b></summary>
+        
+      ![W3C MarkUp Validator Image](docs/img/html-validator.png)  
+      </details><br />
  - [W3C CSS Validation](https://jigsaw.w3.org/css-validator/)
+    - All clear, no errors found.
+    - <details><summary><b>W3C CSS Validator Image</b></summary>
+        
+      ![W3C CSS Validator Image](docs/img/css-validator.png)  
+      </details><br />
  - [CI Python Linter](https://pep8ci.herokuapp.com)
+    - All clear, no errors found.
  - [JSHint](https://jshint.com/)
+    - All clear, no errors found.
 
 * ## Manual Testing
 A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md)
@@ -598,12 +609,7 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 | Browser     | Layout      | Functionality |
 | :---------: | :----------:| :-----------: |
 | Chrome      | ✔          | ✔             |
-| Firefox     | ✔          | ✔             |
 | Safari      | ✔          | ✔             |
-
-* ## Functionality
-- Testing the complete functionality of the page. This includes:
-
 
 [Back to top](<#table-of-contents>)
 
