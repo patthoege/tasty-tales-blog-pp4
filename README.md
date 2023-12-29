@@ -1,7 +1,7 @@
 <h1 align="center">TastyTales</h1>
-<div align="center"><img src="docs/img/main.png"></div>
+<div align="center"><img src="docs/img/amiresponsive.png"></div>
 
-TastyTales is a web application built using the Django framework, designed to create an engaging and user-friendly platform for food enthusiasts to share, discover, and interact with a diverse range of recipes. Whether you're a food enthusiast sharing recipes or a home cook looking for new ideas, TastyTales is the perfect platform to connect and explore the world of flavors.
+TastyTales is a web application built using the Django framework, designed to create an engaging and user-friendly platform for food enthusiasts to share, discover, and interact with a diverse range of recipes. Whether you're a food enthusiast sharing recipes or a home cook looking for new ideas, TastyTales is the perfect platform to connect and explore the world of flavors. 
 
 
 You can view the live site here - <a href="#" target="_blank" rel="noopener">TastyTales</a>
@@ -561,7 +561,6 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
           - "Looks like nothing was found at this location. Maybe try one of the links below, click on the top menu, or try a search?"
     - Comment indicating the start of the search bar section.
       - Form for the search bar. Input field for searching recipes.
-          - Search button with a magnifying glass icon.
 
     <details><summary><b>404 Page Image</b></summary>
     
@@ -657,8 +656,11 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 ### 7. Most Common Tags Not Displaying Updated Information
 - The common tags feature, the tags were not displaying the most recent and common ones. I realized that after resetting the database schema and creating new posts with updated tags, the old most common tags continued to be displayed. The issue stemmed from the context processor that was fetching the first four tags without considering the number of associated posts. To resolve this, I modified the context processor to use the same logic applied in the SearchResults view. The context processor now annotates the tags with the count of associated posts and orders them accordingly, ensuring that only the top four most common tags are retrieved.
 
+### 8. Static Images Not Loading in Deployment
+- When deploying the project, the hero image and background image was not loading in the website, it was loagin from the css style sheet. This won't work in the deployed version, as it was telling heroku to look in the local filesystem, instead of going out to cloudinary for the image.To address this, I use  the Cloudinary URL directly within an inline style attribute in the template file. This adjustment ensures that the images are properly retrieved from Cloudinary, resolving the problem encountered during deployment.
+
 ## Media Query - Responsive Web Design
--
+- Working across all screen sizes.
 
 ## Unfixed bugs
 - Unique Title Constraint: Editing a post in draft mode cannot be saved due to the unique title constraint. Removing the constraint alters slug-related issues.
