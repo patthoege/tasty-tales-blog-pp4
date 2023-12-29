@@ -59,8 +59,6 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor/"
-
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-info',
         messages.INFO: 'alert-info',

@@ -65,6 +65,10 @@ class NewPost(forms.ModelForm):
                 choices=choices, attrs={'class': 'form-control'}
             ),
             'tags': TagWidget(attrs={'class': 'form-control'}),
+            'ingredients': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}), 
+            'instructions': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
+            'preparation_time': forms.TextInput(attrs={'class': 'form-control'}),
+            'cooking_time': forms.TextInput(attrs={'class': 'form-control'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 

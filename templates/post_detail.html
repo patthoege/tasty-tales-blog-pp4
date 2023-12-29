@@ -66,10 +66,10 @@
                 <div class="content-container"> 
                     <div class="card-text">
                         <div class="d-flex">
-                            <div>{{ post.ingredients | safe }}</div>
+                            <div class="fs-5">{{ post.ingredients |linebreaksbr }}</div>
                         </div>
-                        <div class="d-flex">
-                            <div>{{ post.instructions | safe }}</div>
+                        <div class="d-flex mt-3">
+                            <div class="fs-5">{{ post.instructions |linebreaksbr }}</div>
                         </div>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
                         <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                             {% csrf_token %}
                             {% if liked %}
-                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like mt-3"><i class="fas fa-heart"></i></button>
                             {% else %}
-                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like mt-3"><i class="far fa-heart"></i></button>
                             {% endif %}
                         </form>
                         <!-- If user is not authenticated they can only view the like -->
@@ -166,7 +166,7 @@
                 <p>Posting as <strong>{{ user.username }}</strong> </p>
                 <form id="commentForm" method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-text-field m-2">
                     {{ comment_form | crispy }}
-                    {{ comment_form.body.errors }} <!-- Renders form errors, keep this line if needed -->
+                    {{ comment_form.body.errors }}
                     {% csrf_token %}
                     <button id="submitButton" type="submit" class="btn btn-comment btn-send mt-2">Send</button>
                 </form>

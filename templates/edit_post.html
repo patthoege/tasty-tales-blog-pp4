@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Edit Post{% endblock %}
 {% block content %}
-{% load crispy_forms_tags %}
 
 <div class="container mt-5 pt-5">
     <div class="row mt-5">
-        <!-- Column: Post Form -->
         {% if posted %}
         <div class="col-lg-4 mb-4 alert alert-success" role="alert">
             Your Post is awaiting approval
@@ -16,8 +14,7 @@
                 <h2 class="h4 font-weight-bold mb-3">Edit your Post</h2>
                 <form method="post" action="{% url 'add_post' %}">
                     {% csrf_token %}
-                    {{ form.media }}
-                    {{ form | crispy }}
+                    {{ form.as_p }}
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-outline-success right mt-3">Update Recipe</button>
                     </div>
