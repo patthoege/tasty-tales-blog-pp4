@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'blog',
     'members.apps.MembersConfig',
-    'ckeditor',
     'taggit',
 ]
 
