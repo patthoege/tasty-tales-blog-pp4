@@ -29,8 +29,8 @@ class Post(models.Model):
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True
         )
-    ingredients = RichTextField(blank=True, null=True)
-    instructions = RichTextField(blank=True, null=True)
+    ingredients = models.TextField(max_length=5800, default="", blank=True)
+    instructions = models.TextField(max_length=5800, default="", blank=True)
     preparation_time = models.DurationField()
     cooking_time = models.DurationField()
     portions = models.PositiveIntegerField(default=1)
