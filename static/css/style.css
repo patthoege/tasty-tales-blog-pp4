@@ -289,7 +289,6 @@ Navigation/Logo
 #hero {
   width: 100%;
   min-height: 100vh;
-  background-image: url('../images/hero-image.jpg');
   background-size: cover;
   position: relative;
   margin-top: -85px;
@@ -718,7 +717,7 @@ Profile
   SIGNS ACCOUNT
  ----------------------------------------------------*/
 .bg-img-container {
-  background-image: url('../images/bg-img.webp');
+  background-image: url('../images/bg-img.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

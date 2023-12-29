@@ -585,20 +585,40 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
 * ## Validator Testing
  - [W3C MarkUp Validation](https://validator.w3.org/)
     - All clear, no errors found.
-    - <details><summary><b>W3C MarkUp Validator Image</b></summary>
-        
-      ![W3C MarkUp Validator Image](docs/img/html-validator.png)  
-      </details><br />
+      - <details><summary><b>W3C MarkUp Validator Image</b></summary>
+          
+        ![W3C MarkUp Validator Image](docs/img/html-validator.png)  
+        </details><br />
+
+    - Only in Profile and Sign Up are causing issues that appears to be coming from the AllAuth package form itself and therefore cannot be changed without affecting the functionality of the page.
+
+        - <details><summary><b>Profile Validator Image</b></summary>
+
+          ![Validator Image](docs/img/validator-profile.png)  
+          </details><br />
+          
+        - <details><summary><b>SignUp Validator Image</b></summary>
+
+          ![Validator Image](docs/img/validator-signup.png)  
+          </details><br />
+
  - [W3C CSS Validation](https://jigsaw.w3.org/css-validator/)
     - All clear, no errors found.
     - <details><summary><b>W3C CSS Validator Image</b></summary>
         
       ![W3C CSS Validator Image](docs/img/css-validator.png)  
       </details><br />
+
  - [CI Python Linter](https://pep8ci.herokuapp.com)
     - All clear, no errors found.
+  
  - [JSHint](https://jshint.com/)
     - All clear, no errors found.
+
+      - <details><summary><b>JSHint Validator Image</b></summary>
+
+          ![JSHint Validator Image](docs/img/jshint.png)  
+          </details><br />
 
 * ## Manual Testing
 A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md)

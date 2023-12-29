@@ -8,11 +8,8 @@ var submitButton = document.getElementById("submitButton");
 
 commentText.value = "";
 
-console.log('script.js loaded');
-
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        console.log('delete button clicked');
         let commentId = e.target.getAttribute("comment_id");
         deleteConfirm.href = `delete_comment/${commentId}`;
         deleteModal.show();
@@ -21,11 +18,10 @@ for (let button of deleteButtons) {
 
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
-        console.log('edit button clicked');
         let commentId = e.target.getAttribute("comment_id");
         let commentContent = document.getElementById(`comment${commentId}`).innerText;
         commentText.value = commentContent;
         submitButton.innerText = "Update";
         commentForm.setAttribute("action", `edit_comment/${commentId}`);
     });
-}
+} 
