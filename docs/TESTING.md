@@ -134,8 +134,8 @@ In addition, thorough testing has been performed and is described below, it cont
 | **Admin login - Form validation** | Submit incorrect password | Form validation prompts the user | PASS |
 | **Admin login - Form validation** | Submit incorrect name | Form validation prompts the user | PASS |
 | **Admin login - Form validation** | Submit incorrect name | Form validation prompts the user | PASS |
-| **Admin panel | Owner is able to update posts** | Post is updated | PASS |
-| **Admin panel | Owner is able to approve user's posts** | Post-s users is published | PASS |
+| **Admin panel** | Owner is able to update posts** | Post is updated | PASS |
+| **Admin panel** | Owner is able to approve user's posts** | Post-s users is published | PASS |
 | **Admin panel** | Owner is able to delete posts | Post is deleted from current post list | PASS |
 
 <br/>

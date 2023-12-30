@@ -564,7 +564,6 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
 
   * ## Future Features
     - Allow repetition of post titles for more flexibility.
-    - Implement a ratio image option in the ck editor form.
     - Unable repitition of categories.
     - Enable users to print recipes.
     - Integrate a button option for selecting measurements in grams or ounces for precise ingredient quantities.
@@ -662,7 +661,7 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 - **Unique Title Constraint:** 
   - Editing a post in draft mode cannot be saved due to the unique title constraint. Removing the constraint alters slug-related issues.
 - **Refused to execute script from 'https://res.cloudinary.com/dx3tbsinf/raw/upload/v1/static/' because its MIME type ('image/gif') is not executable:** 
-  - In the process of inspecting recipes posts, the console  throws an error indicating a refusal to execute a script from Cloudinary due to a `MIME type mismatch ('image/gif')`. I have reached out tutor support to resolve this matter, to check if the images are coming up correctly on Cloudinary, which they did and it's loading on the page. The error only happens when Debug is set to False. The tutor mentioned that can't see any issues with cloudinary on my project itself, so it must be from cloudinary's side. Another tutor intervened in an attempt to address this matterand claimed that the error occurs because it seems to be looking for some kind of JS which isn't set up to receive images. Unfortunately, we were unable to successfully troubleshoot and resolve this persistent bug and the tutor mentioned that it's an odd issue and the suggestions offered were the extent of available assistance. As they're working, as a worst case scenario, I can document about the error, if I can't get it fixed. 
+  - In the process of inspecting recipes posts, the console  throws an error indicating a refusal to execute a script from Cloudinary due to a `MIME type mismatch ('image/gif')`. I have reached out tutor support to resolve this matter, to check if the images are coming up correctly on Cloudinary, which they did and it's loading on the page. The error only happens when Debug is set to False. The tutor mentioned that can't see any issues with cloudinary on my project itself, so it must be from cloudinary's side. Another tutor intervened in an attempt to address this matter and claimed that the error occurs because it seems to be looking for some kind of JS which isn't set up to receive images. Unfortunately, we were unable to successfully troubleshoot and resolve this persistent bug and the tutor mentioned that it's an odd issue and the suggestions offered were the extent of available assistance. As they're working, as a worst case scenario, I can document about the error, if I can't get it fixed. 
   - <details><summary><b> Console Error Image</b></summary>
 
     ![Console Error Image](docs/img/error.png)  
@@ -833,7 +832,9 @@ To run TastyTales on the local machine, I follow these steps:
 - I extend my sincere gratitude to my Mentor [Martina Terlevic](https://github.com/SephTheOverwitch) for her invaluable support and insightful feedback during the development of this project. Her guidance played a crucial role in shaping the final outcome and has been greatly appreciated.
 - The tutors from Code Institute that helped me overcome the issues that I faced with the project.
 
-
-Patricia Höge 2023.
-
 [Back to top](<#table-of-contents>)
+<br /><br />
+
+[Patricia Höge](https://www.linkedin.com/in/patricia-h%C3%B6ge-417b72228/) <br />
+2023
+
