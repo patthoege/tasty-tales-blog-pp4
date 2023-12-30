@@ -343,7 +343,7 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     ![Draft List image](docs/img/features/empty-draft.png)
     </details><br />
 
-    ## 11. Draft Editing Template
+    ## 11. Draft Editing/Delete Template
 
     This template is designed for editing and managing a draft. It provides features for editing draft content, deleting drafts, and saving or publishing drafts.
 
@@ -359,6 +359,11 @@ The vibrant orange adds a pop of energy, stimulating creativity and appetite. It
     <details><summary><b>Edit Draft Image</b></summary>
 
     ![Draft List image](docs/img/features/edit-draft.png)
+    </details><br />
+
+    <details><summary><b>Delete Draft Image</b></summary>
+
+    ![Delete Draft image](docs/img/features/delete-draft.png)
     </details><br />
 
     ## 12. Post Detail Page
