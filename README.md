@@ -4,7 +4,7 @@
 TastyTales is a web application built using the Django framework, designed to create an engaging and user-friendly platform for food enthusiasts to share, discover, and interact with a diverse range of recipes. Whether you're a food enthusiast sharing recipes or a home cook looking for new ideas, TastyTales is the perfect platform to connect and explore the world of flavors. 
 
 
-You can view the live site here - <a href="#" target="_blank" rel="noopener">TastyTales</a>
+You can view the live site here - <a href="https://tasty-tales-pp4-461c66292712.herokuapp.com/" target="_blank" rel="noopener">TastyTales</a>
 
 ## Table of Contents
 
@@ -652,7 +652,8 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 ### 8. Static Images Not Loading in Deployment
 - When deploying the project, the hero image and background image was not loading in the website, it was loagin from the css style sheet. This won't work in the deployed version, as it was telling heroku to look in the local filesystem, instead of going out to cloudinary for the image.To address this, I use  the Cloudinary URL directly within an inline style attribute in the template file. This adjustment ensures that the images are properly retrieved from Cloudinary, resolving the problem encountered during deployment.
 
-### 9. 
+### 9. CKEditor Console Error in Form Fields
+- The CKEditor, initially functional within the "add post" template for the ingredients and instructions fields, is now failing to load. Upon inspecting the console in the add_post template, an `Uncaught Error: Cannot set properties of undefined (setting 'dir')` is thrown.  Despite revisiting the CKEditor installation process and consulting the documentation for possible solutions, the issue persisted even after a reinstallation attempt. To prevent the error from being logged in the console, I opted to remove CKEditor from my project entirely and replaced the affected fields with a standard TextArea field.
 
 ## Media Query - Responsive Web Design
 - Working across all screen sizes.
@@ -661,7 +662,7 @@ A separate document for testing can be viewed here: [TESTING.md](docs/TESTING.md
 - **Unique Title Constraint:** 
   - Editing a post in draft mode cannot be saved due to the unique title constraint. Removing the constraint alters slug-related issues.
 - **Refused to execute script from 'https://res.cloudinary.com/dx3tbsinf/raw/upload/v1/static/' because its MIME type ('image/gif') is not executable:** 
-  - In the process of inspecting recipes posts, the console  throws an error indicating a refusal to execute a script from Cloudinary due to a MIME type mismatch ('image/gif'). I have reached out tutor support to resolve this matter, to check if the images are coming up correctly on Cloudinary, which they did and it's loading on the page. The error only happens when Debug is set to False. The tutor mentioned that can't see any issues with cloudinary on my project itself, so it must be from cloudinary's side. Another tutor intervened in an attempt to address this matterand claimed that the error occurs because it seems to be looking for some kind of JS which isn't set up to receive images. Unfortunately, we were unable to successfully troubleshoot and resolve this persistent bug and the tutor mentioned that it's an odd issue and the suggestions offered were the extent of available assistance. As they're working, as a worst case scenario, I can document about the error, if I can't get it fixed. 
+  - In the process of inspecting recipes posts, the console  throws an error indicating a refusal to execute a script from Cloudinary due to a `MIME type mismatch ('image/gif')`. I have reached out tutor support to resolve this matter, to check if the images are coming up correctly on Cloudinary, which they did and it's loading on the page. The error only happens when Debug is set to False. The tutor mentioned that can't see any issues with cloudinary on my project itself, so it must be from cloudinary's side. Another tutor intervened in an attempt to address this matterand claimed that the error occurs because it seems to be looking for some kind of JS which isn't set up to receive images. Unfortunately, we were unable to successfully troubleshoot and resolve this persistent bug and the tutor mentioned that it's an odd issue and the suggestions offered were the extent of available assistance. As they're working, as a worst case scenario, I can document about the error, if I can't get it fixed. 
   - <details><summary><b> Console Error Image</b></summary>
 
     ![Console Error Image](docs/img/error.png)  
@@ -758,7 +759,6 @@ To run TastyTales on the local machine, I follow these steps:
   - [gunicorn](https://pypi.org/project/gunicorn/20.1.0/)
   - [psycopg2](https://pypi.org/project/psycopg2/2.9.3/) 
   - [Pillow](https://pypi.org/project/Pillow/)
-  - [Django CKEditor](https://django-ckeditor.readthedocs.io/en/latest/)
   - [Django Summernote](https://pypi.org/project/django-summernote/)
   - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/1.14.0/)
 
@@ -810,8 +810,6 @@ To run TastyTales on the local machine, I follow these steps:
 - [Codemy.com](https://www.youtube.com/watch?v=AGtae4L5BbI) - Tutorial to retrieve search term.
 
 - [geeksforgeeks](https://www.geeksforgeeks.org/django-creating-a-404-error-page/) - add the path to the 404.html file.
-
-- [dev](https://dev.to/ieeecsvitc/integrating-rich-text-editor-with-django-k19) - Integrating Rich Text Editor with Django.
 
 - [Codemy.com](https://www.youtube.com/watch?v=_ph8GF84fX4) - How to create choices for the category.
 
