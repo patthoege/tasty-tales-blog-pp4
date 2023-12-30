@@ -769,10 +769,12 @@ To run TastyTales on the local machine, I follow these steps:
 ### Programs & Tools
 
 - [Google Fonts:](https://fonts.google.com/)
-  - Was used to to incorporate font styles.  
-- [Bootstrap](https://getbootstrap.com/)
+  - Was used to incorporate font styles.  
+- [AmIResponisve:](https://ui.dev/amiresponsive?)
+  - Was used to take a screen shot of the various device breakpoints for responsive design.  
+- [Bootstrap:](https://getbootstrap.com/)
   - Was used to create the front-end design.
-- [Animate.css](https://animate.style/)
+- [Animate.css:](https://animate.style/)
   - Was used to create animation to the project.
 - [GitPod:](https://gitpod.io/)
   - Gitpod was used as IDE to commit and push the project to GitHub.
