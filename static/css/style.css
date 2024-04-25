@@ -15,7 +15,7 @@ Navigation/Logo
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: black;
 }
   
 #header.header-scrolled,
@@ -63,7 +63,14 @@ Navigation/Logo
 
 .nav-item.dropdown {
   list-style: none;
-} 
+}
+
+@media (max-width: 414px) {
+  #header .logo {
+    font-size: 20px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
