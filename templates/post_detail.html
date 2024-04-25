@@ -28,7 +28,7 @@
                     Comments {{ total_comments }}
                 </p>
                 {% endwith %}
-                <div class="post-buttons mt-5 m-3">
+                <div class="post-buttons mt-4 m-3">
                     {% if user.is_authenticated and user.username == post.author.username %}
                     <a href="/edit/{{ post.slug }}" class="btn btn-sm btn-edit btn-outline-warning">Edit</a>
                     <a href="/delete/{{ post.slug }}" class="btn btn-sm btn-delete-post btn-outline-danger">Delete</a>
