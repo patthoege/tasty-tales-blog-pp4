@@ -634,6 +634,10 @@ Add post page
   margin: 10px;
 }
 
+#id_featured_image{
+  width: 100%;
+}
+
 .custom-form .form-control:hover {
   border-color: #ffc107; 
   box-shadow: 0 0 10px rgba(255, 196, 0.5); 
