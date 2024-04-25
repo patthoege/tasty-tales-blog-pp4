@@ -12,7 +12,7 @@
                     <h2 class="h4 font-weight-bold mb-3">Create Post</h2>
                     <form method="post" action="{% url 'add_post' %}" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form.as_p | safe }}
                         <div class="d-flex justify-content-evenly mt-3">
                             <button type="submit" name="save_post" value="1" class="btn btn-sign">Save Draft</button>
                             <button type="submit" name="publish_post" class="btn btn-sign">Publish</button>

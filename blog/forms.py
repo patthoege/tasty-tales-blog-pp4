@@ -2,6 +2,7 @@ from django.utils.text import slugify
 from .models import Comment, Post, Category
 from django import forms
 from django.core.exceptions import ValidationError
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 
 # How to create choices for the category
@@ -65,8 +66,8 @@ class NewPost(forms.ModelForm):
                 choices=choices, attrs={'class': 'form-control'}
             ),
             'tags': TagWidget(attrs={'class': 'form-control'}),
-            'ingredients': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}), 
-            'instructions': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
+            'ingredients': SummernoteWidget(attrs={'class': 'form-control'}),
+            'instructions': SummernoteWidget(attrs={'class': 'form-control'}),
             'preparation_time': forms.TextInput(attrs={'class': 'form-control'}),
             'cooking_time': forms.TextInput(attrs={'class': 'form-control'}),
             'portions': forms.NumberInput(attrs={'class': 'form-control'}),

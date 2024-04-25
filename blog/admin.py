@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
 
     list_display = (
         'title', 'author', 'slug',
@@ -15,7 +15,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content', 'category']
     list_filter = ('approved', 'status', 'created_on')
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('description', 'ingredients', 'instructions',)
+    summernote_fields = ('ingredients', 'instructions',)
     actions = ['approve_post']
 
     def approve_post(self, request, queryset):
