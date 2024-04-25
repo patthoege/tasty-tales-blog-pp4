@@ -94,7 +94,7 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <li {% if message.tags %} class="alert {{ message.tags }} alert-dismissible fade show" {% endif %} role="alert">
+            <li {% if message.tags %} class="alert {{ message.tags }} alert-dismissible fade show slide-in-right" {% endif %} role="alert">
                 {% if message.tags == 'alert-success' %}
                 <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                 {% elif message.tags == 'alert-info' %}
@@ -255,7 +255,7 @@
             messages.forEach(function(message) {
                 message.remove();
             });
-        }, 4000);
+        }, 3000);
     });
     </script>
 </body>

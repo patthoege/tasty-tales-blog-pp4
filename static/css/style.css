@@ -422,15 +422,26 @@ Navigation/Logo
 Alert messages 
 -------------------------------------------------- */
 .alert-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 14%;
-  left: 0;
+  position: fixed;
   bottom: 0;
-  right: 0;
+  right: 20px;
+  width: auto;
   z-index: 1000;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.2s forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 ul .messages  {
@@ -453,7 +464,13 @@ ul .messages  {
 
 @media (max-width: 768px) {
   .alert-container {
-    top: 20%;
+    top: 115px;
+    width: auto;
+  }
+}
+@media (max-width: 468px) {
+  .alert-container {
+    top: 135px;
   }
 }
 /* -------------------------------------------------- 
