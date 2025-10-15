@@ -1,6 +1,13 @@
 core.Microsoft*
 core.mongo*
 core.python*
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+env.bak/
+venv.bak/
 env.py
 __pycache__/
 *.py[cod]

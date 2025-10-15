@@ -47,6 +47,10 @@ class TagWidget(forms.TextInput):
 class NewPost(forms.ModelForm):
     save_draft = forms.BooleanField(widget=forms.HiddenInput(), required=False)
 
+    # def __init__(self, *args, **kwargs):
+    #     super(NewPost, self).__init__(*args, **kwargs)
+    #     self.fields['category'].choices = get_category_choices()
+
     class Meta:
         model = Post
         template_name = 'add_post.html'
@@ -62,9 +66,9 @@ class NewPost(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(
+            'category': forms.Select( 
                 choices=choices, attrs={'class': 'form-control'}
-            ),
+                ),
             'tags': TagWidget(attrs={'class': 'form-control'}),
             'ingredients': SummernoteWidget(attrs={'class': 'form-control'}),
             'instructions': SummernoteWidget(attrs={'class': 'form-control'}),

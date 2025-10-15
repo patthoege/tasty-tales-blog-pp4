@@ -32,7 +32,14 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['tasty-tales-pp4.herokuapp.com', 'tasty-tales-pp4-461c66292712.herokuapp.com', '8000-patthoege-tastytalesblo-53x2r7cry92.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = [
+    # 'tasty-tales-pp4.herokuapp.com',
+    'https://*.railway.app',
+    # 'tasty-tales-pp4-461c66292712.herokuapp.com',
+    # '8000-patthoege-tastytalesblo-53x2r7cry92.ws-eu110.gitpod.io',
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition
@@ -84,10 +91,11 @@ MIDDLEWARE = [
 ]
 
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://tasty-tales-pp4.herokuapp.com', 'https://8000-patthoege-tastytalesblo-53x2r7cry92.ws-eu110.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app',]
 CORS_ALLOWED_ORIGINS = [
-    "https://tasty-tales-pp4.herokuapp.com",
-    "https://8000-patthoege-tastytalesblo-53x2r7cry92.ws-eu110.gitpod.io",
+    'https://*.railway.app',
+    'http://127.0.0.1',
+    'http://localhost',
 ]
 
 ROOT_URLCONF = 'tastytales.urls'
